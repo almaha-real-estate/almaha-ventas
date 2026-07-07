@@ -29,7 +29,7 @@
 
     --container: 1280px;
     --edge: clamp(24px, 5vw, 72px);
-    --section-y: clamp(64px, 10vw, 140px);
+    --section-y: clamp(56px, 8vw, 112px);
   }
 
   *{margin:0;padding:0;box-sizing:border-box;}
@@ -74,6 +74,17 @@
   .section{
     padding:var(--section-y) 0;
   }
+  .rail-controls{
+    display:flex; justify-content:flex-end; gap:10px; margin:-8px 0 20px;
+  }
+  .rail-arrow{
+    width:44px; height:44px; border-radius:50%;
+    border:1px solid var(--clove-15);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--clove); transition:all .3s;
+  }
+  .rail-arrow svg{width:18px;height:18px;}
+  .rail-arrow:hover{background:var(--clove); color:var(--muslin); border-color:var(--clove);}
   h1,h2,h3,h4{
     font-family:var(--serif);
     font-weight:500;
@@ -175,13 +186,13 @@
   /* ---------- HERO ---------- */
   .hero{
     position:relative;
-    min-height:100svh;
+    min-height:92svh;
     display:flex;
     flex-direction:column;
-    justify-content:flex-end;
+    justify-content:center;
     background:var(--clove);
     overflow:hidden;
-    padding-top:120px;
+    padding:150px 0 90px;
   }
   .hero-photo{
     position:absolute; inset:0;
@@ -196,7 +207,7 @@
   }
   .hero-content{
     position:relative; z-index:2;
-    padding:0 var(--edge) 64px;
+    padding:0 var(--edge);
     display:grid;
     grid-template-columns:1fr auto;
     gap:40px;
@@ -244,7 +255,7 @@
   /* ---------- SEARCH BAR ---------- */
   .searchwrap{
     position:relative; z-index:5;
-    margin-top:-58px;
+    margin-top:-24px;
   }
   .searchcard{
     background:var(--white);
@@ -405,12 +416,33 @@
   .why-item h4{color:var(--white); font-size:19px; margin-bottom:8px; font-weight:500;}
   .why-item p{color:rgba(241,239,230,.65); font-size:14.5px; max-width:480px;}
 
-  /* ---------- BENEFITS ---------- */
-  .benefit-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:var(--clove-08); border:1px solid var(--clove-08);}
-  .benefit-card{background:var(--muslin); padding:38px 30px; display:flex; flex-direction:column; gap:16px; min-height:210px;}
-  .benefit-icon{width:38px;height:38px; color:var(--terracotta-dark);}
-  .benefit-card h4{font-size:17px; font-weight:500;}
-  .benefit-card p{font-size:13.5px; color:var(--clove-70); line-height:1.6;}
+  /* ---------- EDITORIAL PHOTO BAND ---------- */
+  .photo-band{
+    position:relative; height:64vh; min-height:380px; max-height:600px;
+    overflow:hidden; margin:0;
+  }
+  .photo-band img{width:100%; height:100%; object-fit:cover; display:block;}
+  .photo-band::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(0deg, rgba(83,68,61,.65) 0%, rgba(83,68,61,0) 45%);
+  }
+  .photo-band figcaption{
+    position:absolute; left:var(--edge); bottom:36px; z-index:2; max-width:420px;
+  }
+  .photo-band figcaption p{color:var(--white); font-size:16px; line-height:1.5; margin-top:10px;}
+
+  /* ---------- VALUE PROPS (por qué elegirnos) ---------- */
+  .value-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--clove-08); border:1px solid var(--clove-08); margin-top:8px;}
+  .value-card{background:var(--muslin); padding:44px 38px; display:flex; flex-direction:column; gap:20px; min-height:230px;}
+  .value-icon{
+    width:56px; height:56px; border-radius:50%;
+    background:var(--sandstone-60);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--terracotta-dark);
+  }
+  .value-icon svg{width:26px; height:26px;}
+  .value-card h4{font-size:17.5px; font-weight:500;}
+  .value-card p{font-size:14px; color:var(--clove-70); line-height:1.65; max-width:280px;}
 
   /* ---------- PROCESS ---------- */
   .process-row{
@@ -588,7 +620,7 @@
     .search-submit{grid-column:1/-1; padding-left:0;}
     .proj-row{grid-template-columns:1fr;}
     .proj-row:nth-child(even) .proj-art{order:0;}
-    .listing-grid, .invest-grid, .benefit-grid, .team-grid, .blog-grid{grid-template-columns:repeat(2,1fr);}
+    .listing-grid, .invest-grid, .value-grid, .team-grid, .blog-grid{grid-template-columns:repeat(2,1fr);}
     .why-grid{grid-template-columns:1fr; gap:40px;}
     .stats-grid{grid-template-columns:repeat(2,1fr);}
     .modal{grid-template-columns:1fr;}
@@ -596,9 +628,9 @@
     .footer-top{grid-template-columns:1fr 1fr; gap:40px;}
   }
   @media (max-width:640px){
-    .listing-grid, .invest-grid, .benefit-grid, .team-grid, .blog-grid{grid-template-columns:1fr;}
-    .invest-grid, .benefit-grid{grid-template-columns:1fr; border:none; background:none;}
-    .invest-card, .benefit-card{border:1px solid var(--clove-08);}
+    .listing-grid, .invest-grid, .value-grid, .team-grid, .blog-grid{grid-template-columns:1fr;}
+    .invest-grid, .value-grid{grid-template-columns:1fr; border:none; background:none;}
+    .invest-card, .value-card{border:1px solid var(--clove-08);}
     .process-row{grid-template-columns:1fr; gap:8px;}
     .stats-grid{grid-template-columns:1fr 1fr; gap:24px;}
     .footer-top{grid-template-columns:1fr;}
@@ -606,6 +638,8 @@
     .hero-content{grid-template-columns:1fr;}
     .hero-scroll{display:none;}
     .form-row{grid-template-columns:1fr;}
+    .photo-band{height:46vh; min-height:260px;}
+    .section-head[style*="flex-start"] .htext, .section-head[style*="flex-start"] .lede{max-width:100% !important; align-self:auto !important;}
   }
 </style>
 </head>
@@ -779,12 +813,20 @@
 <!-- ============ CATALOGO DESTACADO ============ -->
 <section class="section" id="catalogo">
   <div class="container">
-    <div class="section-head reveal">
-      <div class="htext">
+    <div class="section-head reveal" style="align-items:flex-start;">
+      <div class="htext" style="flex:0 0 auto; max-width:420px;">
         <div class="eyebrow">Selección Almahá</div>
         <h2>Un catálogo cuidadosamente<br><span class="italic">seleccionado.</span></h2>
       </div>
-      <p class="lede">Cada propiedad de nuestro catálogo es seleccionada por nuestro equipo bajo criterios de ubicación, calidad, potencial de valorización y valor de mercado, para ofrecer oportunidades en las que realmente vale la pena invertir.</p>
+      <p class="lede" style="flex:1 1 380px; max-width:460px; align-self:flex-end;">Cada propiedad de nuestro catálogo es seleccionada por nuestro equipo bajo criterios de ubicación, calidad, potencial de valorización y valor de mercado, para ofrecer oportunidades en las que realmente vale la pena invertir.</p>
+    </div>
+    <div class="rail-controls">
+      <button class="rail-arrow" id="railPrev" aria-label="Propiedad anterior">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+      <button class="rail-arrow" id="railNext" aria-label="Siguiente propiedad">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 5l7 7-7 7"/></svg>
+      </button>
     </div>
     <div class="rail" id="featuredRail"></div>
   </div>
@@ -805,7 +847,7 @@
 </section>
 
 <!-- ============ PROPIEDADES EN VENTA (grid + filtros) ============ -->
-<section class="section" id="listado">
+<section class="section" id="listado" style="padding-top:0;">
   <div class="container">
     <div class="section-head reveal">
       <div class="htext">
@@ -886,44 +928,53 @@
   </div>
 </section>
 
+<!-- ============ FOTO EDITORIAL ============ -->
+<figure class="photo-band reveal">
+  <img src="assets/narai-jardin-central.jpg" alt="Jardín central con vegetación tropical y arquitectura contemporánea, Tulum">
+  <figcaption>
+    <span class="eyebrow" style="color:var(--sandstone);">Arquitectura & naturaleza</span>
+    <p>Espacios donde el diseño contemporáneo convive con la vegetación tropical del Caribe mexicano.</p>
+  </figcaption>
+</figure>
+
 <!-- ============ BENEFICIOS ============ -->
 <section class="section" id="nosotros">
   <div class="container">
-    <div class="section-head reveal">
-      <div class="htext">
+    <div class="section-head reveal" style="align-items:flex-start;">
+      <div class="htext" style="flex:0 0 auto; max-width:440px;">
         <div class="eyebrow">Cómo trabajamos</div>
         <h2>Un equipo que te acompaña<br><span class="italic">en cada decisión.</span></h2>
       </div>
-      <p class="lede">Creemos que una buena inversión también se construye con confianza, cercanía y un proceso claro. Por eso trabajamos de manera personalizada para ayudarte a avanzar con tranquilidad.</p>
+      <p class="lede" style="flex:1 1 380px; max-width:460px; align-self:flex-end;">Creemos que una buena inversión también se construye con confianza, cercanía y un proceso claro. Por eso trabajamos de manera personalizada para ayudarte a avanzar con tranquilidad.</p>
     </div>
-    <div class="benefit-grid reveal">
-      <div class="benefit-card">
-        <svg class="benefit-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="8" y="6" width="24" height="30" rx="1"/><line x1="14" y1="14" x2="26" y2="14"/><line x1="14" y1="20" x2="26" y2="20"/><line x1="14" y1="26" x2="22" y2="26"/></svg>
+    <div class="value-grid reveal">
+      <div class="value-card">
+        <div class="value-icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M8 26V12a2 2 0 012-2h20a2 2 0 012 2v14a2 2 0 01-2 2H16l-6 6v-6H8z"/><circle cx="16" cy="19" r="1.2" fill="currentColor" stroke="none"/><circle cx="20" cy="19" r="1.2" fill="currentColor" stroke="none"/><circle cx="24" cy="19" r="1.2" fill="currentColor" stroke="none"/></svg></div>
         <h4>Acompañamiento cercano</h4>
         <p>Estamos presentes en cada etapa para resolver dudas y ayudarte a tomar decisiones con tranquilidad.</p>
       </div>
-      <div class="benefit-card">
-        <svg class="benefit-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="20" cy="14" r="7"/><path d="M8 34c0-7 5-11 12-11s12 4 12 11"/></svg>
+      <div class="value-card">
+        <div class="value-icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M20 5l13 5v9c0 8-5.5 13.5-13 16-7.5-2.5-13-8-13-16v-9z"/><path d="M14 20l4 4 8-9"/></svg></div>
         <h4>Asesoramiento honesto</h4>
         <p>Te brindamos información clara y una mirada realista para que puedas evaluar cada oportunidad.</p>
       </div>
-      <div class="benefit-card">
-        <svg class="benefit-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M20 5v30M8 12l12-7 12 7M8 12v16l12 7 12-7V12"/></svg>
+      <div class="value-card">
+        <div class="value-icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="18" cy="18" r="10"/><line x1="25.5" y1="25.5" x2="34" y2="34"/></svg></div>
         <h4>Selección con criterio</h4>
         <p>Analizamos cada propiedad antes de incorporarla a nuestro catálogo, priorizando calidad y potencial.</p>
       </div>
-      <div class="benefit-card">
-        <svg class="benefit-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="6" y="16" width="28" height="18" rx="1"/><path d="M12 16v-4a8 8 0 0116 0v4"/></svg>
+      <div class="value-card">
+        <div class="value-icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="20" cy="20" r="15"/><path d="M25 13l-4 9-9 4 4-9z"/></svg></div>
         <h4>Conocimiento del mercado</h4>
         <p>Seguimos de cerca el movimiento de Tulum y el Caribe para identificar oportunidades relevantes.</p>
       </div>
-      <div class="benefit-card">
-        <svg class="benefit-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="20" cy="20" r="15"/><path d="M20 12v8l6 4"/></svg>
+      <div class="value-card">
+        <div class="value-icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 5h11l5 5v25H12z"/><path d="M23 5v5h5"/><line x1="16" y1="18" x2="24" y2="18"/><line x1="16" y1="23" x2="24" y2="23"/><line x1="16" y1="28" x2="21" y2="28"/></svg></div>
         <h4>Proceso transparente</h4>
         <p>Explicamos cada paso de forma clara para que sepas qué esperar durante toda la operación.</p>
       </div>
-      <div class="benefit-card">
-        <svg class="benefit-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M6 30l8-16 6 8 5-6 9 14z"/></svg>
+      <div class="value-card">
+        <div class="value-icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="20" cy="14" r="6"/><path d="M9 33c0-6.5 5-10.5 11-10.5s11 4 11 10.5"/><path d="M32 8l1.4 3 3.2.4-2.3 2.3.6 3.2L32 15.4 28.9 17l.6-3.2-2.3-2.3 3.2-.4z"/></svg></div>
         <h4>Atención personalizada</h4>
         <p>Cada cliente tiene objetivos distintos, por eso adaptamos nuestra búsqueda y recomendaciones.</p>
       </div>
@@ -934,12 +985,12 @@
 <!-- ============ PROCESO ============ -->
 <section class="section" style="background:var(--paper);">
   <div class="container">
-    <div class="section-head reveal">
-      <div class="htext">
+    <div class="section-head reveal" style="align-items:flex-start;">
+      <div class="htext" style="flex:0 0 auto; max-width:460px;">
         <div class="eyebrow">De la llamada a las llaves</div>
-        <h2>Un proceso claro, desde el primer<br><span class="italic">contacto hasta la entrega.</span></h2>
+        <h2>Un proceso claro, desde <span class="italic">el primer contacto</span> hasta la entrega</h2>
       </div>
-      <p class="lede">Comprar una propiedad es una decisión importante. Nuestro trabajo es acompañarte en cada etapa con información clara, asesoramiento personalizado y una gestión ordenada para que vivas el proceso con tranquilidad.</p>
+      <p class="lede" style="flex:1 1 380px; max-width:460px; align-self:flex-end;">Comprar una propiedad es una decisión importante. Nuestro trabajo es acompañarte en cada etapa con información clara, asesoramiento personalizado y una gestión ordenada para que vivas el proceso con tranquilidad.</p>
     </div>
     <div class="reveal">
       <div class="process-row">
@@ -977,7 +1028,7 @@
 </section>
 
 <!-- ============ TESTIMONIOS ============ -->
-<section class="section" style="padding-left:0; padding-right:0;">
+<section class="section dark-section" style="padding-left:0; padding-right:0;">
   <div class="container">
     <div class="section-head reveal">
       <div class="htext">
@@ -1042,7 +1093,7 @@
 </section>
 
 <!-- ============ FAQ ============ -->
-<section class="section" id="faq">
+<section class="section" id="faq" style="background:var(--sandstone-60);">
   <div class="container">
     <div class="section-head reveal">
       <div class="htext">
@@ -1342,6 +1393,11 @@ function submitContact(e){
   document.getElementById('formSuccess').classList.add('show');
   e.target.reset();
 }
+
+/* ================= RAIL CAROUSEL ARROWS ================= */
+const railEl = document.getElementById('featuredRail');
+document.getElementById('railPrev').addEventListener('click',()=> railEl.scrollBy({left:-360, behavior:'smooth'}));
+document.getElementById('railNext').addEventListener('click',()=> railEl.scrollBy({left:360, behavior:'smooth'}));
 
 /* ================= HEADER SCROLL STATE ================= */
 const header = document.getElementById('siteHeader');
