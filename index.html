@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ALMAHÁ Ventas — Bienes Raíces del Caribe Mexicano</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Google+Sans+Flex:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
     --clove:#53443D;
@@ -24,7 +24,7 @@
     --white:#FFFDF9;
 
     --serif: 'Fraunces', serif;
-    --sans: 'Inter', sans-serif;
+    --sans: 'Google Sans Flex', sans-serif;
     --mono: 'DM Mono', monospace;
 
     --container: 1280px;
@@ -39,6 +39,7 @@
     color:var(--clove);
     font-family:var(--sans);
     font-weight:400;
+    font-size:14px;
     line-height:1.5;
     overflow-x:hidden;
     -webkit-font-smoothing:antialiased;
@@ -94,7 +95,7 @@
   h2{font-size:clamp(32px,4vw,52px); line-height:1.08;}
   h3{font-size:clamp(22px,2.4vw,28px); line-height:1.2;}
   .lede{
-    font-size:clamp(16px,1.4vw,19px);
+    font-size:clamp(14px,1.3vw,17px);
     color:var(--clove-70);
     max-width:520px;
     line-height:1.6;
@@ -229,7 +230,7 @@
   .hero-sub{
     color:rgba(255,255,255,.85);
     max-width:380px;
-    font-size:16px;
+    font-size:14px;
     line-height:1.65;
     padding-bottom:6px;
   }
@@ -414,7 +415,7 @@
   .why-item:last-child{border-bottom:1px solid rgba(241,239,230,.15);}
   .why-item .n{font-family:var(--mono); color:var(--terracotta); font-size:13px;}
   .why-item h4{color:var(--white); font-size:19px; margin-bottom:8px; font-weight:500;}
-  .why-item p{color:rgba(241,239,230,.65); font-size:14.5px; max-width:480px;}
+  .why-item p{color:rgba(241,239,230,.65); font-size:12.5px; max-width:480px;}
 
   /* ---------- EDITORIAL PHOTO BAND ---------- */
   .photo-band{
@@ -429,7 +430,12 @@
   .photo-band figcaption{
     position:absolute; left:var(--edge); bottom:36px; z-index:2; max-width:420px;
   }
-  .photo-band figcaption p{color:var(--white); font-size:16px; line-height:1.5; margin-top:10px;}
+  .photo-band figcaption p{color:var(--white); font-size:14px; line-height:1.5; margin-top:10px;}
+
+  /* ---------- INLINE EDITORIAL PHOTO (within a column) ---------- */
+  .inline-photo{
+    width:100%; aspect-ratio:16/10; object-fit:cover; margin-bottom:32px;
+  }
 
   /* ---------- VALUE PROPS (por qué elegirnos) ---------- */
   .value-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--clove-08); border:1px solid var(--clove-08); margin-top:8px;}
@@ -442,7 +448,7 @@
   }
   .value-icon svg{width:26px; height:26px;}
   .value-card h4{font-size:17.5px; font-weight:500;}
-  .value-card p{font-size:14px; color:var(--clove-70); line-height:1.65; max-width:280px;}
+  .value-card p{font-size:12px; color:var(--clove-70); line-height:1.65; max-width:280px;}
 
   /* ---------- PROCESS ---------- */
   .process-row{
@@ -452,7 +458,7 @@
   .process-row:last-child{border-bottom:1px solid var(--clove-15);}
   .process-row .step-n{font-family:var(--serif); font-style:italic; font-size:32px; color:var(--sandstone); font-weight:500;}
   .process-row h4{font-size:19px; font-weight:500; margin-bottom:6px;}
-  .process-row p{color:var(--clove-70); font-size:14.5px; max-width:420px;}
+  .process-row p{color:var(--clove-70); font-size:12.5px; max-width:420px;}
 
   /* ---------- STATS ---------- */
   .stats-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:40px;}
@@ -517,7 +523,7 @@
   .faq-plus::after{width:1px; height:100%; left:50%; top:0;}
   .faq-item.open .faq-plus::after{transform:rotate(90deg);}
   .faq-a{max-height:0; overflow:hidden; transition:max-height .4s cubic-bezier(.16,1,.3,1);}
-  .faq-a p{padding-bottom:26px; color:var(--clove-70); max-width:680px; font-size:14.5px; line-height:1.7;}
+  .faq-a p{padding-bottom:26px; color:var(--clove-70); max-width:680px; font-size:12.5px; line-height:1.7;}
 
   /* ---------- BLOG ---------- */
   .blog-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
@@ -525,7 +531,7 @@
   .blog-art{aspect-ratio:4/3; background:var(--sandstone-60); margin-bottom:20px; overflow:hidden;}
   .blog-cat{font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--terracotta-dark); margin-bottom:10px; display:block;}
   .blog-card h4{font-size:18px; font-weight:500; margin-bottom:10px; line-height:1.3;}
-  .blog-card p{font-size:13.5px; color:var(--clove-70);}
+  .blog-card p{font-size:11.5px; color:var(--clove-70);}
 
   /* ---------- CONTACT ---------- */
   .contact-wrap{display:grid; grid-template-columns:1fr 1fr; gap:70px;}
@@ -534,7 +540,7 @@
   .field.full{grid-column:1/-1;}
   .field label{font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--clove-40);}
   .field input, .field select, .field textarea{
-    border:none; border-bottom:1px solid var(--clove-15); padding:10px 2px; font-size:15px; background:transparent;
+    border:none; border-bottom:1px solid var(--clove-15); padding:10px 2px; font-size:13px; background:transparent;
     transition:border-color .3s;
   }
   .field input:focus, .field select:focus, .field textarea:focus{outline:none; border-color:var(--terracotta);}
@@ -599,13 +605,13 @@
   footer{background:var(--clove); color:var(--muslin); padding:var(--section-y) 0 40px;}
   .footer-top{display:grid; grid-template-columns:1.4fr repeat(3,1fr); gap:50px; padding-bottom:70px; border-bottom:1px solid rgba(241,239,230,.15);}
   .footer-brand .logo{color:var(--white); margin-bottom:18px;}
-  .footer-brand p{color:rgba(241,239,230,.6); font-size:14px; max-width:280px; margin-bottom:26px;}
+  .footer-brand p{color:rgba(241,239,230,.6); font-size:12px; max-width:280px; margin-bottom:26px;}
   .foot-newsletter{display:flex; border-bottom:1px solid rgba(241,239,230,.4); max-width:300px; padding-bottom:10px;}
   .foot-newsletter input{background:none; border:none; color:var(--muslin); font-size:13px; flex:1;}
   .foot-newsletter input::placeholder{color:rgba(241,239,230,.4);}
   .foot-newsletter button{color:var(--sandstone); font-family:var(--mono); font-size:12px; text-transform:uppercase;}
   .foot-col h4{font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--sandstone); margin-bottom:20px;}
-  .foot-col a, .foot-col p{display:block; color:rgba(241,239,230,.7); font-size:13.5px; margin-bottom:12px;}
+  .foot-col a, .foot-col p{display:block; color:rgba(241,239,230,.7); font-size:11.5px; margin-bottom:12px;}
   .foot-col a:hover{color:var(--white);}
   .footer-bottom{display:flex; justify-content:space-between; align-items:center; padding-top:30px; flex-wrap:wrap; gap:16px;}
   .footer-bottom p{color:rgba(241,239,230,.45); font-size:12px; font-family:var(--mono);}
@@ -881,17 +887,17 @@
       <div class="invest-card">
         <div class="invest-num">01 — GENERAR INGRESOS (RENTA VACACIONAL)</div>
         <div class="invest-figure">9–14<span>% anual</span></div>
-        <p class="lede" style="font-size:14px;max-width:100%;">ROI estimado sobre propiedades administradas, con una ocupación promedio del 78% en temporada alta y media.</p>
+        <p class="lede" style="font-size:12px;max-width:100%;">ROI estimado sobre propiedades administradas, con una ocupación promedio del 78% en temporada alta y media.</p>
       </div>
       <div class="invest-card">
         <div class="invest-num">02 — CRECIMIENTO PATRIMONIAL (PREVENTA)</div>
         <div class="invest-figure">+18<span>% / año</span></div>
-        <p class="lede" style="font-size:14px;max-width:100%;">Plusvalía histórica promedio en desarrollos de Tulum entregados entre 2019 y 2025, desde el precio de lanzamiento.</p>
+        <p class="lede" style="font-size:12px;max-width:100%;">Plusvalía histórica promedio en desarrollos de Tulum entregados entre 2019 y 2025, desde el precio de lanzamiento.</p>
       </div>
       <div class="invest-card">
         <div class="invest-num">03 — DESARROLLAR DESDE CERO (TERRENOS)</div>
         <div class="invest-figure">Baja<span>entrada</span></div>
-        <p class="lede" style="font-size:14px;max-width:100%;">Terrenos con factibilidad de servicios y uso de suelo vigente, ideales para desarrollo propio o reventa.</p>
+        <p class="lede" style="font-size:12px;max-width:100%;">Terrenos con factibilidad de servicios y uso de suelo vigente, ideales para desarrollo propio o reventa.</p>
       </div>
     </div>
   </div>
@@ -902,6 +908,7 @@
   <div class="container">
     <div class="why-grid">
       <div class="reveal">
+        <img src="assets/hero-tulum-beach.jpg" alt="Costa de la Riviera Maya, arquitectura junto al mar" class="inline-photo">
         <div class="eyebrow">El contexto</div>
         <h2>Más que un destino,<br><span class="italic">una oportunidad.</span></h2>
         <p class="lede" style="color:rgba(241,239,230,.65); margin-top:24px;">El Caribe mexicano continúa siendo uno de los mercados más atractivos para quienes buscan construir patrimonio. En un contexto cambiante, identificar las oportunidades correctas y contar con un buen asesoramiento marca la diferencia.</p>
@@ -927,15 +934,6 @@
     </div>
   </div>
 </section>
-
-<!-- ============ FOTO EDITORIAL ============ -->
-<figure class="photo-band reveal">
-  <img src="assets/narai-jardin-central.jpg" alt="Jardín central con vegetación tropical y arquitectura contemporánea, Tulum">
-  <figcaption>
-    <span class="eyebrow" style="color:var(--sandstone);">Arquitectura & naturaleza</span>
-    <p>Espacios donde el diseño contemporáneo convive con la vegetación tropical del Caribe mexicano.</p>
-  </figcaption>
-</figure>
 
 <!-- ============ BENEFICIOS ============ -->
 <section class="section" id="nosotros">
@@ -996,32 +994,32 @@
       <div class="process-row">
         <div class="step-n">01</div>
         <div><h4>Conocemos tus objetivos</h4><p>Entendemos qué estás buscando, cuál es tu presupuesto y qué tipo de inversión querés realizar.</p></div>
-        <div><p class="lede" style="font-size:13.5px;">15–20 minutos, sin compromiso, en español o inglés.</p></div>
+        <div><p class="lede" style="font-size:11.5px;">15–20 minutos, sin compromiso, en español o inglés.</p></div>
       </div>
       <div class="process-row">
         <div class="step-n">02</div>
         <div><h4>Seleccionamos las mejores opciones</h4><p>Preparamos una selección de propiedades alineadas con tus objetivos y te presentamos cada alternativa con total transparencia.</p></div>
-        <div><p class="lede" style="font-size:13.5px;">Entrega en 48 horas hábiles.</p></div>
+        <div><p class="lede" style="font-size:11.5px;">Entrega en 48 horas hábiles.</p></div>
       </div>
       <div class="process-row">
         <div class="step-n">03</div>
         <div><h4>Coordinamos las visitas</h4><p>Organizamos recorridos presenciales o virtuales para que conozcas cada propiedad y puedas resolver todas tus dudas.</p></div>
-        <div><p class="lede" style="font-size:13.5px;">Coordinamos agenda y traslados si visitas Tulum.</p></div>
+        <div><p class="lede" style="font-size:11.5px;">Coordinamos agenda y traslados si visitas Tulum.</p></div>
       </div>
       <div class="process-row">
         <div class="step-n">04</div>
         <div><h4>Te acompañamos en la negociación</h4><p>Analizamos las condiciones de compra y te asesoramos durante todo el proceso para que tomes decisiones informadas.</p></div>
-        <div><p class="lede" style="font-size:13.5px;">Sin costo adicional para quien compra.</p></div>
+        <div><p class="lede" style="font-size:11.5px;">Sin costo adicional para quien compra.</p></div>
       </div>
       <div class="process-row">
         <div class="step-n">05</div>
         <div><h4>Validamos la documentación</h4><p>Realizamos una revisión completa de la documentación de la propiedad y de sus aspectos clave para que puedas avanzar con mayor seguridad y confianza.</p></div>
-        <div><p class="lede" style="font-size:13.5px;">Tiempo estimado: 6 a 10 semanas.</p></div>
+        <div><p class="lede" style="font-size:11.5px;">Tiempo estimado: 6 a 10 semanas.</p></div>
       </div>
       <div class="process-row">
         <div class="step-n">06</div>
         <div><h4>Seguimos después de la compra</h4><p>Nuestro acompañamiento no termina con la firma. Continuamos a tu lado para ayudarte en lo que necesites después de adquirir tu propiedad.</p></div>
-        <div><p class="lede" style="font-size:13.5px;">Reporte disponible durante todo el año.</p></div>
+        <div><p class="lede" style="font-size:11.5px;">Reporte disponible durante todo el año.</p></div>
       </div>
     </div>
   </div>
@@ -1071,22 +1069,27 @@
         <h2>Detrás de cada propiedad,<br><span class="italic">hay personas.</span></h2>
       </div>
     </div>
-    <div class="reveal" style="max-width:700px; margin-bottom:60px;">
-      <p class="lede" style="max-width:100%; margin-bottom:18px;">ALMAHÁ nació de una decisión que cambió nuestras vidas: elegir el Caribe mexicano como nuestro hogar.</p>
-      <p class="lede" style="max-width:100%; margin-bottom:18px;">Somos dos socias argentinas que encontramos en Tulum un lugar para crecer, emprender y construir un proyecto propio. Con el tiempo entendimos que comprar una propiedad aquí es mucho más que una operación inmobiliaria: es una decisión que involucra sueños, patrimonio y nuevos comienzos.</p>
-      <p class="lede" style="max-width:100%; margin-bottom:18px;">Por eso creamos ALMAHÁ. Queremos acompañar a cada cliente con la misma dedicación con la que nosotros tomaríamos una decisión tan importante. Creemos en el asesoramiento honesto, en las relaciones de confianza y en seleccionar oportunidades que realmente generen valor.</p>
-      <p class="lede italic" style="max-width:100%; font-size:19px; color:var(--clove);">Más que vender propiedades, buscamos ayudar a las personas a encontrar el lugar adecuado para construir su próximo capítulo.</p>
-    </div>
-    <div class="team-grid reveal" style="grid-template-columns:repeat(2,1fr); max-width:520px; gap:40px;">
-      <div class="team-card">
-        <div class="team-photo"><svg class="lineart" style="width:70%;margin:15% auto;color:var(--clove);" viewBox="0 0 100 100"><circle cx="50" cy="36" r="18" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M18 90c0-20 14-32 32-32s32 12 32 32" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></div>
-        <h4>Sofía Suárez</h4>
-        <div class="team-role">Fundadora & CEO</div>
+    <div class="why-grid reveal" style="align-items:start;">
+      <div>
+        <p class="lede" style="max-width:100%; margin-bottom:18px;">ALMAHÁ nació de una decisión que cambió nuestras vidas: elegir el Caribe mexicano como nuestro hogar.</p>
+        <p class="lede" style="max-width:100%; margin-bottom:18px;">Somos dos socias argentinas que encontramos en Tulum un lugar para crecer, emprender y construir un proyecto propio. Con el tiempo entendimos que comprar una propiedad aquí es mucho más que una operación inmobiliaria: es una decisión que involucra sueños, patrimonio y nuevos comienzos.</p>
+        <p class="lede" style="max-width:100%; margin-bottom:18px;">Por eso creamos ALMAHÁ. Queremos acompañar a cada cliente con la misma dedicación con la que nosotros tomaríamos una decisión tan importante. Creemos en el asesoramiento honesto, en las relaciones de confianza y en seleccionar oportunidades que realmente generen valor.</p>
+        <p class="lede italic" style="max-width:100%; font-size:17px; color:var(--clove);">Más que vender propiedades, buscamos ayudar a las personas a encontrar el lugar adecuado para construir su próximo capítulo.</p>
       </div>
-      <div class="team-card">
-        <div class="team-photo"><svg class="lineart" style="width:70%;margin:15% auto;color:var(--clove);" viewBox="0 0 100 100"><circle cx="50" cy="36" r="18" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M18 90c0-20 14-32 32-32s32 12 32 32" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></div>
-        <h4>Victoria Calero</h4>
-        <div class="team-role">Cofundadora & Directora de Operaciones</div>
+      <div>
+        <img src="assets/narai-jardin-central.jpg" alt="Jardín central con vegetación tropical y arquitectura contemporánea, Tulum" class="inline-photo" style="margin-bottom:36px;">
+        <div class="team-grid" style="grid-template-columns:repeat(2,1fr); gap:28px;">
+          <div class="team-card">
+            <div class="team-photo"><svg class="lineart" style="width:70%;margin:15% auto;color:var(--clove);" viewBox="0 0 100 100"><circle cx="50" cy="36" r="18" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M18 90c0-20 14-32 32-32s32 12 32 32" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></div>
+            <h4>Sofía Suárez</h4>
+            <div class="team-role">Fundadora & CEO</div>
+          </div>
+          <div class="team-card">
+            <div class="team-photo"><svg class="lineart" style="width:70%;margin:15% auto;color:var(--clove);" viewBox="0 0 100 100"><circle cx="50" cy="36" r="18" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M18 90c0-20 14-32 32-32s32 12 32 32" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></div>
+            <h4>Victoria Calero</h4>
+            <div class="team-role">Cofundadora & Directora de Operaciones</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
