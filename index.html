@@ -193,7 +193,7 @@
     justify-content:center;
     background:var(--clove);
     overflow:hidden;
-    padding:150px 0 90px;
+    padding:150px 0 40px;
   }
   .hero-photo{
     position:absolute; inset:0;
@@ -436,6 +436,13 @@
   .inline-photo{
     width:100%; aspect-ratio:16/10; object-fit:cover; margin-bottom:32px;
   }
+  .inline-photo--bleed-left{
+    width:calc(100% + var(--edge));
+    margin-left:calc(-1 * var(--edge));
+  }
+  @media (max-width:980px){
+    .inline-photo--bleed-left{width:100%; margin-left:0;}
+  }
 
   /* ---------- VALUE PROPS (por qué elegirnos) ---------- */
   .value-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--clove-08); border:1px solid var(--clove-08); margin-top:8px;}
@@ -486,6 +493,7 @@
   .team-photo{
     aspect-ratio:3/3.6; background:var(--sandstone-60); position:relative; overflow:hidden; margin-bottom:16px;
   }
+  .team-photo img{width:100%; height:100%; object-fit:cover; display:block;}
   .team-card h4{font-size:16.5px; font-weight:500;}
   .team-role{font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--terracotta-dark);}
 
@@ -819,12 +827,11 @@
 <!-- ============ CATALOGO DESTACADO ============ -->
 <section class="section" id="catalogo">
   <div class="container">
-    <div class="section-head reveal" style="align-items:flex-start;">
-      <div class="htext" style="flex:0 0 auto; max-width:420px;">
+    <div class="section-head reveal">
+      <div class="htext">
         <div class="eyebrow">Selección Almahá</div>
         <h2>Un catálogo cuidadosamente<br><span class="italic">seleccionado.</span></h2>
       </div>
-      <p class="lede" style="flex:1 1 380px; max-width:460px; align-self:flex-end;">Cada propiedad de nuestro catálogo es seleccionada por nuestro equipo bajo criterios de ubicación, calidad, potencial de valorización y valor de mercado, para ofrecer oportunidades en las que realmente vale la pena invertir.</p>
     </div>
     <div class="rail-controls">
       <button class="rail-arrow" id="railPrev" aria-label="Propiedad anterior">
@@ -908,7 +915,7 @@
   <div class="container">
     <div class="why-grid">
       <div class="reveal">
-        <img src="assets/hero-tulum-beach.jpg" alt="Costa de la Riviera Maya, arquitectura junto al mar" class="inline-photo">
+        <img src="assets/tulum-ruinas-costa.jpg" alt="Zona arqueológica de Tulum sobre la costa del Caribe mexicano" class="inline-photo inline-photo--bleed-left">
         <div class="eyebrow">El contexto</div>
         <h2>Más que un destino,<br><span class="italic">una oportunidad.</span></h2>
         <p class="lede" style="color:rgba(241,239,230,.65); margin-top:24px;">El Caribe mexicano continúa siendo uno de los mercados más atractivos para quienes buscan construir patrimonio. En un contexto cambiante, identificar las oportunidades correctas y contar con un buen asesoramiento marca la diferencia.</p>
@@ -1085,7 +1092,7 @@
             <div class="team-role">Fundadora & CEO</div>
           </div>
           <div class="team-card">
-            <div class="team-photo"><svg class="lineart" style="width:70%;margin:15% auto;color:var(--clove);" viewBox="0 0 100 100"><circle cx="50" cy="36" r="18" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M18 90c0-20 14-32 32-32s32 12 32 32" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></div>
+            <div class="team-photo"><img src="assets/victoria-calero.jpg" alt="Victoria Calero"></div>
             <h4>Victoria Calero</h4>
             <div class="team-role">Cofundadora & Directora de Operaciones</div>
           </div>
