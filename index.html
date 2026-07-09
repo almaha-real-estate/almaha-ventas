@@ -187,13 +187,13 @@
   /* ---------- HERO ---------- */
   .hero{
     position:relative;
-    min-height:88svh;
+    min-height:92svh;
     display:flex;
     flex-direction:column;
-    justify-content:flex-end;
+    justify-content:center;
     background:var(--clove);
     overflow:hidden;
-    padding:95px 0 24px;
+    padding:150px 0 40px;
   }
   .hero-photo{
     position:absolute; inset:0;
@@ -256,7 +256,7 @@
   /* ---------- SEARCH BAR ---------- */
   .searchwrap{
     position:relative; z-index:5;
-    margin-top:-40px;
+    margin-top:-24px;
   }
   .searchcard{
     background:var(--white);
@@ -437,7 +437,11 @@
     width:100%; aspect-ratio:16/10; object-fit:cover; margin-bottom:32px;
   }
   .inline-photo--bleed-left{
-    width:100%;
+    width:calc(100% + var(--edge));
+    margin-left:calc(-1 * var(--edge));
+  }
+  @media (max-width:980px){
+    .inline-photo--bleed-left{width:100%; margin-left:0;}
   }
 
   /* ---------- VALUE PROPS (por qué elegirnos) ---------- */
@@ -578,6 +582,14 @@
   .modal-body .tag{display:inline-block; font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--terracotta-dark); border:1px solid var(--terracotta); padding:5px 10px; margin-bottom:16px;}
   .modal-body h3{font-size:26px; margin-bottom:6px;}
   .modal-loc{color:var(--clove-70); font-size:13.5px; margin-bottom:20px;}
+  .modal-typ-tabs{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px;}
+  .modal-typ-tab{
+    padding:8px 14px; border:1px solid var(--clove-15);
+    font-family:var(--mono); font-size:11px; letter-spacing:.05em; text-transform:uppercase;
+    color:var(--clove-70); transition:all .25s;
+  }
+  .modal-typ-tab:hover{border-color:var(--clove);}
+  .modal-typ-tab.active{background:var(--clove); color:var(--muslin); border-color:var(--clove);}
   .modal-price{font-family:var(--serif); font-style:italic; font-size:32px; margin-bottom:24px;}
   .modal-specs{display:flex; gap:24px; padding:18px 0; border-top:1px solid var(--clove-15); border-bottom:1px solid var(--clove-15); margin-bottom:22px;}
   .modal-specs div{font-family:var(--mono); font-size:12px; color:var(--clove-70);}
@@ -1080,6 +1092,7 @@
         <p class="lede italic" style="max-width:100%; font-size:17px; color:var(--clove);">Más que vender propiedades, buscamos ayudar a las personas a encontrar el lugar adecuado para construir su próximo capítulo.</p>
       </div>
       <div>
+        <img src="assets/narai-jardin-central.jpg" alt="Jardín central con vegetación tropical y arquitectura contemporánea, Tulum" class="inline-photo" style="margin-bottom:36px;">
         <div class="team-grid" style="grid-template-columns:repeat(2,1fr); gap:28px;">
           <div class="team-card">
             <div class="team-photo"><svg class="lineart" style="width:70%;margin:15% auto;color:var(--clove);" viewBox="0 0 100 100"><circle cx="50" cy="36" r="18" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M18 90c0-20 14-32 32-32s32 12 32 32" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></div>
@@ -1119,18 +1132,39 @@
         <h2 style="margin:18px 0 30px;">Cuéntanos qué<br><span class="italic">estás buscando.</span></h2>
         <form onsubmit="submitContact(event)">
           <div class="form-row">
-            <div class="field"><label>Nombre</label><input type="text" required></div>
-            <div class="field"><label>Correo</label><input type="email" required></div>
+            <div class="field"><label>Nombre</label><input type="text" name="nombre" required></div>
+            <div class="field"><label>Correo</label><input type="email" name="correo" required></div>
           </div>
           <div class="form-row">
-            <div class="field"><label>Teléfono / WhatsApp</label><input type="tel"></div>
+            <div class="field"><label>Teléfono / WhatsApp</label><input type="tel" name="telefono"></div>
             <div class="field">
               <label>Estoy interesado en</label>
-              <select><option>Comprar para vivir</option><option>Invertir / rentar</option><option>Vender mi propiedad</option><option>Solo estoy explorando</option></select>
+              <select name="interes"><option>Comprar para vivir</option><option>Invertir / rentar</option><option>Vender mi propiedad</option><option>Solo estoy explorando</option></select>
             </div>
           </div>
           <div class="form-row">
-            <div class="field full"><label>Mensaje</label><textarea placeholder="Cuéntanos tu presupuesto, destino de interés y horizonte de tiempo..."></textarea></div>
+            <div class="field">
+              <label>Rango de presupuesto</label>
+              <select name="presupuesto">
+                <option value="">Prefiero no decir</option>
+                <option value="menos-3m">Menos de $3,000,000 MXN</option>
+                <option value="3m-6m">$3,000,000 – $6,000,000 MXN</option>
+                <option value="6m-10m">$6,000,000 – $10,000,000 MXN</option>
+                <option value="mas-10m">Más de $10,000,000 MXN</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Motivo de interés</label>
+              <select name="motivo">
+                <option value="">Selecciona una opción</option>
+                <option value="inversion">Inversión</option>
+                <option value="vivienda">Vivienda propia</option>
+                <option value="ambos">Ambos</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field full"><label>Mensaje</label><textarea name="mensaje" placeholder="Cuéntanos tu presupuesto, destino de interés y horizonte de tiempo..."></textarea></div>
           </div>
           <button type="submit" class="btn btn-primary">Enviar mensaje<span class="btn-arrow">→</span></button>
           <div class="form-success" id="formSuccess">Mensaje recibido — un asesor de Almahá te escribirá en menos de 24 horas hábiles.</div>
@@ -1215,18 +1249,57 @@
   </div>
 </div>
 
-<script>
+<script type="module">
+/* ================= FIREBASE ================= */
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, collection, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyD4_pL8l0wOR3elbI3_VZd89a-UffnV5oE",
+  authDomain: "almaha-ventas.firebaseapp.com",
+  projectId: "almaha-ventas",
+  storageBucket: "almaha-ventas.firebasestorage.app",
+  messagingSenderId: "495551253531",
+  appId: "1:495551253531:web:7f8034f9b6a98562763cbe"
+};
+const firebaseApp = initializeApp(firebaseConfig);
+const db = getFirestore(firebaseApp);
+
 /* ================= DATA ================= */
-const PROPERTIES = [
-  {id:1, name:"Casa Cielo", loc:"Tulum · Aldea Zamá", locKey:"tulum", type:"villa", typeLabel:"Villa", price:685000, beds:3, baths:3.5, m2:320, art:"art-villa-pool", amenities:["Alberca privada","Roof garden","Seguridad 24h","Estacionamiento techado","Palapa"], desc:"Villa contemporánea en Aldea Zamá, a diez minutos en bici del centro de Tulum. Diseñada en tres niveles alrededor de un patio central con alberca, combina materiales locales con líneas minimalistas."},
-  {id:2, name:"Residencia Amanecer", loc:"Tulum · Zona de Playa", locKey:"tulum", type:"villa", typeLabel:"Villa frente al mar", price:1450000, beds:4, baths:4, m2:410, art:"art-villa-beach", amenities:["Acceso directo a playa","Palapa techada","Cisterna propia","Planta eléctrica","Jardín tropical"], desc:"Frente de playa privado en la zona hotelera de Tulum. Cuatro suites con vista al mar, terraza continua y acceso directo a arena, en uno de los últimos tramos de costa disponibles para venta directa."},
-  {id:3, name:"Penthouse Marejada", loc:"Playa del Carmen · Centro", locKey:"pdc", type:"penthouse", typeLabel:"Penthouse", price:520000, beds:2, baths:2, m2:180, art:"art-penthouse", amenities:["Rooftop infinity","Vista al mar","Gimnasio","Elevador privado","Bodega"], desc:"Último nivel de un edificio boutique de seis pisos en el corazón de Playa del Carmen, a tres cuadras de la Quinta Avenida. Rooftop privado con alberca infinita orientada al amanecer."},
-  {id:4, name:"Villa Raíz", loc:"Tulum · La Veleta", locKey:"tulum", type:"villa", typeLabel:"Villa", price:395000, beds:3, baths:2.5, m2:260, art:"art-villa-pool", amenities:["Acceso a cenote privado","Jardín tropical","Cocina exterior","Estudio anexo"], desc:"En el barrio de La Veleta, epicentro creativo de Tulum. Villa de una planta organizada alrededor de un jardín central, con acceso preferente a un cenote privado a cien metros."},
-  {id:5, name:"Casa Bacalar Azul", loc:"Bacalar · Laguna", locKey:"bacalar", type:"villa", typeLabel:"Villa", price:610000, beds:4, baths:3, m2:350, art:"art-lagoon", amenities:["Vista laguna de 7 colores","Muelle privado","Palapa","Kayaks incluidos"], desc:"Sobre la orilla de la Laguna de Bacalar, con muelle propio y vista despejada a los siete tonos de azul que dan nombre al lugar. Ideal para quien busca ritmo de pueblo y agua todos los días."},
-  {id:6, name:"Loft Kanan", loc:"Puerto Aventuras · Marina", locKey:"puerto", type:"condominio", typeLabel:"Condominio", price:275000, beds:1, baths:1.5, m2:95, art:"art-loft", amenities:["Vista a marina","Club de playa","Alberca común","Seguridad 24h"], desc:"Loft de un dormitorio con vista a la marina de Puerto Aventuras, dentro de un fraccionamiento cerrado con club de playa privado y campo de golf."},
-  {id:7, name:"Terreno Selva Alta", loc:"Tulum · Zona Hotelera", locKey:"tulum", type:"terreno", typeLabel:"Terreno", price:340000, beds:0, baths:0, m2:1200, art:"art-land", amenities:["Uso de suelo vigente","Factibilidad de servicios","Acceso pavimentado"], desc:"Mil doscientos metros cuadrados en zona de selva alta, con uso de suelo turístico ya aprobado y factibilidad de agua y luz confirmada. Listo para desarrollo propio."},
-  {id:8, name:"Residencia Punta Coral", loc:"Akumal · Frente de Playa", locKey:"akumal", type:"villa", typeLabel:"Villa", price:980000, beds:5, baths:5, m2:480, art:"art-villa-beach", amenities:["Arrecife privado","Snorkel desde la puerta","Casa de huéspedes","Alberca"], desc:"Cinco suites frente a uno de los últimos arrecifes vírgenes de la Riviera Maya. Ideal para familias extendidas o para renta de grupo de alto valor."},
-];
+// PROPIEDADES se llena desde Firestore (colección 'propiedades') al cargar la página — ver cargarPropiedades() al final del archivo.
+let PROPIEDADES = [];
+
+// Guarda desde qué propiedad se abrió el modal, para adjuntarlo al lead si el formulario se envía sin cerrar el modal antes.
+let leadOriginPropertyId = null;
+
+/* ================= HELPERS DE DATOS ================= */
+function money(n){
+  if(typeof n !== 'number') return 'Consultar precio';
+  return `$${n.toLocaleString('es-MX')} MXN`;
+}
+function precioDesde(propiedad){
+  let min = Infinity;
+  (propiedad.tipologias||[]).forEach(t=>{
+    (t.unidades||[]).forEach(u=>{
+      if(typeof u.precio === 'number' && u.precio < min) min = u.precio;
+    });
+  });
+  return min === Infinity ? null : min;
+}
+function chipsTipologias(propiedad){
+  return (propiedad.tipologias||[]).map(t=>t.tipo);
+}
+// El esquema nuevo (propiedades/{uuid}) no trae un locKey explícito como el array PROPERTIES viejo —
+// lo derivamos de zona/ciudad para que sigan funcionando los chips de filtro que ya existían.
+function locKeyFromZonaCiudad(zona, ciudad){
+  const text = `${zona||''} ${ciudad||''}`.toLowerCase();
+  if(text.includes('tulum')) return 'tulum';
+  if(text.includes('playa del carmen')) return 'pdc';
+  if(text.includes('akumal')) return 'akumal';
+  if(text.includes('puerto aventuras')) return 'puerto';
+  if(text.includes('bacalar')) return 'bacalar';
+  return 'otros';
+}
 
 const PROJECTS = [
   {name:"Selvara Tulum", loc:"Tulum · La Veleta", status:"En construcción — Entrega 2027", from:"310,000", units:"48", progress:"Cimentación", art:"art-villa-pool"},
@@ -1244,48 +1317,68 @@ const FAQS = [
 ];
 
 /* ================= RENDER: FEATURED RAIL ================= */
+// Nota de diseño pendiente de tu confirmación: como el nuevo esquema no trae un campo "art" por
+// propiedad (el line-art SVG estaba mapeado a PROPERTIES.type, que ya no existe), por ahora todas
+// las cards reales usan el mismo símbolo genérico (art-villa-pool) hasta que definamos si el line-art
+// se queda así, se mapea por tipo de tipología, o se reemplaza por foto real como sugiere el handoff.
 const rail = document.getElementById('featuredRail');
-PROPERTIES.slice(0,6).forEach(p=>{
-  rail.innerHTML += `
-  <div class="pcard" onclick="openModal(${p.id})">
-    <div class="pcard-art">
-      <span class="tag">${p.typeLabel}</span>
-      <svg class="lineart" style="color:var(--clove);"><use href="#${p.art}"/></svg>
-      <span class="price">$${p.price.toLocaleString('en-US')} USD</span>
-    </div>
-    <div class="pcard-body">
-      <h4>${p.name}</h4>
-      <div class="pcard-loc">${p.loc}</div>
-      <div class="pcard-specs">
-        <span>${p.beds || '—'} hab</span><span>${p.baths || '—'} baños</span><span>${p.m2} m²</span>
-      </div>
-    </div>
-  </div>`;
-});
-
-/* ================= RENDER: LISTING GRID ================= */
-const grid = document.getElementById('listingGrid');
-function renderGrid(){
-  grid.innerHTML = '';
-  PROPERTIES.forEach(p=>{
-    grid.innerHTML += `
-    <div class="pcard" data-loc="${p.locKey}" onclick="openModal(${p.id})">
+function renderRail(){
+  rail.innerHTML = '';
+  const destacadas = PROPIEDADES.filter(p=>p.destacado===true).slice(0,4);
+  destacadas.forEach(p=>{
+    const desde = precioDesde(p);
+    const tag = (p.tipologias||[]).length>1 ? 'Varias tipologías' : ((p.tipologias||[])[0]?.tipo || p.estado || '');
+    rail.innerHTML += `
+    <div class="pcard" onclick="window.openModal('${p.id}')">
       <div class="pcard-art">
-        <span class="tag">${p.typeLabel}</span>
-        <svg class="lineart" style="color:var(--clove);"><use href="#${p.art}"/></svg>
-        <span class="price">$${p.price.toLocaleString('en-US')} USD</span>
+        <span class="tag">${tag}</span>
+        <svg class="lineart" style="color:var(--clove);"><use href="#art-villa-pool"/></svg>
+        <span class="price">${desde!==null ? 'Desde '+money(desde) : money(null)}</span>
       </div>
       <div class="pcard-body">
-        <h4>${p.name}</h4>
-        <div class="pcard-loc">${p.loc}</div>
+        <h4>${p.nombre}</h4>
+        <div class="pcard-loc">${p.zona}${p.ciudad ? ' · '+p.ciudad : ''}</div>
         <div class="pcard-specs">
-          <span>${p.beds || '—'} hab</span><span>${p.baths || '—'} baños</span><span>${p.m2} m²</span>
+          ${chipsTipologias(p).map(t=>`<span>${t}</span>`).join('') || '<span>—</span>'}
         </div>
       </div>
     </div>`;
   });
 }
-renderGrid();
+
+/* ================= RENDER: LISTING GRID ================= */
+const grid = document.getElementById('listingGrid');
+function renderGrid(){
+  grid.innerHTML = '';
+  PROPIEDADES.forEach(p=>{
+    const desde = precioDesde(p);
+    const locKey = locKeyFromZonaCiudad(p.zona, p.ciudad);
+    const tag = (p.tipologias||[]).length>1 ? 'Varias tipologías' : ((p.tipologias||[])[0]?.tipo || p.estado || '');
+    grid.innerHTML += `
+    <div class="pcard" data-loc="${locKey}" onclick="window.openModal('${p.id}')">
+      <div class="pcard-art">
+        <span class="tag">${tag}</span>
+        <svg class="lineart" style="color:var(--clove);"><use href="#art-villa-pool"/></svg>
+        <span class="price">${desde!==null ? 'Desde '+money(desde) : money(null)}</span>
+      </div>
+      <div class="pcard-body">
+        <h4>${p.nombre}</h4>
+        <div class="pcard-loc">${p.zona}${p.ciudad ? ' · '+p.ciudad : ''}</div>
+        <div class="pcard-specs">
+          ${chipsTipologias(p).map(t=>`<span>${t}</span>`).join('') || '<span>—</span>'}
+        </div>
+      </div>
+    </div>`;
+  });
+}
+
+async function cargarPropiedades(){
+  const snap = await getDocs(collection(db,'propiedades'));
+  PROPIEDADES = snap.docs.map(d=>({ id:d.id, ...d.data() }));
+  renderRail();
+  renderGrid();
+}
+cargarPropiedades();
 
 document.querySelectorAll('.chip').forEach(chip=>{
   chip.addEventListener('click',()=>{
@@ -1327,7 +1420,7 @@ FAQS.forEach((f,i)=>{
     <div class="faq-a"><p>${f.a}</p></div>
   </div>`;
 });
-function toggleFaq(i){
+window.toggleFaq = function(i){
   const item = document.getElementById('faq-'+i);
   const ans = item.querySelector('.faq-a');
   const isOpen = item.classList.contains('open');
@@ -1342,40 +1435,91 @@ function toggleFaq(i){
 }
 
 /* ================= MODAL ================= */
-function openModal(id){
-  const p = PROPERTIES.find(x=>x.id===id);
-  if(!p) return;
-  document.getElementById('modalArt').innerHTML = `<svg class="lineart" style="width:80%;color:var(--clove);"><use href="#${p.art}"/></svg>`;
+// Nota de adaptación de esquema: los specs viejos (Habitaciones/Baños/Superficie) eran valores únicos
+// porque antes cada card era una sola unidad. Ahora una "propiedad" puede tener varias tipologías con
+// distinta cantidad de habitaciones cada una, así que el resumen general del modal (fuera de las
+// pestañas) muestra Estado/Unidades/Entrega, que sí son campos fijos del proyecto. La superficie y el
+// precio puntual se muestran dentro de cada pestaña de tipología.
+function amenidadesActivas(p){
+  const claves = [
+    ['pet','Pet friendly'],['jacuzzi','Jacuzzi'],['alberca','Alberca'],
+    ['rooftop','Rooftop'],['gym','Gym'],['cowork','Cowork'],['lavanderia','Lavandería']
+  ];
+  return claves.filter(([k])=>p[k]==='Sí').map(([,label])=>label);
+}
+
+function renderModalTipologia(p, activeIndex){
+  const tipologias = p.tipologias || [];
+  const tipo = tipologias[activeIndex];
+
+  const fotoUrl = tipo?.photoUrl || (tipo?.fotos && tipo.fotos[0]) || (p.fotosAmenidades && p.fotosAmenidades[0]) || '';
+  document.getElementById('modalArt').innerHTML = fotoUrl
+    ? `<img src="${fotoUrl}" alt="${p.nombre}${tipo ? ' - '+tipo.tipo : ''}" style="width:100%;height:100%;object-fit:cover;">`
+    : `<svg class="lineart" style="width:80%;color:var(--clove);"><use href="#art-villa-pool"/></svg>`;
+
+  let precioLabel = money(null);
+  let m2Label = '—';
+  if(tipo && tipo.unidades && tipo.unidades.length){
+    const precios = tipo.unidades.map(u=>u.precio).filter(n=>typeof n==='number');
+    if(precios.length===1) precioLabel = money(precios[0]);
+    else if(precios.length>1) precioLabel = `Desde ${money(Math.min(...precios))}`;
+    const m2s = tipo.unidades.map(u=>u.m2).filter(n=>typeof n==='number');
+    if(m2s.length===1) m2Label = `${m2s[0]} m²`;
+    else if(m2s.length>1) m2Label = `${Math.min(...m2s)}–${Math.max(...m2s)} m²`;
+  }
+
+  let tabsHtml = '';
+  if(tipologias.length>1){
+    tabsHtml = `<div class="modal-typ-tabs">${tipologias.map((t,i)=>
+      `<button type="button" class="modal-typ-tab${i===activeIndex?' active':''}" onclick="window.selectModalTipologia('${p.id}',${i})">${t.tipo}</button>`
+    ).join('')}</div>`;
+  }
+
   document.getElementById('modalBody').innerHTML = `
-    <span class="tag">${p.typeLabel}</span>
-    <h3>${p.name}</h3>
-    <div class="modal-loc">${p.loc}</div>
-    <div class="modal-price">$${p.price.toLocaleString('en-US')} <span style="font-size:16px;font-style:normal;color:var(--clove-40);">USD</span></div>
+    <span class="tag">${tipo ? tipo.tipo : (p.estado||'')}</span>
+    <h3>${p.nombre}</h3>
+    <div class="modal-loc">${p.zona}${p.ciudad ? ' · '+p.ciudad : ''}</div>
+    ${tabsHtml}
+    <div class="modal-price">${precioLabel}</div>
     <div class="modal-specs">
-      <div>Habitaciones<b>${p.beds || '—'}</b></div>
-      <div>Baños<b>${p.baths || '—'}</b></div>
-      <div>Superficie<b>${p.m2} m²</b></div>
+      <div>Superficie<b>${m2Label}</b></div>
+      <div>Estado<b>${p.estado || '—'}</b></div>
+      <div>Entrega<b>${p.entrega || '—'}</b></div>
     </div>
-    <p class="lede" style="max-width:100%;margin-bottom:22px;">${p.desc}</p>
-    <div class="modal-amenities">${p.amenities.map(a=>`<span>${a}</span>`).join('')}</div>
+    <p class="lede" style="max-width:100%;margin-bottom:22px;">${p.desc || ''}</p>
+    <div class="modal-amenities">${amenidadesActivas(p).map(a=>`<span>${a}</span>`).join('')}</div>
     <div class="modal-actions">
       <a href="#contacto" class="btn btn-primary" onclick="closeModal()">Agendar visita<span class="btn-arrow">→</span></a>
       <a href="#contacto" class="btn btn-ghost" onclick="closeModal()">Solicitar dossier</a>
     </div>
   `;
+}
+
+window.openModal = function(id){
+  const p = PROPIEDADES.find(x=>x.id===id);
+  if(!p) return;
+  leadOriginPropertyId = p.id;
+  renderModalTipologia(p, 0);
   document.getElementById('modalOverlay').classList.add('show');
   document.body.style.overflow='hidden';
-}
-function closeModal(){
+};
+
+window.selectModalTipologia = function(propId, index){
+  const p = PROPIEDADES.find(x=>x.id===propId);
+  if(!p) return;
+  renderModalTipologia(p, index);
+};
+
+window.closeModal = function(){
   document.getElementById('modalOverlay').classList.remove('show');
   document.body.style.overflow='';
-}
+};
 document.getElementById('modalOverlay').addEventListener('click',e=>{
-  if(e.target.id==='modalOverlay') closeModal();
+  if(e.target.id==='modalOverlay') window.closeModal();
 });
 
 /* ================= SEARCH ================= */
-function runSearch(){
+window.runSearch = function(){
   const loc = document.getElementById('fUbicacion').value;
   if(loc){
     document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
@@ -1393,11 +1537,34 @@ function runSearch(){
 }
 
 /* ================= CONTACT FORM ================= */
-function submitContact(e){
+window.submitContact = async function(e){
   e.preventDefault();
-  document.getElementById('formSuccess').classList.add('show');
-  e.target.reset();
-}
+  const form = e.target;
+  const btn = form.querySelector('button[type="submit"]');
+  const lead = {
+    nombre: form.nombre.value,
+    correo: form.correo.value,
+    telefono: form.telefono.value,
+    interes: form.interes.value,
+    presupuesto: form.presupuesto.value,
+    motivo: form.motivo.value,
+    mensaje: form.mensaje.value,
+    propiedadOrigenId: leadOriginPropertyId || null,
+    createdAt: Date.now()
+  };
+  btn.disabled = true;
+  try{
+    await addDoc(collection(db,'leads'), lead);
+    document.getElementById('formSuccess').classList.add('show');
+    form.reset();
+    leadOriginPropertyId = null;
+  }catch(err){
+    console.error('Error al guardar el lead en Firestore:', err);
+    alert('Hubo un problema al enviar tu mensaje. Por favor intentá de nuevo o escribinos directo por WhatsApp.');
+  }finally{
+    btn.disabled = false;
+  }
+};
 
 /* ================= RAIL CAROUSEL ARROWS ================= */
 const railEl = document.getElementById('featuredRail');
@@ -1409,21 +1576,6 @@ const header = document.getElementById('siteHeader');
 window.addEventListener('scroll',()=>{
   header.classList.toggle('scrolled', window.scrollY>60);
 });
-
-/* ================= LEFT-EDGE PHOTO BLEED (measured, not guessed) ================= */
-function applyLeftBleed(){
-  document.querySelectorAll('.inline-photo--bleed-left').forEach(img=>{
-    img.style.marginLeft = '0px';
-    img.style.width = '100%';
-    const rect = img.getBoundingClientRect();
-    if(rect.left > 1){
-      img.style.marginLeft = (-rect.left) + 'px';
-      img.style.width = (rect.width + rect.left) + 'px';
-    }
-  });
-}
-window.addEventListener('load', applyLeftBleed);
-window.addEventListener('resize', ()=>{ clearTimeout(window._bleedT); window._bleedT = setTimeout(applyLeftBleed, 120); });
 
 /* ================= REVEAL ON SCROLL ================= */
 const io = new IntersectionObserver((entries)=>{
