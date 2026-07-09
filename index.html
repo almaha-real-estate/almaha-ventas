@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Almahá Ventas — Bienes Raíces del Caribe Mexicano</title>
+<title>ALMAHÁ Ventas — Bienes Raíces del Caribe Mexicano</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Google+Sans+Flex:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -573,7 +573,20 @@
     transform:translateY(30px); transition:transform .4s cubic-bezier(.16,1,.3,1);
   }
   .modal-overlay.show .modal{transform:translateY(0);}
-  .modal-art{background:var(--sandstone-60); padding:40px; display:flex; align-items:center; justify-content:center; min-height:320px;}
+  .modal-art{background:var(--sandstone-60); padding:40px; display:flex; align-items:center; justify-content:center; min-height:320px; position:relative;}
+  .modal-photo-nav{
+    position:absolute; top:50%; transform:translateY(-50%); width:38px; height:38px; border-radius:50%;
+    background:var(--white); display:flex; align-items:center; justify-content:center; font-size:18px;
+    color:var(--clove); box-shadow:0 4px 12px rgba(83,68,61,.2); transition:transform .2s;
+  }
+  .modal-photo-nav:hover{transform:translateY(-50%) scale(1.08);}
+  .modal-photo-nav.prev{left:14px;}
+  .modal-photo-nav.next{right:14px;}
+  .modal-photo-counter{
+    position:absolute; bottom:14px; left:50%; transform:translateX(-50%);
+    background:rgba(83,68,61,.75); color:var(--muslin); font-family:var(--mono); font-size:11px;
+    padding:4px 10px; border-radius:20px; letter-spacing:.04em;
+  }
   .modal-body{padding:44px;}
   .modal-close{
     position:absolute; top:20px; right:20px; width:38px; height:38px; background:var(--white);
@@ -1448,35 +1461,77 @@ function amenidadesActivas(p){
   return claves.filter(([k])=>p[k]==='Sí').map(([,label])=>label);
 }
 
-function renderModalTipologia(p, activeIndex){
-  const tipologias = p.tipologias || [];
-  const tipo = tipologias[activeIndex];
+let currentModalProp = null;
+let currentModalTipoIndex = -1; // -1 = pestaña "Amenidades" (default)
+let currentModalPhotoIndex = 0;
 
-  const fotoUrl = tipo?.photoUrl || (tipo?.fotos && tipo.fotos[0]) || (p.fotosAmenidades && p.fotosAmenidades[0]) || '';
+function currentFotos(p, tipoIndex){
+  if(tipoIndex === -1){
+    const portada = p.photoUrlAmenidades;
+    const resto = p.fotosAmenidades || [];
+    return portada ? [portada, ...resto.filter(f=>f!==portada)] : resto;
+  }
+  const tipo = (p.tipologias||[])[tipoIndex];
+  if(tipo && tipo.fotos && tipo.fotos.length) return tipo.fotos;
+  if(tipo && tipo.photoUrl) return [tipo.photoUrl];
+  return [];
+}
+
+function renderModalArt(){
+  const p = currentModalProp;
+  const fotos = currentFotos(p, currentModalTipoIndex);
+  if(currentModalPhotoIndex >= fotos.length) currentModalPhotoIndex = 0;
+  const fotoUrl = fotos[currentModalPhotoIndex];
+
+  const nav = fotos.length>1 ? `
+    <button type="button" class="modal-photo-nav prev" onclick="window.modalPhotoNav(-1)" aria-label="Foto anterior">‹</button>
+    <button type="button" class="modal-photo-nav next" onclick="window.modalPhotoNav(1)" aria-label="Foto siguiente">›</button>
+    <div class="modal-photo-counter">${currentModalPhotoIndex+1} / ${fotos.length}</div>
+  ` : '';
+
   document.getElementById('modalArt').innerHTML = fotoUrl
-    ? `<img src="${fotoUrl}" alt="${p.nombre}${tipo ? ' - '+tipo.tipo : ''}" style="width:100%;height:100%;object-fit:cover;">`
+    ? `<img src="${fotoUrl}" alt="${p.nombre}" style="max-width:100%; max-height:100%; object-fit:contain;">${nav}`
     : `<svg class="lineart" style="width:80%;color:var(--clove);"><use href="#art-villa-pool"/></svg>`;
+}
 
-  let precioLabel = money(null);
-  let m2Label = '—';
-  if(tipo && tipo.unidades && tipo.unidades.length){
-    const precios = tipo.unidades.map(u=>u.precio).filter(n=>typeof n==='number');
-    if(precios.length===1) precioLabel = money(precios[0]);
-    else if(precios.length>1) precioLabel = `Desde ${money(Math.min(...precios))}`;
-    const m2s = tipo.unidades.map(u=>u.m2).filter(n=>typeof n==='number');
-    if(m2s.length===1) m2Label = `${m2s[0]} m²`;
-    else if(m2s.length>1) m2Label = `${Math.min(...m2s)}–${Math.max(...m2s)} m²`;
+window.modalPhotoNav = function(dir){
+  const p = currentModalProp;
+  const fotos = currentFotos(p, currentModalTipoIndex);
+  if(!fotos.length) return;
+  currentModalPhotoIndex = (currentModalPhotoIndex + dir + fotos.length) % fotos.length;
+  renderModalArt();
+};
+
+function renderModalBody(activeIndex){
+  const p = currentModalProp;
+  const tipologias = p.tipologias || [];
+  const tipo = activeIndex>=0 ? tipologias[activeIndex] : null;
+
+  let tagLabel, precioLabel = money(null), m2Label = '—';
+  if(activeIndex === -1){
+    tagLabel = 'Amenidades';
+    const desde = precioDesde(p);
+    precioLabel = desde!==null ? `Desde ${money(desde)}` : money(null);
+  } else {
+    tagLabel = tipo ? tipo.tipo : (p.estado||'');
+    if(tipo && tipo.unidades && tipo.unidades.length){
+      const precios = tipo.unidades.map(u=>u.precio).filter(n=>typeof n==='number');
+      if(precios.length===1) precioLabel = money(precios[0]);
+      else if(precios.length>1) precioLabel = `Desde ${money(Math.min(...precios))}`;
+      const m2s = tipo.unidades.map(u=>u.m2).filter(n=>typeof n==='number');
+      if(m2s.length===1) m2Label = `${m2s[0]} m²`;
+      else if(m2s.length>1) m2Label = `${Math.min(...m2s)}–${Math.max(...m2s)} m²`;
+    }
   }
 
-  let tabsHtml = '';
-  if(tipologias.length>1){
-    tabsHtml = `<div class="modal-typ-tabs">${tipologias.map((t,i)=>
-      `<button type="button" class="modal-typ-tab${i===activeIndex?' active':''}" onclick="window.selectModalTipologia('${p.id}',${i})">${t.tipo}</button>`
-    ).join('')}</div>`;
-  }
+  // La pestaña "Amenidades" va siempre primera y fija; las tipologías la siguen en el orden del documento.
+  const tabsHtml = `<div class="modal-typ-tabs">
+    <button type="button" class="modal-typ-tab${activeIndex===-1?' active':''}" onclick="window.selectModalTipologia('${p.id}',-1)">Amenidades</button>
+    ${tipologias.map((t,i)=>`<button type="button" class="modal-typ-tab${i===activeIndex?' active':''}" onclick="window.selectModalTipologia('${p.id}',${i})">${t.tipo}</button>`).join('')}
+  </div>`;
 
   document.getElementById('modalBody').innerHTML = `
-    <span class="tag">${tipo ? tipo.tipo : (p.estado||'')}</span>
+    <span class="tag">${tagLabel}</span>
     <h3>${p.nombre}</h3>
     <div class="modal-loc">${p.zona}${p.ciudad ? ' · '+p.ciudad : ''}</div>
     ${tabsHtml}
@@ -1499,15 +1554,21 @@ window.openModal = function(id){
   const p = PROPIEDADES.find(x=>x.id===id);
   if(!p) return;
   leadOriginPropertyId = p.id;
-  renderModalTipologia(p, 0);
+  currentModalProp = p;
+  currentModalTipoIndex = -1;
+  currentModalPhotoIndex = 0;
+  renderModalArt();
+  renderModalBody(-1);
   document.getElementById('modalOverlay').classList.add('show');
   document.body.style.overflow='hidden';
 };
 
 window.selectModalTipologia = function(propId, index){
-  const p = PROPIEDADES.find(x=>x.id===propId);
-  if(!p) return;
-  renderModalTipologia(p, index);
+  if(!currentModalProp || currentModalProp.id!==propId) return;
+  currentModalTipoIndex = index;
+  currentModalPhotoIndex = 0;
+  renderModalArt();
+  renderModalBody(index);
 };
 
 window.closeModal = function(){
