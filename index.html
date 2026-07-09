@@ -322,9 +322,20 @@
   .pcard:hover{transform:translateY(-8px); box-shadow:0 34px 60px -24px rgba(83,68,61,.32);}
   .pcard-art{
     position:relative;
+    aspect-ratio: 4/3;
     background:var(--sandstone-60);
     color:var(--clove);
     overflow:hidden;
+  }
+  .pcard-art img{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit:cover; object-position:center;
+    display:block;
+  }
+  .pcard-art .art-fallback{
+    position:absolute; inset:0;
+    display:flex; align-items:center; justify-content:center;
   }
   .pcard-art::after{
     content:"";
@@ -345,8 +356,14 @@
     letter-spacing:.02em;
   }
   .pcard-body{padding:22px 22px 26px;}
-  .pcard-body h4{font-family:var(--serif); font-size:19px; font-weight:500; margin-bottom:4px;}
-  .pcard-loc{font-size:12.5px; color:var(--clove-70); margin-bottom:14px; display:flex; align-items:center; gap:6px;}
+  .pcard-body h4{
+    font-family:var(--serif); font-size:19px; font-weight:500; margin-bottom:4px;
+    display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow:hidden;
+  }
+  .pcard-loc{
+    font-size:12.5px; color:var(--clove-70); margin-bottom:14px; display:flex; align-items:center; gap:6px;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
   .pcard-loc::before{content:"◆"; font-size:6px; color:var(--terracotta);}
   .pcard-specs{
     display:flex; gap:16px;
@@ -579,7 +596,22 @@
     transform:translateY(30px); transition:transform .4s cubic-bezier(.16,1,.3,1);
   }
   .modal-overlay.show .modal{transform:translateY(0);}
-  .modal-art{background:var(--sandstone-60); padding:40px; display:flex; align-items:center; justify-content:center; aspect-ratio:4/5; position:relative; min-width:0; overflow:hidden;}
+  .modal-art{
+    position:relative;
+    aspect-ratio: 4/5;
+    background:var(--sandstone-60);
+    overflow:hidden;
+  }
+  .modal-art img{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit:cover; object-position:center;
+    display:block;
+  }
+  .modal-art .art-fallback{
+    position:absolute; inset:0;
+    display:flex; align-items:center; justify-content:center;
+  }
   .modal-photo-nav{
     position:absolute; top:50%; transform:translateY(-50%); width:38px; height:38px; border-radius:50%;
     background:var(--white); display:flex; align-items:center; justify-content:center; font-size:18px;
@@ -1338,10 +1370,6 @@ const FAQS = [
 ];
 
 /* ================= RENDER: FEATURED RAIL ================= */
-// Nota de diseño pendiente de tu confirmación: como el nuevo esquema no trae un campo "art" por
-// propiedad (el line-art SVG estaba mapeado a PROPERTIES.type, que ya no existe), por ahora todas
-// las cards reales usan el mismo símbolo genérico (art-villa-pool) hasta que definamos si el line-art
-// se queda así, se mapea por tipo de tipología, o se reemplaza por foto real como sugiere el handoff.
 const rail = document.getElementById('featuredRail');
 function renderRail(){
   rail.innerHTML = '';
@@ -1353,7 +1381,7 @@ function renderRail(){
     <div class="pcard" onclick="window.openModal('${p.id}')">
       <div class="pcard-art">
         <span class="tag">${tag}</span>
-        ${portadaCard(p) ? `<img src="${portadaCard(p)}" alt="${p.nombre}" style="width:100%;height:100%;object-fit:cover;">` : `<svg class="lineart" style="color:var(--clove);"><use href="#art-villa-pool"/></svg>`}
+        ${portadaCard(p) ? `<img src="${portadaCard(p)}" alt="${p.nombre}">` : `<div class="art-fallback"><svg class="lineart" style="width:60%;color:var(--clove);"><use href="#art-villa-pool"/></svg></div>`}
         <span class="price">${desde!==null ? 'Desde '+money(desde) : money(null)}</span>
       </div>
       <div class="pcard-body">
@@ -1379,7 +1407,7 @@ function renderGrid(){
     <div class="pcard" data-loc="${locKey}" onclick="window.openModal('${p.id}')">
       <div class="pcard-art">
         <span class="tag">${tag}</span>
-        ${portadaCard(p) ? `<img src="${portadaCard(p)}" alt="${p.nombre}" style="width:100%;height:100%;object-fit:cover;">` : `<svg class="lineart" style="color:var(--clove);"><use href="#art-villa-pool"/></svg>`}
+        ${portadaCard(p) ? `<img src="${portadaCard(p)}" alt="${p.nombre}">` : `<div class="art-fallback"><svg class="lineart" style="width:60%;color:var(--clove);"><use href="#art-villa-pool"/></svg></div>`}
         <span class="price">${desde!==null ? 'Desde '+money(desde) : money(null)}</span>
       </div>
       <div class="pcard-body">
@@ -1498,8 +1526,8 @@ function renderModalArt(){
   ` : '';
 
   document.getElementById('modalArt').innerHTML = fotoUrl
-    ? `<img src="${fotoUrl}" alt="${p.nombre}" style="width:100%; height:100%; object-fit:cover; object-position:center;">${nav}`
-    : `<svg class="lineart" style="width:80%;color:var(--clove);"><use href="#art-villa-pool"/></svg>`;
+    ? `<img src="${fotoUrl}" alt="${p.nombre}">${nav}`
+    : `<div class="art-fallback"><svg class="lineart" style="width:80%;color:var(--clove);"><use href="#art-villa-pool"/></svg></div>`;
 }
 
 window.modalPhotoNav = function(dir){
