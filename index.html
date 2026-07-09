@@ -591,16 +591,18 @@
   }
   .modal-overlay.show{opacity:1; pointer-events:all;}
   .modal{
-    background:var(--paper); max-width:920px; width:100%; max-height:88vh; overflow-y:auto;
+    background:var(--paper); max-width:920px; width:100%;
+    height:80vh; max-height:80vh;
     display:grid; grid-template-columns:1fr 1fr;
     transform:translateY(30px); transition:transform .4s cubic-bezier(.16,1,.3,1);
+    overflow:hidden;
   }
   .modal-overlay.show .modal{transform:translateY(0);}
   .modal-art{
     position:relative;
-    aspect-ratio: 4/5;
-    background:var(--sandstone-60);
     overflow:hidden;
+    height:100%;
+    background:var(--sandstone-60);
   }
   .modal-art img{
     position:absolute; inset:0;
@@ -625,14 +627,15 @@
     background:rgba(83,68,61,.75); color:var(--muslin); font-family:var(--mono); font-size:11px;
     padding:4px 10px; border-radius:20px; letter-spacing:.04em;
   }
-  .modal-body{padding:44px;}
+  .modal-body{padding:44px; height:100%; overflow-y:auto;}
   .modal-close{
     position:absolute; top:20px; right:20px; width:38px; height:38px; background:var(--white);
     display:flex; align-items:center; justify-content:center; border-radius:50%; font-size:18px; z-index:5;
   }
   .modal-body .tag{display:inline-block; font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--terracotta-dark); border:1px solid var(--terracotta); padding:5px 10px; margin-bottom:16px;}
   .modal-body h3{font-size:26px; margin-bottom:6px;}
-  .modal-loc{color:var(--clove-70); font-size:13.5px; margin-bottom:20px;}
+  .modal-loc{color:var(--clove-70); font-size:11.5px; margin-bottom:20px;}
+  .modal-body p.lede{font-size:12px; max-width:100%;}
   .modal-typ-tabs{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px;}
   .modal-typ-tab{
     padding:8px 14px; border:1px solid var(--clove-15);
@@ -696,7 +699,7 @@
     .listing-grid, .invest-grid, .value-grid, .team-grid, .blog-grid{grid-template-columns:repeat(2,1fr);}
     .why-grid{grid-template-columns:1fr; gap:40px;}
     .stats-grid{grid-template-columns:repeat(2,1fr);}
-    .modal{grid-template-columns:1fr;}
+    .modal{grid-template-columns:1fr; height:auto; max-height:88vh; overflow-y:auto;}
     .contact-wrap{grid-template-columns:1fr; gap:40px;}
     .footer-top{grid-template-columns:1fr 1fr; gap:40px;}
   }
@@ -1421,9 +1424,21 @@ function renderGrid(){
   });
 }
 
+// Tipologías que existen en el dato de Firestore pero no deben mostrarse en el sitio público
+// (ej: se descontinuaron, o el proyecto todavía no tiene fotos/precio cargado para esa tipología).
+// Agregar acá cualquier tipología a ocultar sin necesidad de borrar el dato en Firestore.
+const TIPOLOGIAS_OCULTAS = ['Oficinas'];
+
 async function cargarPropiedades(){
   const snap = await getDocs(collection(db,'propiedades'));
-  PROPIEDADES = snap.docs.map(d=>({ id:d.id, ...d.data() }));
+  PROPIEDADES = snap.docs.map(d=>{
+    const data = d.data();
+    return {
+      id: d.id,
+      ...data,
+      tipologias: (data.tipologias || []).filter(t => !TIPOLOGIAS_OCULTAS.includes(t.tipo))
+    };
+  });
   renderRail();
   renderGrid();
 }
