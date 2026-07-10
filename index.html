@@ -193,7 +193,7 @@
     justify-content:center;
     background:var(--clove);
     overflow:hidden;
-    padding:150px 0 40px;
+    padding:180px 0 64px;
   }
   .hero-photo{
     position:absolute; inset:0;
@@ -211,7 +211,7 @@
     padding:0 var(--edge);
     display:grid;
     grid-template-columns:1fr auto;
-    gap:40px;
+    gap:56px;
     align-items:end;
   }
   .hero-coords{
@@ -417,18 +417,15 @@
   }
   .hidden-card{display:none !important;}
 
-  /* ---------- INVESTMENT CARDS ---------- */
-  .invest-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--clove-08); border:1px solid var(--clove-08);}
-  .invest-card{background:var(--paper); padding:42px 34px; display:flex; flex-direction:column; gap:18px;}
-  .invest-num{font-family:var(--mono); color:var(--terracotta-dark); font-size:12px; letter-spacing:.1em;}
-  .invest-figure{font-family:var(--serif); font-style:italic; font-size:52px; font-weight:500; color:var(--clove); line-height:1;}
-  .invest-figure span{font-size:22px; font-style:normal; color:var(--clove-40); margin-left:4px;}
-
   /* ---------- WHY CARIBBEAN (dark) ---------- */
   .dark-section{background:var(--clove); color:var(--muslin);}
   .dark-section .eyebrow{color:var(--sandstone);}
   .dark-section .eyebrow::before{background:var(--sandstone);}
   .dark-section h2{color:var(--white);}
+  #catalogo{background:var(--clove); color:var(--muslin);}
+  #catalogo .eyebrow{color:var(--sandstone);}
+  #catalogo .eyebrow::before{background:var(--sandstone);}
+  #catalogo h2{color:var(--white);}
   .why-grid{display:grid; grid-template-columns:1.1fr 1fr; gap:70px; align-items:start;}
   .why-list{display:flex; flex-direction:column;}
   .why-item{
@@ -457,7 +454,7 @@
 
   /* ---------- INLINE EDITORIAL PHOTO (within a column) ---------- */
   .inline-photo{
-    width:100%; aspect-ratio:16/10; object-fit:cover; margin-bottom:32px;
+    width:100%; aspect-ratio:16/7; object-fit:cover; margin-bottom:32px;
   }
   .inline-photo--bleed-left{
     width:calc(100% + var(--edge));
@@ -490,12 +487,6 @@
   .process-row h4{font-size:19px; font-weight:500; margin-bottom:6px;}
   .process-row p{color:var(--clove-70); font-size:12.5px; max-width:420px;}
 
-  /* ---------- STATS ---------- */
-  .stats-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:40px;}
-  .stat{border-top:1px solid var(--clove-15); padding-top:22px;}
-  .stat .num{font-family:var(--serif); font-style:italic; font-size:clamp(36px,3.6vw,54px); font-weight:500; color:var(--terracotta-dark); line-height:1;}
-  .stat .label{font-family:var(--mono); font-size:11.5px; letter-spacing:.05em; color:var(--clove-70); margin-top:10px; display:block;}
-
   /* ---------- TESTIMONIALS ---------- */
   .testi-track{display:flex; gap:26px; overflow-x:auto; scroll-snap-type:x mandatory; margin:0 calc(var(--edge) * -1); padding:0 var(--edge) 10px; scrollbar-width:none;}
   .testi-track::-webkit-scrollbar{display:none;}
@@ -520,27 +511,6 @@
   .team-card h4{font-size:16.5px; font-weight:500;}
   .team-role{font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--terracotta-dark);}
 
-  /* ---------- MAP ---------- */
-  .map-wrap{display:grid; grid-template-columns:1.3fr 1fr; gap:60px; align-items:center;}
-  .map-svg-wrap{position:relative;}
-  .map-pin{cursor:pointer;}
-  .map-pin circle{transition:r .3s;}
-  .map-pin:hover circle{r:7;}
-  .map-tooltip{
-    position:absolute; background:var(--clove); color:var(--muslin); padding:12px 16px;
-    font-family:var(--mono); font-size:11.5px; pointer-events:none; opacity:0; transform:translateY(6px);
-    transition:opacity .25s, transform .25s; white-space:nowrap; z-index:5;
-  }
-  .map-tooltip.show{opacity:1; transform:translateY(0);}
-  .map-list{display:flex; flex-direction:column; gap:0;}
-  .map-list-item{
-    padding:18px 0; border-top:1px solid var(--clove-15); display:flex; justify-content:space-between; align-items:center; cursor:pointer;
-  }
-  .map-list-item:last-child{border-bottom:1px solid var(--clove-15);}
-  .map-list-item h4{font-size:16px; font-weight:500;}
-  .map-list-item span{font-family:var(--mono); font-size:12px; color:var(--clove-40);}
-  .map-list-item.active h4{color:var(--terracotta-dark);}
-
   /* ---------- FAQ ---------- */
   .faq-item{border-top:1px solid var(--clove-15);}
   .faq-item:last-child{border-bottom:1px solid var(--clove-15);}
@@ -555,14 +525,6 @@
   .faq-item.open .faq-plus::after{transform:rotate(90deg);}
   .faq-a{max-height:0; overflow:hidden; transition:max-height .4s cubic-bezier(.16,1,.3,1);}
   .faq-a p{padding-bottom:26px; color:var(--clove-70); max-width:680px; font-size:12.5px; line-height:1.7;}
-
-  /* ---------- BLOG ---------- */
-  .blog-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
-  .blog-card{cursor:pointer;}
-  .blog-art{aspect-ratio:4/3; background:var(--sandstone-60); margin-bottom:20px; overflow:hidden;}
-  .blog-cat{font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--terracotta-dark); margin-bottom:10px; display:block;}
-  .blog-card h4{font-size:18px; font-weight:500; margin-bottom:10px; line-height:1.3;}
-  .blog-card p{font-size:11.5px; color:var(--clove-70);}
 
   /* ---------- CONTACT ---------- */
   .contact-wrap{display:grid; grid-template-columns:1fr 1fr; gap:70px;}
@@ -696,22 +658,19 @@
     .search-submit{grid-column:1/-1; padding-left:0;}
     .proj-row{grid-template-columns:1fr;}
     .proj-row:nth-child(even) .proj-art{order:0;}
-    .listing-grid, .invest-grid, .value-grid, .team-grid, .blog-grid{grid-template-columns:repeat(2,1fr);}
+    .listing-grid, .value-grid, .team-grid{grid-template-columns:repeat(2,1fr);}
     .why-grid{grid-template-columns:1fr; gap:40px;}
-    .stats-grid{grid-template-columns:repeat(2,1fr);}
     .modal{grid-template-columns:1fr; height:auto; max-height:88vh; overflow-y:auto;}
     .modal-body{height:auto; overflow-y:visible;}
     .contact-wrap{grid-template-columns:1fr; gap:40px;}
     .footer-top{grid-template-columns:1fr 1fr; gap:40px;}
   }
   @media (max-width:640px){
-    .listing-grid, .invest-grid, .value-grid, .team-grid, .blog-grid{grid-template-columns:1fr;}
-    .invest-grid, .value-grid{grid-template-columns:1fr; border:none; background:none;}
-    .invest-card, .value-card{border:1px solid var(--clove-08);}
+    .listing-grid, .value-grid, .team-grid{grid-template-columns:1fr;}
+    .value-grid{grid-template-columns:1fr; border:none; background:none;}
+    .value-card{border:1px solid var(--clove-08);}
     .process-row{grid-template-columns:1fr; gap:8px;}
-    .stats-grid{grid-template-columns:1fr 1fr; gap:24px;}
     .footer-top{grid-template-columns:1fr;}
-    .map-wrap{grid-template-columns:1fr;}
     .hero-content{grid-template-columns:1fr;}
     .hero-scroll{display:none;}
     .form-row{grid-template-columns:1fr;}
@@ -719,6 +678,9 @@
     .section-head[style*="flex-start"] .htext, .section-head[style*="flex-start"] .lede{max-width:100% !important; align-self:auto !important;}
   }
 </style>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+<link rel="apple-touch-icon" href="favicon-192.png">
 </head>
 <body>
 
@@ -810,7 +772,6 @@
   <nav class="main-nav">
     <a href="#catalogo">Propiedades</a>
     <a href="#proyectos">Proyectos</a>
-    <a href="#inversion">Inversión</a>
     <a href="#nosotros">Nosotros</a>
     <a href="#contacto">Contacto</a>
   </nav>
@@ -855,20 +816,25 @@
       <label>Tipo de propiedad</label>
       <select id="fTipo">
         <option value="">Todos los tipos</option>
-        <option value="villa">Villa</option>
-        <option value="condominio">Condominio</option>
-        <option value="penthouse">Penthouse</option>
-        <option value="terreno">Terreno</option>
+        <option value="Estudio">Estudio</option>
+        <option value="Local">Local</option>
+        <option value="1 Recámara">1 Recámara</option>
+        <option value="2 Recámaras">2 Recámaras</option>
+        <option value="3 Recámaras">3 Recámaras</option>
+        <option value="4 Recámaras">4 Recámaras</option>
+        <option value="Casa">Casa</option>
+        <option value="Villa">Villa</option>
+        <option value="Terreno">Terreno</option>
       </select>
     </div>
     <div class="search-field">
-      <label>Presupuesto (USD)</label>
+      <label>Presupuesto (MXN)</label>
       <select id="fPrecio">
         <option value="">Sin límite</option>
-        <option value="300">Hasta $300,000</option>
-        <option value="600">Hasta $600,000</option>
-        <option value="1000">Hasta $1,000,000</option>
-        <option value="9999">Más de $1,000,000</option>
+        <option value="menos-3m">Menos de $3,000,000</option>
+        <option value="3m-6m">$3,000,000 – $6,000,000</option>
+        <option value="6m-10m">$6,000,000 – $10,000,000</option>
+        <option value="mas-10m">Más de $10,000,000</option>
       </select>
     </div>
     <div class="search-field">
@@ -893,7 +859,7 @@
     <div class="section-head reveal">
       <div class="htext">
         <div class="eyebrow">Selección Almahá</div>
-        <h2>Un catálogo cuidadosamente<br><span class="italic">seleccionado.</span></h2>
+        <h2>Donde empieza<br><span class="italic">tu próxima inversión.</span></h2>
       </div>
     </div>
     <div class="rail-controls">
@@ -940,36 +906,6 @@
       <button class="chip" data-filter-loc="puerto">Puerto Aventuras</button>
     </div>
     <div class="listing-grid" id="listingGrid"></div>
-  </div>
-</section>
-
-<!-- ============ INVERSION ============ -->
-<section class="section" id="inversion">
-  <div class="container">
-    <div class="section-head reveal">
-      <div class="htext">
-        <div class="eyebrow">Oportunidades</div>
-        <h2>No existe una única<br><span class="italic">forma de invertir bien.</span></h2>
-      </div>
-      <p class="lede">Cada propiedad responde a una estrategia distinta. Por eso organizamos nuestro catálogo para que puedas explorar oportunidades alineadas con tus objetivos y tomar decisiones con mayor claridad.</p>
-    </div>
-    <div class="invest-grid reveal">
-      <div class="invest-card">
-        <div class="invest-num">01 — GENERAR INGRESOS (RENTA VACACIONAL)</div>
-        <div class="invest-figure">9–14<span>% anual</span></div>
-        <p class="lede" style="font-size:12px;max-width:100%;">ROI estimado sobre propiedades administradas, con una ocupación promedio del 78% en temporada alta y media.</p>
-      </div>
-      <div class="invest-card">
-        <div class="invest-num">02 — CRECIMIENTO PATRIMONIAL (PREVENTA)</div>
-        <div class="invest-figure">+18<span>% / año</span></div>
-        <p class="lede" style="font-size:12px;max-width:100%;">Plusvalía histórica promedio en desarrollos de Tulum entregados entre 2019 y 2025, desde el precio de lanzamiento.</p>
-      </div>
-      <div class="invest-card">
-        <div class="invest-num">03 — DESARROLLAR DESDE CERO (TERRENOS)</div>
-        <div class="invest-figure">Baja<span>entrada</span></div>
-        <p class="lede" style="font-size:12px;max-width:100%;">Terrenos con factibilidad de servicios y uso de suelo vigente, ideales para desarrollo propio o reventa.</p>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -1107,24 +1043,24 @@
   </div>
   <div class="testi-track reveal">
     <div class="testi-card">
-      <p class="testi-quote">"Compramos sin pisar México hasta el cierre. El equipo de Almahá nos mandó video-recorridos honestos, incluso de lo que no nos convenía."</p>
+      <p class="testi-quote">"No he conocido ninguna otra bróker de la zona tan buena como tú. Jamás había visto que en dos días me trajeran tres visitas. Mis respetos totales, superbuena energía."</p>
       <div class="testi-who">
         <div class="testi-avatar">M</div>
-        <div><div class="testi-name">Marianne Cloutier</div><div class="testi-loc">Montreal, Canadá — Villa Raíz</div></div>
+        <div><div class="testi-name">Mariana</div><div class="testi-loc">Mérida, México</div></div>
       </div>
     </div>
     <div class="testi-card">
-      <p class="testi-quote">"Lo que más valoro es que nos explicaron el fideicomiso como si tuviéramos tiempo de sobra para entenderlo. Cero prisa, cero letra chica."</p>
+      <p class="testi-quote">"La verdad, con ustedes me saco el sombrero — se ve la diferencia entre lo que hacen ustedes y los demás."</p>
       <div class="testi-who">
-        <div class="testi-avatar">D</div>
-        <div><div class="testi-name">Daniel Restrepo</div><div class="testi-loc">Austin, Estados Unidos — Residencia Amanecer</div></div>
+        <div class="testi-avatar">M</div>
+        <div><div class="testi-name">Marcos</div><div class="testi-loc">Guadalajara, México</div></div>
       </div>
     </div>
     <div class="testi-card">
-      <p class="testi-quote">"Buscábamos algo en Bacalar sin gestionar nada a distancia. Hoy la casa se renta sola y recibimos el reporte cada mes, puntual."</p>
+      <p class="testi-quote">"Ustedes son supermovidas, han rentado muy rápido. Muy contento con su trabajo y profesionalismo, por eso las recomiendo siempre."</p>
       <div class="testi-who">
-        <div class="testi-avatar">S</div>
-        <div><div class="testi-name">Sol Etchegoyen</div><div class="testi-loc">Buenos Aires, Argentina — Casa Bacalar Azul</div></div>
+        <div class="testi-avatar">C</div>
+        <div><div class="testi-name">Cecilia</div><div class="testi-loc">Ciudad de México</div></div>
       </div>
     </div>
   </div>
@@ -1227,19 +1163,11 @@
       <div class="contact-info reveal">
         <div class="contact-block">
           <h4>WhatsApp directo</h4>
-          <div class="val">+52 984 123 4567</div>
+          <div class="val">+52 1 984 185 5836</div>
         </div>
         <div class="contact-block">
           <h4>Correo</h4>
-          <div class="val">hola@almaha.mx</div>
-        </div>
-        <div class="contact-block">
-          <h4>Oficina Tulum</h4>
-          <div class="val" style="font-size:16px;">Av. Cobá, Aldea Zamá — Lun a Sáb, 9:00–19:00</div>
-        </div>
-        <div class="contact-block">
-          <h4>Oficina Playa del Carmen</h4>
-          <div class="val" style="font-size:16px;">Calle 8 Norte, Centro — Lun a Sáb, 9:00–19:00</div>
+          <div class="val">sofiasuarezasesora@gmail.com</div>
         </div>
       </div>
     </div>
@@ -1262,7 +1190,6 @@
         <h4>Explorar</h4>
         <a href="#catalogo">Propiedades destacadas</a>
         <a href="#proyectos">Proyectos nuevos</a>
-        <a href="#inversion">Inversión</a>
       </div>
       <div class="foot-col">
         <h4>Compañía</h4>
@@ -1281,16 +1208,15 @@
     <div class="footer-bottom">
       <p>© 2026 ALMAHÁ VENTAS · 20.2114° N, 87.4654° O</p>
       <div class="foot-social">
-        <a href="#top">Instagram</a>
-        <a href="#top">LinkedIn</a>
-        <a href="#top">Pinterest</a>
+        <a href="https://www.instagram.com/sofiarealtor_/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.tiktok.com/@sofi.realtor" target="_blank" rel="noopener">TikTok</a>
       </div>
     </div>
   </div>
 </footer>
 
 <!-- WhatsApp floating button -->
-<a href="#contacto" class="wa-fab" aria-label="Escribir por WhatsApp">
+<a href="https://wa.me/5219841855836" target="_blank" rel="noopener" class="wa-fab" aria-label="Escribir por WhatsApp">
   <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.87.5 3.62 1.38 5.13L2 22l4.99-1.35C8.44 21.5 10.17 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.3c-.22.62-1.28 1.18-1.77 1.24-.45.06-1.02.09-1.65-.1-.38-.12-.87-.28-1.5-.55-2.63-1.14-4.34-3.8-4.48-3.98-.13-.18-1.07-1.42-1.07-2.72 0-1.29.68-1.93.92-2.19.24-.26.53-.32.7-.32.18 0 .35 0 .5.01.16.01.38-.06.6.46.22.53.75 1.83.82 1.96.07.13.11.29.02.47-.09.18-.14.29-.27.45-.13.16-.28.35-.4.47-.13.13-.27.27-.12.53.16.26.7 1.15 1.5 1.86 1.03.92 1.9 1.2 2.16 1.34.26.13.41.11.56-.07.16-.18.66-.77.84-1.03.18-.26.35-.22.59-.13.24.09 1.53.72 1.79.85.26.13.44.2.5.31.07.11.07.64-.15 1.26z"/></svg>
 </a>
 
@@ -1408,7 +1334,7 @@ function renderGrid(){
     const locKey = locKeyFromZonaCiudad(p.zona, p.ciudad);
     const tag = (p.tipologias||[]).length>1 ? 'Varias tipologías' : ((p.tipologias||[])[0]?.tipo || p.estado || '');
     grid.innerHTML += `
-    <div class="pcard" data-loc="${locKey}" onclick="window.openModal('${p.id}')">
+    <div class="pcard" data-loc="${locKey}" data-tipologias="${chipsTipologias(p).join('|')}" onclick="window.openModal('${p.id}')">
       <div class="pcard-art">
         <span class="tag">${tag}</span>
         ${portadaCard(p) ? `<img src="${portadaCard(p)}" alt="${p.nombre}">` : `<div class="art-fallback"><svg class="lineart" style="width:60%;color:var(--clove);"><use href="#art-villa-pool"/></svg></div>`}
@@ -1450,8 +1376,11 @@ document.querySelectorAll('.chip').forEach(chip=>{
     document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
     chip.classList.add('active');
     const loc = chip.dataset.filterLoc;
+    const tipo = document.getElementById('fTipo').value;
     document.querySelectorAll('#listingGrid .pcard').forEach(card=>{
-      card.classList.toggle('hidden-card', loc!=='all' && card.dataset.loc!==loc);
+      const matchesLoc = loc==='all' || card.dataset.loc===loc;
+      const matchesTipo = !tipo || (card.dataset.tipologias || '').split('|').includes(tipo);
+      card.classList.toggle('hidden-card', !(matchesLoc && matchesTipo));
     });
   });
 });
@@ -1634,18 +1563,22 @@ document.getElementById('modalOverlay').addEventListener('click',e=>{
 /* ================= SEARCH ================= */
 window.runSearch = function(){
   const loc = document.getElementById('fUbicacion').value;
+  const tipo = document.getElementById('fTipo').value;
+
+  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
   if(loc){
-    document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
     const target = document.querySelector(`.chip[data-filter-loc="${loc}"]`);
     if(target) target.classList.add('active');
-    document.querySelectorAll('#listingGrid .pcard').forEach(card=>{
-      card.classList.toggle('hidden-card', card.dataset.loc!==loc);
-    });
   } else {
-    document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
     document.querySelector('.chip[data-filter-loc="all"]').classList.add('active');
-    document.querySelectorAll('#listingGrid .pcard').forEach(card=>card.classList.remove('hidden-card'));
   }
+
+  document.querySelectorAll('#listingGrid .pcard').forEach(card=>{
+    const matchesLoc = !loc || card.dataset.loc === loc;
+    const matchesTipo = !tipo || (card.dataset.tipologias || '').split('|').includes(tipo);
+    card.classList.toggle('hidden-card', !(matchesLoc && matchesTipo));
+  });
+
   document.getElementById('listado').scrollIntoView({behavior:'smooth'});
 }
 
