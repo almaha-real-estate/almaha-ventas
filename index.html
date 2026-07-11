@@ -15,11 +15,12 @@
     --clove-08: rgba(83,68,61,.08);
     --terracotta:#AD7556;
     --terracotta-dark:#8f5e42;
+    --terracotta-accent:#b1714e;
     --chambray:#7A9CB3;
     --chambray-dark:#5f8199;
     --sandstone:#DCCFB8;
     --sandstone-60: rgba(220,207,184,.6);
-    --muslin:#F1EFE6;
+    --muslin:#F6F1EB;
     --paper:#FAF8F2;
     --white:#FFFDF9;
 
@@ -92,7 +93,7 @@
     letter-spacing:-.01em;
     color:var(--clove);
   }
-  h2{font-size:clamp(32px,4vw,52px); line-height:1.08;}
+  h2{font-size:clamp(30px,3.6vw,46px); line-height:1.1;}
   h3{font-size:clamp(22px,2.4vw,28px); line-height:1.2;}
   .lede{
     font-size:clamp(14px,1.3vw,17px);
@@ -126,7 +127,7 @@
     background:var(--clove);
     color:var(--muslin);
   }
-  .btn-primary:hover{background:var(--terracotta-dark); transform:translateY(-2px);}
+  .btn-primary:hover{background:var(--terracotta-accent); transform:translateY(-2px);}
   .btn-ghost{
     background:transparent;
     color:var(--clove);
@@ -204,7 +205,7 @@
   .hero-vignette{
     position:absolute; inset:0;
     background:
-      linear-gradient(180deg, rgba(83,68,61,.6) 0%, rgba(83,68,61,.2) 32%, rgba(83,68,61,.42) 55%, rgba(83,68,61,.88) 100%);
+      linear-gradient(180deg, rgba(83,68,61,.62) 0%, rgba(83,68,61,.22) 32%, rgba(83,68,61,.46) 55%, rgba(83,68,61,.92) 100%);
   }
   .hero-content{
     position:relative; z-index:2;
@@ -263,11 +264,12 @@
   .searchcard{
     background:var(--sandstone);
     border:1px solid rgba(83,68,61,.12);
-    box-shadow:0 30px 60px -20px rgba(83,68,61,.35);
-    padding:30px clamp(20px,3vw,40px);
+    box-shadow:0 20px 44px -24px rgba(83,68,61,.3);
+    padding:26px clamp(20px,3vw,36px);
     display:grid;
-    grid-template-columns:repeat(4,1fr) auto;
+    grid-template-columns:repeat(5,1fr) auto;
     gap:0;
+    margin-bottom:32px;
   }
   .search-field{
     padding:0 26px;
@@ -305,7 +307,7 @@
   .section-head .eyebrow{margin-bottom:16px;}
 
   .rail{
-    display:flex; gap:26px; overflow-x:auto; padding-bottom:14px;
+    display:flex; gap:28px; overflow-x:auto; padding-bottom:14px;
     scroll-snap-type:x proximity;
     margin:0 calc(var(--edge) * -1);
     padding-left:var(--edge); padding-right:var(--edge);
@@ -374,35 +376,6 @@
     padding-top:14px; border-top:1px solid var(--clove-08);
   }
 
-  /* ---------- PROJECTS (alternating full bleed) ---------- */
-  .proj-row{
-    display:grid; grid-template-columns:1fr 1fr; gap:0;
-    align-items:stretch;
-    margin-bottom:2px;
-    min-height:420px;
-  }
-  .proj-row:nth-child(even) .proj-art{order:2;}
-  .proj-art{
-    background:var(--clove);
-    position:relative; overflow:hidden;
-    min-height:340px;
-    display:flex; align-items:center; justify-content:center;
-  }
-  .proj-info{
-    background:var(--paper);
-    padding:clamp(30px,4vw,64px);
-    display:flex; flex-direction:column; justify-content:center;
-    gap:18px;
-  }
-  .proj-info .status{
-    font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--chambray-dark);
-  }
-  .proj-meta{
-    display:flex; gap:28px; margin-top:6px; flex-wrap:wrap;
-  }
-  .proj-meta div{font-family:var(--mono); font-size:11.5px; color:var(--clove-40); text-transform:uppercase; letter-spacing:.08em;}
-  .proj-meta div b{display:block; font-family:var(--serif); font-style:italic; font-size:20px; color:var(--clove); font-weight:500; letter-spacing:0; text-transform:none;}
-
   /* ---------- LISTINGS GRID + FILTERS ---------- */
   .filters{
     display:flex; gap:10px; flex-wrap:wrap; margin-bottom:40px;
@@ -414,9 +387,9 @@
     color:var(--clove-70);
     transition:all .3s;
   }
-  .chip.active, .chip:hover{background:var(--clove); color:var(--muslin); border-color:var(--clove);}
+  .chip.active, .chip:hover{background:var(--terracotta-accent); color:var(--muslin); border-color:var(--terracotta-accent);}
   .listing-grid{
-    display:grid; grid-template-columns:repeat(3,1fr); gap:26px;
+    display:grid; grid-template-columns:repeat(3,1fr); gap:28px;
   }
   .hidden-card{display:none !important;}
 
@@ -427,26 +400,32 @@
   .dark-section h2{color:var(--white);}
   #catalogo{
     position:relative;
-    background:linear-gradient(135deg, var(--terracotta-dark) 0%, var(--clove) 70%);
+    background:var(--terracotta-accent);
     color:var(--muslin);
     overflow:hidden;
   }
-  #catalogo .eyebrow{color:var(--sandstone);}
-  #catalogo .eyebrow::before{background:var(--sandstone);}
+  #catalogo .eyebrow-lines{
+    display:flex; align-items:center; justify-content:center; gap:16px;
+    font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--muslin); margin-bottom:14px;
+  }
+  #catalogo .eyebrow-lines::before,
+  #catalogo .eyebrow-lines::after{
+    content:""; flex:0 0 40px; height:1px; background:rgba(241,239,230,.45);
+  }
   #catalogo h2{
     color:var(--white);
     font-style:italic;
-    font-size:clamp(40px, 5.2vw, 68px);
-    max-width:720px;
+    font-size:clamp(26px, 3vw, 40px);
+    max-width:640px;
+    margin:0 auto;
+    white-space:nowrap;
   }
-  #catalogo .compass-decor{
-    position:absolute;
-    top:-8%; right:-4%;
-    width:46vw; max-width:620px;
-    opacity:.12;
-    color:var(--sandstone);
-    pointer-events:none;
-    transform:rotate(-8deg);
+  #catalogo .catalogo-sub{
+    font-size:13px;
+    color:rgba(241,239,230,.75);
+    max-width:480px;
+    margin:14px auto 0;
   }
   #catalogo .pcard{
     background:#6E5A4C;
@@ -462,19 +441,15 @@
   #catalogo .section-head{
     justify-content:center;
     text-align:center;
+    margin-bottom:28px;
   }
   #catalogo .section-head .htext{
-    max-width:720px;
-    margin:0 auto;
-  }
-  #catalogo .eyebrow{
-    justify-content:center;
-  }
-  #catalogo h2{
+    max-width:640px;
     margin:0 auto;
   }
   #catalogo .rail-controls{
     justify-content:center;
+    margin:-4px 0 16px;
   }
   #catalogo .rail{
     justify-content:center;
@@ -541,16 +516,16 @@
   .process-row p{color:var(--clove-70); font-size:12.5px; max-width:420px;}
 
   /* ---------- TESTIMONIALS ---------- */
-  .testi-track{display:flex; gap:26px; overflow-x:auto; scroll-snap-type:x mandatory; margin:0 calc(var(--edge) * -1); padding:0 var(--edge) 10px; scrollbar-width:none;}
+  .testi-track{display:flex; gap:30px; overflow-x:auto; scroll-snap-type:x mandatory; margin:0 calc(var(--edge) * -1); padding:6px var(--edge) 14px; scrollbar-width:none;}
   .testi-track::-webkit-scrollbar{display:none;}
   .testi-card{
     flex:0 0 min(560px,86vw); scroll-snap-align:start;
-    background:var(--white); border:1px solid var(--clove-08); padding:44px;
-    display:flex; flex-direction:column; gap:24px; justify-content:space-between;
+    background:var(--white); border:1px solid var(--clove-08); padding:52px 48px;
+    display:flex; flex-direction:column; gap:32px; justify-content:space-between;
   }
-  .testi-quote{font-family:var(--serif); font-style:italic; font-size:21px; line-height:1.5; color:var(--clove);}
-  .testi-who{display:flex; align-items:center; gap:14px;}
-  .testi-avatar{width:42px;height:42px;border-radius:50%; background:var(--chambray); display:flex; align-items:center; justify-content:center; color:#fff; font-family:var(--serif); font-style:italic;}
+  .testi-quote{font-family:var(--serif); font-style:italic; font-size:22px; line-height:1.55; color:var(--clove);}
+  .testi-who{display:flex; align-items:center; gap:16px;}
+  .testi-avatar{width:48px;height:48px;border-radius:50%; background:var(--chambray); display:flex; align-items:center; justify-content:center; color:#fff; font-family:var(--serif); font-style:italic; font-size:18px;}
   .testi-name{font-size:14px; font-weight:500;}
   .testi-loc{font-size:12px; color:var(--clove-40); font-family:var(--mono); text-transform:uppercase; letter-spacing:.06em;}
 
@@ -688,7 +663,7 @@
 
   /* ---------- FOOTER ---------- */
   footer{background:var(--clove); color:var(--muslin); padding:var(--section-y) 0 40px;}
-  .footer-top{display:grid; grid-template-columns:1.4fr repeat(3,1fr); gap:50px; padding-bottom:70px; border-bottom:1px solid rgba(241,239,230,.15);}
+  .footer-top{display:grid; grid-template-columns:1.3fr repeat(4,1fr); gap:40px; padding-bottom:70px; border-bottom:1px solid rgba(241,239,230,.15);}
   .footer-brand .logo{color:var(--white); margin-bottom:18px;}
   .footer-brand p{color:rgba(241,239,230,.6); font-size:12px; max-width:280px; margin-bottom:26px;}
   .foot-newsletter{display:flex; border-bottom:1px solid rgba(241,239,230,.4); max-width:300px; padding-bottom:10px;}
@@ -709,8 +684,6 @@
     .searchcard{grid-template-columns:1fr 1fr; gap:20px;}
     .search-field{border-right:none; padding:0;}
     .search-submit{grid-column:1/-1; padding-left:0;}
-    .proj-row{grid-template-columns:1fr;}
-    .proj-row:nth-child(even) .proj-art{order:0;}
     .listing-grid, .value-grid, .team-grid{grid-template-columns:repeat(2,1fr);}
     .why-grid{grid-template-columns:1fr; gap:40px;}
     .modal{grid-template-columns:1fr; height:auto; max-height:88vh; overflow-y:auto;}
@@ -729,6 +702,7 @@
     .form-row{grid-template-columns:1fr;}
     .photo-band{height:46vh; min-height:260px;}
     .section-head[style*="flex-start"] .htext, .section-head[style*="flex-start"] .lede{max-width:100% !important; align-self:auto !important;}
+    #catalogo h2{white-space:normal; font-size:clamp(24px,7vw,32px);}
   }
 </style>
 <link rel="icon" href="favicon.ico" sizes="any">
@@ -824,7 +798,7 @@
   <a href="#top" class="logo"><span class="dot"></span>ALMAHÁ</a>
   <nav class="main-nav">
     <a href="#catalogo">Propiedades</a>
-    <a href="#proyectos">Proyectos</a>
+    <a href="#listado">Catálogo</a>
     <a href="#nosotros">Nosotros</a>
     <a href="#contacto">Contacto</a>
   </nav>
@@ -852,70 +826,14 @@
   </div>
 </section>
 
-<div class="container searchwrap reveal">
-  <div class="searchcard">
-    <div class="search-field">
-      <label>Ubicación</label>
-      <select id="fUbicacion">
-        <option value="">Cualquier destino</option>
-        <option value="tulum">Tulum</option>
-        <option value="pdc">Playa del Carmen</option>
-        <option value="akumal">Akumal</option>
-        <option value="puerto">Puerto Aventuras</option>
-        <option value="bacalar">Bacalar</option>
-      </select>
-    </div>
-    <div class="search-field">
-      <label>Tipo de propiedad</label>
-      <select id="fTipo">
-        <option value="">Todos los tipos</option>
-        <option value="Estudio">Estudio</option>
-        <option value="Local">Local</option>
-        <option value="1 Recámara">1 Recámara</option>
-        <option value="2 Recámaras">2 Recámaras</option>
-        <option value="3 Recámaras">3 Recámaras</option>
-        <option value="4 Recámaras">4 Recámaras</option>
-        <option value="Casa">Casa</option>
-        <option value="Villa">Villa</option>
-        <option value="Terreno">Terreno</option>
-      </select>
-    </div>
-    <div class="search-field">
-      <label>Presupuesto (MXN)</label>
-      <select id="fPrecio">
-        <option value="">Sin límite</option>
-        <option value="menos-3m">Menos de $3,000,000</option>
-        <option value="3m-6m">$3,000,000 – $6,000,000</option>
-        <option value="6m-10m">$6,000,000 – $10,000,000</option>
-        <option value="mas-10m">Más de $10,000,000</option>
-      </select>
-    </div>
-    <div class="search-field">
-      <label>Habitaciones</label>
-      <select id="fHab">
-        <option value="">Indistinto</option>
-        <option value="1">1+</option>
-        <option value="2">2+</option>
-        <option value="3">3+</option>
-        <option value="4">4+</option>
-      </select>
-    </div>
-    <div class="search-submit">
-      <button class="btn btn-primary" onclick="runSearch()">Buscar<span class="btn-arrow">→</span></button>
-    </div>
-  </div>
-</div>
-
 <!-- ============ CATALOGO DESTACADO ============ -->
 <section class="section" id="catalogo">
-  <svg class="compass-decor" viewBox="0 0 100 100">
-    <use href="#art-compass"/>
-  </svg>
   <div class="container">
     <div class="section-head reveal">
       <div class="htext">
-        <div class="eyebrow">Selección Almahá</div>
+        <div class="eyebrow-lines">Proyectos Destacados</div>
         <h2>Donde empieza tu próxima inversión.</h2>
+        <p class="catalogo-sub">Conoce los desarrollos seleccionados con mayor potencial de inversión y plusvalía.</p>
       </div>
     </div>
     <div class="rail-controls">
@@ -930,20 +848,6 @@
   </div>
 </section>
 
-<!-- ============ PROYECTOS NUEVOS ============ -->
-<section class="section" id="proyectos" style="padding-top:0;">
-  <div class="container">
-    <div class="section-head reveal">
-      <div class="htext">
-        <div class="eyebrow">En preventa</div>
-        <h2>Proyectos nuevos<br><span class="italic">en construcción.</span></h2>
-      </div>
-      <p class="lede">Precios de preventa, antes de que el desarrollo esté terminado — donde históricamente se concentra la mayor plusvalía.</p>
-    </div>
-  </div>
-  <div id="projectRows"></div>
-</section>
-
 <!-- ============ PROPIEDADES EN VENTA (grid + filtros) ============ -->
 <section class="section" id="listado" style="padding-top:0;">
   <div class="container">
@@ -951,6 +855,60 @@
       <div class="htext">
         <div class="eyebrow">Catálogo completo</div>
         <h2>Todas las propiedades<br><span class="italic">en venta.</span></h2>
+      </div>
+    </div>
+    <div class="searchcard reveal">
+      <div class="search-field">
+        <label>Proyecto</label>
+        <select id="fProyecto">
+          <option value="">Todos los proyectos</option>
+        </select>
+      </div>
+      <div class="search-field">
+        <label>Tipo de propiedad</label>
+        <select id="fTipo">
+          <option value="">Todos los tipos</option>
+          <option value="Estudio">Estudio</option>
+          <option value="Local">Local</option>
+          <option value="1 Recámara">1 Recámara</option>
+          <option value="2 Recámaras">2 Recámaras</option>
+          <option value="3 Recámaras">3 Recámaras</option>
+          <option value="4 Recámaras">4 Recámaras</option>
+          <option value="Casa">Casa</option>
+          <option value="Villa">Villa</option>
+          <option value="Terreno">Terreno</option>
+        </select>
+      </div>
+      <div class="search-field">
+        <label>Habitaciones</label>
+        <select id="fHab">
+          <option value="">Indistinto</option>
+          <option value="1">1+</option>
+          <option value="2">2+</option>
+          <option value="3">3+</option>
+          <option value="4">4+</option>
+        </select>
+      </div>
+      <div class="search-field">
+        <label>Presupuesto (MXN)</label>
+        <select id="fPrecio">
+          <option value="">Sin límite</option>
+          <option value="menos-3m">Menos de $3,000,000</option>
+          <option value="3m-6m">$3,000,000 – $6,000,000</option>
+          <option value="6m-10m">$6,000,000 – $10,000,000</option>
+          <option value="mas-10m">Más de $10,000,000</option>
+        </select>
+      </div>
+      <div class="search-field">
+        <label>Estado del proyecto</label>
+        <select id="fEstado">
+          <option value="">Todos</option>
+          <option value="Preventa">Preventa</option>
+          <option value="Entrega inmediata">Entrega inmediata</option>
+        </select>
+      </div>
+      <div class="search-submit">
+        <button class="btn btn-primary" onclick="runSearch()">Buscar<span class="btn-arrow">→</span></button>
       </div>
     </div>
     <div class="filters reveal">
@@ -998,7 +956,7 @@
 </section>
 
 <!-- ============ BENEFICIOS ============ -->
-<section class="section" id="nosotros">
+<section class="section">
   <div class="container">
     <div class="section-head reveal" style="align-items:flex-start;">
       <div class="htext" style="flex:0 0 auto; max-width:440px;">
@@ -1123,7 +1081,7 @@
 </section>
 
 <!-- ============ EQUIPO ============ -->
-<section class="section">
+<section class="section" id="nosotros">
   <div class="container">
     <div class="section-head reveal">
       <div class="htext" style="max-width:640px;">
@@ -1131,22 +1089,21 @@
         <h2>Detrás de cada propiedad,<br><span class="italic">hay personas.</span></h2>
       </div>
     </div>
-    <div class="why-grid reveal" style="align-items:start;">
+    <div class="why-grid reveal" style="align-items:start; gap:90px;">
       <div>
-        <p class="lede" style="max-width:100%; margin-bottom:18px;">ALMAHÁ nació de una decisión que cambió nuestras vidas: elegir el Caribe mexicano como nuestro hogar.</p>
-        <p class="lede" style="max-width:100%; margin-bottom:18px;">Somos dos socias argentinas que encontramos en Tulum un lugar para crecer, emprender y construir un proyecto propio. Con el tiempo entendimos que comprar una propiedad aquí es mucho más que una operación inmobiliaria: es una decisión que involucra sueños, patrimonio y nuevos comienzos.</p>
-        <p class="lede" style="max-width:100%; margin-bottom:18px;">Por eso creamos ALMAHÁ. Queremos acompañar a cada cliente con la misma dedicación con la que nosotros tomaríamos una decisión tan importante. Creemos en el asesoramiento honesto, en las relaciones de confianza y en seleccionar oportunidades que realmente generen valor.</p>
-        <p class="lede italic" style="max-width:100%; font-size:17px; color:var(--clove);">Más que vender propiedades, buscamos ayudar a las personas a encontrar el lugar adecuado para construir su próximo capítulo.</p>
+        <p class="lede" style="max-width:100%; margin-bottom:24px;">ALMAHÁ nació de una decisión que cambió nuestras vidas: elegir el Caribe mexicano como nuestro hogar. Somos dos socias argentinas que encontramos en Tulum un lugar para crecer, emprender y construir un proyecto propio.</p>
+        <p class="lede" style="max-width:100%; margin-bottom:24px;">Comprar una propiedad aquí es mucho más que una operación inmobiliaria. Creemos en el asesoramiento honesto, las relaciones de confianza y en seleccionar oportunidades que realmente generen valor.</p>
+        <p class="lede italic" style="max-width:100%; font-size:18px; color:var(--clove); margin-top:32px;">Más que vender propiedades, buscamos ayudar a las personas a encontrar el lugar adecuado para construir su próximo capítulo.</p>
       </div>
       <div>
         <div class="team-grid" style="grid-template-columns:repeat(2,1fr); gap:28px;">
           <div class="team-card">
-            <div class="team-photo"><img src="assets/sofia-suarez.jpg" alt="Sofía Suárez"></div>
+            <div class="team-photo" style="aspect-ratio:3/4;"><img src="assets/sofia-suarez.jpg" alt="Sofía Suárez"></div>
             <h4>Sofía Suárez</h4>
             <div class="team-role">Fundadora & CEO</div>
           </div>
           <div class="team-card">
-            <div class="team-photo"><img src="assets/victoria-calero.jpg" alt="Victoria Calero"></div>
+            <div class="team-photo" style="aspect-ratio:3/4;"><img src="assets/victoria-calero.jpg" alt="Victoria Calero"></div>
             <h4>Victoria Calero</h4>
             <div class="team-role">Cofundadora & Directora de Operaciones</div>
           </div>
@@ -1245,7 +1202,13 @@
       <div class="foot-col">
         <h4>Explorar</h4>
         <a href="#catalogo">Propiedades destacadas</a>
-        <a href="#proyectos">Proyectos nuevos</a>
+        <a href="#listado">Catálogo completo</a>
+      </div>
+      <div class="foot-col">
+        <h4>Contacto</h4>
+        <a href="https://wa.me/5219841855836" target="_blank" rel="noopener">+52 1 984 185 5836</a>
+        <a href="mailto:sofiasuarezasesora@gmail.com">sofiasuarezasesora@gmail.com</a>
+        <p>Tulum · Riviera Maya, México</p>
       </div>
       <div class="foot-col">
         <h4>Compañía</h4>
@@ -1322,6 +1285,29 @@ function precioDesde(propiedad){
   });
   return min === Infinity ? null : min;
 }
+// Todos los precios de todas las unidades de todas las tipologías, para evaluar el filtro
+// de presupuesto contra el proyecto completo (no solo contra el "Desde $X" mostrado en la card).
+function todosLosPrecios(propiedad){
+  const precios = [];
+  (propiedad.tipologias||[]).forEach(t=>{
+    (t.unidades||[]).forEach(u=>{
+      if(typeof u.precio === 'number') precios.push(u.precio);
+    });
+  });
+  return precios;
+}
+// Aproximación: el esquema no guarda un número de habitaciones explícito, así que lo
+// extraemos del nombre de la tipología cuando empieza con un número (ej. "2 Recámaras" -> 2).
+// Tipologías sin número al inicio (Estudio, Local, Villa, Casa, Terreno) no aportan un valor
+// numérico y quedan afuera del filtro "Habitaciones" — es una limitación real del dato, no un bug.
+function habitacionesMax(propiedad){
+  let max = -1;
+  (propiedad.tipologias||[]).forEach(t=>{
+    const m = /^(\d+)/.exec(t.tipo||'');
+    if(m) max = Math.max(max, parseInt(m[1],10));
+  });
+  return max;
+}
 function chipsTipologias(propiedad){
   return (propiedad.tipologias||[]).map(t=>t.tipo);
 }
@@ -1340,12 +1326,6 @@ function locKeyFromZonaCiudad(zona, ciudad){
   return 'otros';
 }
 
-const PROJECTS = [
-  {name:"Selvara Tulum", loc:"Tulum · La Veleta", status:"En construcción — Entrega 2027", from:"310,000", units:"48", progress:"Cimentación", art:"art-villa-pool"},
-  {name:"Costa Alma Bacalar", loc:"Bacalar · Frente a laguna", status:"En construcción — Entrega 2026", from:"265,000", units:"24", progress:"Obra gris", art:"art-lagoon"},
-  {name:"Marejada Towers PDC", loc:"Playa del Carmen · Centro", status:"Preventa — Entrega 2028", from:"410,000", units:"36", progress:"Preventa", art:"art-penthouse"},
-];
-
 const FAQS = [
   {q:"¿Pueden los extranjeros comprar propiedad en México?", a:"Sí. En zona costera (dentro de los primeros 50 km desde la playa), los extranjeros compran a través de un fideicomiso bancario, un instrumento legal que otorga todos los derechos de uso, renta, herencia y venta sobre el inmueble. Nosotros gestionamos el trámite completo con el banco fiduciario que elijas."},
   {q:"¿Cuánto tiempo toma cerrar una compra?", a:"En promedio entre 6 y 10 semanas desde que se firma la oferta, dependiendo de si la propiedad ya cuenta con fideicomiso vigente o si hay que constituir uno nuevo. Preventas suelen tomar menos tiempo administrativo pero implican plazos de entrega de obra."},
@@ -1359,7 +1339,7 @@ const FAQS = [
 const rail = document.getElementById('featuredRail');
 function renderRail(){
   rail.innerHTML = '';
-  const destacadas = PROPIEDADES.filter(p=>p.destacado===true).slice(0,4);
+  const destacadas = PROPIEDADES.filter(p=>p.destacado===true).slice(0,3);
   destacadas.forEach(p=>{
     const desde = precioDesde(p);
     const tag = (p.tipologias||[]).length>1 ? 'Distintas unidades' : ((p.tipologias||[])[0]?.tipo || p.estado || '');
@@ -1376,6 +1356,22 @@ function renderRail(){
       </div>
     </div>`;
   });
+  // Card temporal/ficticia: se muestra sola mientras haya menos de 3 propiedades reales con destacado:true.
+  // Apenas actives un tercer destacado real en Firestore, esta card deja de renderizarse automáticamente — no hay que tocar código.
+  if(destacadas.length < 3){
+    rail.innerHTML += `
+    <div class="pcard" style="cursor:default;">
+      <div class="pcard-art">
+        <span class="tag">Próximamente</span>
+        <div class="art-fallback"><svg class="lineart" style="width:60%;color:var(--clove);"><use href="#art-villa-pool"/></svg></div>
+        <span class="price">Muy pronto</span>
+      </div>
+      <div class="pcard-body">
+        <h4>Próximo Desarrollo</h4>
+        <div class="pcard-loc">Riviera Maya · Anuncio próximamente</div>
+      </div>
+    </div>`;
+  }
 }
 
 /* ================= RENDER: LISTING GRID ================= */
@@ -1387,7 +1383,7 @@ function renderGrid(){
     const locKey = locKeyFromZonaCiudad(p.zona, p.ciudad);
     const tag = (p.tipologias||[]).length>1 ? 'Distintas unidades' : ((p.tipologias||[])[0]?.tipo || p.estado || '');
     grid.innerHTML += `
-    <div class="pcard" data-loc="${locKey}" data-tipologias="${chipsTipologias(p).join('|')}" onclick="window.openModal('${p.id}')">
+    <div class="pcard" data-loc="${locKey}" data-tipologias="${chipsTipologias(p).join('|')}" data-estado="${p.estado||''}" data-proyecto="${p.id}" data-precios="${todosLosPrecios(p).join(',')}" data-habmax="${habitacionesMax(p)}" onclick="window.openModal('${p.id}')">
       <div class="pcard-art">
         <span class="tag">${tag}</span>
         ${portadaCard(p) ? `<img src="${portadaCard(p)}" alt="${p.nombre}">` : `<div class="art-fallback"><svg class="lineart" style="width:60%;color:var(--clove);"><use href="#art-villa-pool"/></svg></div>`}
@@ -1416,6 +1412,10 @@ async function cargarPropiedades(){
       tipologias: (data.tipologias || []).filter(t => !TIPOLOGIAS_OCULTAS.includes(t.tipo))
     };
   });
+  const fProyecto = document.getElementById('fProyecto');
+  PROPIEDADES.forEach(p=>{
+    fProyecto.innerHTML += `<option value="${p.id}">${p.nombre}</option>`;
+  });
   renderRail();
   renderGrid();
 }
@@ -1425,34 +1425,8 @@ document.querySelectorAll('.chip').forEach(chip=>{
   chip.addEventListener('click',()=>{
     document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
     chip.classList.add('active');
-    const loc = chip.dataset.filterLoc;
-    const tipo = document.getElementById('fTipo').value;
-    document.querySelectorAll('#listingGrid .pcard').forEach(card=>{
-      const matchesLoc = loc==='all' || card.dataset.loc===loc;
-      const matchesTipo = !tipo || (card.dataset.tipologias || '').split('|').includes(tipo);
-      card.classList.toggle('hidden-card', !(matchesLoc && matchesTipo));
-    });
+    applyFilters();
   });
-});
-
-/* ================= RENDER: PROJECTS ================= */
-const projWrap = document.getElementById('projectRows');
-PROJECTS.forEach(pr=>{
-  projWrap.innerHTML += `
-  <div class="proj-row">
-    <div class="proj-art"><svg class="lineart" style="width:60%;color:var(--sandstone);"><use href="#${pr.art}"/></svg></div>
-    <div class="proj-info">
-      <div class="status">${pr.status}</div>
-      <h3>${pr.name}</h3>
-      <p class="lede">${pr.loc}</p>
-      <div class="proj-meta">
-        <div>Desde<b>$${pr.from} USD</b></div>
-        <div>Unidades<b>${pr.units}</b></div>
-        <div>Avance<b>${pr.progress}</b></div>
-      </div>
-      <div style="margin-top:10px;"><a href="#contacto" class="btn btn-ghost">Más información<span class="btn-arrow">→</span></a></div>
-    </div>
-  </div>`;
 });
 
 /* ================= RENDER: FAQ ================= */
@@ -1611,24 +1585,46 @@ document.getElementById('modalOverlay').addEventListener('click',e=>{
 });
 
 /* ================= SEARCH ================= */
-window.runSearch = function(){
-  const loc = document.getElementById('fUbicacion').value;
-  const tipo = document.getElementById('fTipo').value;
+// Motor único de filtrado: lo usan tanto el botón "Buscar" del buscador como los chips de ubicación,
+// así evaluamos siempre los mismos 6 criterios juntos (ubicación + tipo + habitaciones + precio + estado + proyecto)
+// en vez de tener lógica repetida y potencialmente inconsistente en dos lugares distintos.
+function activeLocChip(){
+  const active = document.querySelector('.chip.active');
+  return active ? active.dataset.filterLoc : 'all';
+}
 
-  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
-  if(loc){
-    const target = document.querySelector(`.chip[data-filter-loc="${loc}"]`);
-    if(target) target.classList.add('active');
-  } else {
-    document.querySelector('.chip[data-filter-loc="all"]').classList.add('active');
-  }
+window.applyFilters = function(){
+  const loc = activeLocChip();
+  const tipo = document.getElementById('fTipo').value;
+  const hab = document.getElementById('fHab').value;
+  const precio = document.getElementById('fPrecio').value;
+  const estado = document.getElementById('fEstado').value;
+  const proyecto = document.getElementById('fProyecto').value;
 
   document.querySelectorAll('#listingGrid .pcard').forEach(card=>{
-    const matchesLoc = !loc || card.dataset.loc === loc;
+    const matchesLoc = loc==='all' || card.dataset.loc===loc;
     const matchesTipo = !tipo || (card.dataset.tipologias || '').split('|').includes(tipo);
-    card.classList.toggle('hidden-card', !(matchesLoc && matchesTipo));
-  });
+    const matchesEstado = !estado || card.dataset.estado===estado;
+    const matchesProyecto = !proyecto || card.dataset.proyecto===proyecto;
 
+    const habMax = Number(card.dataset.habmax);
+    const matchesHab = !hab || (habMax>=0 && habMax>=Number(hab));
+
+    const precios = (card.dataset.precios||'').split(',').map(Number).filter(n=>!isNaN(n));
+    const matchesPrecio = !precio || precios.some(p=>{
+      if(precio==='menos-3m') return p<3000000;
+      if(precio==='3m-6m') return p>=3000000 && p<=6000000;
+      if(precio==='6m-10m') return p>=6000000 && p<=10000000;
+      if(precio==='mas-10m') return p>10000000;
+      return true;
+    });
+
+    card.classList.toggle('hidden-card', !(matchesLoc && matchesTipo && matchesEstado && matchesProyecto && matchesHab && matchesPrecio));
+  });
+}
+
+window.runSearch = function(){
+  applyFilters();
   document.getElementById('listado').scrollIntoView({behavior:'smooth'});
 }
 
