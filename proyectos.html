@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proyectos — ALMAHÁ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Instrument+Serif:ital@1&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+<link rel="apple-touch-icon" href="favicon-192.png">
+<style>
+  :root{
+    --clove:#3D3129; --clove-old:#53443D; --clove-70:rgba(83,68,61,.7); --clove-40:rgba(83,68,61,.4);
+    --clove-15:rgba(83,68,61,.15); --clove-08:rgba(83,68,61,.08);
+    --terracotta:#AD7556; --terracotta-dark:#8f5e42;
+    --sandstone:#DCCFB8; --sandstone-60:rgba(220,207,184,.6);
+    --muslin:#F1EFE6; --paper:#FAF8F2; --white:#FFFDF9;
+    --serif:'Fraunces',serif; --mono:'DM Mono',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--white);color:var(--clove);font-family:'Plus Jakarta Sans',sans-serif;}
+  .ita{font-family:'Instrument Serif',serif;font-style:italic;color:var(--terracotta);}
+  h1{text-wrap:balance;}
+
+  nav{display:flex;justify-content:space-between;align-items:center;padding:26px 56px;border-bottom:1px solid rgba(61,49,41,.1);}
+  nav .logo{font-weight:800;font-size:18px;letter-spacing:.04em;color:var(--clove);text-decoration:none;}
+  nav a{color:inherit;text-decoration:none;}
+  nav .links{display:flex;gap:32px;font-size:13px;font-weight:500;color:rgba(61,49,41,.6);}
+  nav .wa{background:var(--terracotta);color:var(--white);padding:12px 22px;border-radius:100px;font-size:12.5px;font-weight:700;}
+
+  .head{padding:70px 56px 44px;}
+  .head .eyebrow{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--terracotta);margin-bottom:16px;}
+  .head h1{font-weight:800;font-size:clamp(32px,4vw,52px);line-height:1.1;max-width:700px;}
+
+  .filters{display:flex;gap:12px;padding:0 56px 18px;flex-wrap:wrap;}
+  .filters.filters2{padding-bottom:50px;}
+  .chip{padding:12px 22px;border-radius:100px;border:1px solid rgba(61,49,41,.18);font-size:13px;font-weight:500;color:rgba(61,49,41,.7);cursor:pointer;background:none;font-family:inherit;}
+  .chip.on{background:var(--clove);color:var(--white);border-color:var(--clove);}
+
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;padding:0 56px 140px;}
+  .card{cursor:pointer;}
+  .card .ph{aspect-ratio:5/4;border-radius:22px;overflow:hidden;position:relative;background:var(--muslin);}
+  .card .ph img{width:100%;height:100%;object-fit:cover;display:block;}
+  .card .badge{position:absolute;top:18px;left:18px;background:rgba(255,253,249,.92);color:var(--clove);padding:8px 15px;border-radius:100px;font-size:11px;font-weight:700;}
+  .card .body{padding:22px 4px 0;display:flex;justify-content:space-between;align-items:flex-start;}
+  .card h3{font-weight:800;font-size:19px;}
+  .card .loc{font-size:12.5px;color:rgba(61,49,41,.55);font-weight:500;margin-top:5px;}
+  .card .px{text-align:right;}
+  .card .px .lbl{font-size:10.5px;color:rgba(61,49,41,.5);font-weight:500;}
+  .card .px .amt{font-family:'Instrument Serif',serif;font-style:italic;font-size:18px;color:var(--terracotta);margin-top:2px;}
+  .empty-state{padding:0 56px 140px;color:var(--clove-70);font-size:14px;}
+
+  .wa-fab{position:fixed;bottom:28px;right:28px;z-index:50;width:56px;height:56px;border-radius:50%;background:var(--terracotta);display:flex;align-items:center;justify-content:center;box-shadow:0 14px 30px -8px rgba(0,0,0,.4);}
+  .wa-fab svg{width:26px;height:26px;fill:#fff;}
+
+  footer{background:var(--clove);padding:80px 56px 40px;}
+  .foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:50px;padding-bottom:56px;border-bottom:1px solid rgba(255,253,249,.15);}
+  .foot-logo{font-weight:800;font-size:20px;color:var(--white);margin-bottom:16px;}
+  .foot-top p{font-size:13px;color:rgba(255,253,249,.6);line-height:1.7;max-width:280px;}
+  .foot-col h4{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--sandstone);margin-bottom:18px;}
+  .foot-col div, .foot-col a{font-size:13px;color:rgba(255,253,249,.75);margin-bottom:12px;display:block;text-decoration:none;}
+  .foot-bottom{display:flex;justify-content:space-between;padding-top:26px;font-size:12px;color:rgba(255,253,249,.45);}
+
+  /* ---------- MODAL DE DETALLE (sin rediseñar — mismo del sitio actual) ---------- */
+  .modal-overlay{
+    position:fixed; inset:0; background:rgba(83,68,61,.7); z-index:2000;
+    display:flex; align-items:center; justify-content:center; padding:30px;
+    opacity:0; pointer-events:none; transition:opacity .4s;
+    backdrop-filter:blur(4px);
+    font-family:'Plus Jakarta Sans',sans-serif;
+  }
+  .modal-overlay.show{opacity:1; pointer-events:all;}
+  .modal{
+    background:var(--paper); max-width:920px; width:100%;
+    height:80vh; max-height:80vh;
+    display:grid; grid-template-columns:1fr 1fr;
+    transform:translateY(30px); transition:transform .4s cubic-bezier(.16,1,.3,1);
+    overflow:hidden;
+  }
+  .modal-overlay.show .modal{transform:translateY(0);}
+  .modal-art{position:relative; overflow:hidden; height:100%; background:var(--sandstone-60);}
+  .modal-art img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block;}
+  .modal-art .art-fallback{position:absolute; inset:0; display:flex; align-items:center; justify-content:center;}
+  .modal-photo-nav{
+    position:absolute; top:50%; transform:translateY(-50%); width:38px; height:38px; border-radius:50%;
+    background:var(--white); display:flex; align-items:center; justify-content:center; font-size:18px;
+    color:var(--clove-old); box-shadow:0 4px 12px rgba(83,68,61,.2); transition:transform .2s; border:none; cursor:pointer;
+  }
+  .modal-photo-nav:hover{transform:translateY(-50%) scale(1.08);}
+  .modal-photo-nav.prev{left:14px;} .modal-photo-nav.next{right:14px;}
+  .modal-photo-counter{
+    position:absolute; bottom:14px; left:50%; transform:translateX(-50%);
+    background:rgba(83,68,61,.75); color:var(--muslin); font-family:var(--mono); font-size:11px;
+    padding:4px 10px; border-radius:20px; letter-spacing:.04em;
+  }
+  .modal-body{padding:44px; height:100%; overflow-y:auto; color:var(--clove-old);}
+  .modal-close{
+    position:absolute; top:20px; right:20px; width:38px; height:38px; background:var(--white);
+    display:flex; align-items:center; justify-content:center; border-radius:50%; font-size:18px; z-index:5; cursor:pointer;
+  }
+  .modal-body .tag{display:inline-block; font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--terracotta-dark); border:1px solid var(--terracotta); padding:5px 10px; margin-bottom:16px;}
+  .modal-body h3{font-family:var(--serif); font-weight:500; font-size:26px; margin-bottom:6px; color:var(--clove-old);}
+  .modal-loc{color:var(--clove-70); font-size:11.5px; margin-bottom:20px;}
+  .modal-body p.lede{font-size:13px; max-width:100%; color:var(--clove-70); line-height:1.6;}
+  .modal-typ-tabs{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px;}
+  .modal-typ-tab{
+    padding:8px 14px; border:1px solid var(--clove-15);
+    font-family:var(--mono); font-size:11px; letter-spacing:.05em; text-transform:uppercase;
+    color:var(--clove-70); transition:all .25s; background:none; cursor:pointer;
+  }
+  .modal-typ-tab:hover{border-color:var(--clove-old);}
+  .modal-typ-tab.active{background:var(--clove-old); color:var(--muslin); border-color:var(--clove-old);}
+  .modal-price{font-family:var(--serif); font-style:italic; font-size:32px; margin-bottom:24px;}
+  .modal-specs{display:flex; gap:24px; padding:18px 0; border-top:1px solid var(--clove-15); border-bottom:1px solid var(--clove-15); margin-bottom:22px;}
+  .modal-specs div{font-family:var(--mono); font-size:12px; color:var(--clove-70);}
+  .modal-specs div b{display:block; font-family:var(--serif); font-style:italic; font-size:19px; color:var(--clove-old); font-weight:500;}
+  .modal-amenities{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:28px;}
+  .modal-amenities span{font-size:12px; padding:6px 12px; background:var(--sandstone-60); font-family:var(--mono);}
+  .modal-actions{display:flex; gap:12px; flex-wrap:wrap;}
+  .modal-actions .btn{
+    display:inline-flex; align-items:center; gap:10px; padding:14px 24px; border-radius:100px;
+    font-size:13px; font-weight:700; text-decoration:none; transition:all .3s;
+  }
+  .modal-actions .btn-primary{background:var(--terracotta); color:var(--white);}
+  .modal-actions .btn-primary:hover{background:var(--terracotta-dark);}
+  .modal-actions .btn-ghost{background:transparent; color:var(--clove-old); border:1px solid var(--clove-40);}
+  .modal-actions .btn-ghost:hover{border-color:var(--clove-old); background:var(--clove-08);}
+
+  @media(max-width:900px){
+    .grid{grid-template-columns:1fr;}
+    nav .links{display:none;}
+    .modal{grid-template-columns:1fr; height:auto; max-height:88vh; overflow-y:auto;}
+    .modal-body{height:auto; overflow-y:visible;}
+    .foot-top{grid-template-columns:1fr;gap:34px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">ALMAHÁ</a>
+  <div class="links">
+    <a href="proyectos.html">Proyectos</a>
+    <a href="proyectos.html?filtro=preventa">Preventa</a>
+    <a href="quienes-somos.html">Quiénes somos</a>
+    <a href="faq.html">Preguntas frecuentes</a>
+    <a href="contacto.html">Contacto</a>
+  </div>
+  <a class="wa" href="https://wa.me/5219841855836" target="_blank" rel="noopener">Agendar una consulta</a>
+</nav>
+
+<section class="head">
+  <div class="eyebrow">Catálogo Almahá</div>
+  <h1>Una selección curada, no un <span class="ita">portal de propiedades.</span></h1>
+</section>
+
+<div class="filters" id="filters">
+  <button class="chip on" data-loc="all">Todos los destinos</button>
+  <button class="chip" data-loc="tulum">Tulum</button>
+  <button class="chip" data-loc="pdc">Playa del Carmen</button>
+  <button class="chip" data-loc="bacalar">Bacalar</button>
+  <button class="chip" data-loc="akumal">Akumal</button>
+</div>
+
+<div class="filters filters2" id="filters2">
+  <button class="chip on" data-attr="all">Todas las características</button>
+  <button class="chip" data-attr="preventa">Preventa</button>
+  <button class="chip" data-attr="Estudio">Estudio</button>
+  <button class="chip" data-attr="Local">Local</button>
+  <button class="chip" data-attr="1 Recámara">1 Recámara</button>
+  <button class="chip" data-attr="2 Recámaras">2 Recámaras</button>
+  <button class="chip" data-attr="3 Recámaras">3 Recámaras</button>
+  <button class="chip" data-attr="4 Recámaras">4 Recámaras</button>
+  <button class="chip" data-attr="Casa">Casa</button>
+  <button class="chip" data-attr="Villa">Villa</button>
+  <button class="chip" data-attr="Terreno">Terreno</button>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<footer>
+  <div class="foot-top">
+    <div>
+      <div class="foot-logo">ALMAHÁ</div>
+      <p>Bienes raíces de autor en el Caribe mexicano. Tulum, Playa del Carmen y alrededores.</p>
+    </div>
+    <div class="foot-col">
+      <h4>Contacto</h4>
+      <a href="https://wa.me/5219841855836" target="_blank" rel="noopener">+52 1 984 185 5836</a>
+      <a href="mailto:sofiasuarezasesora@gmail.com">sofiasuarezasesora@gmail.com</a>
+    </div>
+    <div class="foot-col">
+      <h4>Seguinos</h4>
+      <a href="https://www.instagram.com/sofiarealtor_/" target="_blank" rel="noopener">Instagram — @sofiarealtor_</a>
+      <a href="https://www.tiktok.com/@sofi.realtor" target="_blank" rel="noopener">TikTok — @sofi.realtor</a>
+    </div>
+  </div>
+  <div class="foot-bottom"><span>© 2026 Almahá</span><span>20.2114° N, 87.4654° O</span></div>
+</footer>
+
+<a class="wa-fab" href="https://wa.me/5219841855836" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.87.5 3.62 1.38 5.13L2 22l4.99-1.35C8.44 21.5 10.17 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.3c-.22.62-1.28 1.18-1.77 1.24-.45.06-1.02.09-1.65-.1-.38-.12-.87-.28-1.5-.55-2.63-1.14-4.34-3.8-4.48-3.98-.13-.18-1.07-1.42-1.07-2.72 0-1.29.68-1.93.92-2.19.24-.26.53-.32.7-.32.18 0 .35 0 .5.01.16.01.38-.06.6.46.22.53.75 1.83.82 1.96.07.13.11.29.02.47-.09.18-.14.29-.27.45-.13.16-.28.35-.4.47-.13.13-.27.27-.12.53.16.26.7 1.15 1.5 1.86 1.03.92 1.9 1.2 2.16 1.34.26.13.41.11.56-.07.16-.18.66-.77.84-1.03.18-.26.35-.22.59-.13.24.09 1.53.72 1.79.85.26.13.44.2.5.31.07.11.07.64-.15 1.26z"/></svg></a>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <div class="modal-close" onclick="closeModal()">✕</div>
+    <div class="modal-art" id="modalArt"></div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script type="module">
+/* ================= FIREBASE ================= */
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyD4_pL8l0wOR3elbI3_VZd89a-UffnV5oE",
+  authDomain: "almaha-ventas.firebaseapp.com",
+  projectId: "almaha-ventas",
+  storageBucket: "almaha-ventas.firebasestorage.app",
+  messagingSenderId: "495551253531",
+  appId: "1:495551253531:web:7f8034f9b6a98562763cbe"
+};
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const TIPOLOGIAS_OCULTAS = ['Oficinas'];
+let PROPIEDADES = [];
+
+/* ---- helpers (idénticos a los ya usados en el resto del sitio) ---- */
+function money(n){
+  if(typeof n !== 'number') return 'Consultar precio';
+  return `$${n.toLocaleString('es-MX')} MXN`;
+}
+function precioDesde(p){
+  let min = Infinity;
+  (p.tipologias||[]).forEach(t=>(t.unidades||[]).forEach(u=>{
+    if(typeof u.precio==='number' && u.precio<min) min=u.precio;
+  }));
+  return min===Infinity ? null : min;
+}
+function chipsTipologias(p){
+  return (p.tipologias||[]).map(t=>t.tipo);
+}
+function portadaCard(p){
+  return p.photoUrlAmenidades || p.tipologias?.[0]?.photoUrl || null;
+}
+function locKeyFromZonaCiudad(zona, ciudad){
+  const t = `${zona||''} ${ciudad||''}`.toLowerCase();
+  if(t.includes('tulum')) return 'tulum';
+  if(t.includes('playa del carmen')) return 'pdc';
+  if(t.includes('akumal')) return 'akumal';
+  if(t.includes('bacalar')) return 'bacalar';
+  return 'otros';
+}
+
+/* ================= GRID ================= */
+const grid = document.getElementById('grid');
+function renderGrid(){
+  grid.innerHTML = '';
+  PROPIEDADES.forEach(p=>{
+    const locKey = locKeyFromZonaCiudad(p.zona, p.ciudad);
+    const desde = precioDesde(p);
+    const tag = (p.tipologias||[]).length>1 ? 'Distintas unidades' : ((p.tipologias||[])[0]?.tipo || p.estado || '');
+    const foto = portadaCard(p);
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.dataset.loc = locKey;
+    card.dataset.estado = p.estado || '';
+    card.dataset.tipologias = chipsTipologias(p).join('|');
+    card.innerHTML = `
+      <div class="ph">
+        ${foto ? `<img src="${foto}" alt="${p.nombre}">` : ''}
+        <div class="badge">${tag}</div>
+      </div>
+      <div class="body">
+        <div><h3>${p.nombre}</h3><div class="loc">${p.zona}${p.ciudad ? ' · '+p.ciudad : ''}</div></div>
+        <div class="px"><div class="lbl">Desde</div><div class="amt">${desde!==null ? money(desde) : 'Consultar'}</div></div>
+      </div>`;
+    card.addEventListener('click', ()=> window.openModal(p.id));
+    grid.appendChild(card);
+  });
+  aplicarFiltros();
+}
+
+/* ================= FILTROS COMBINADOS (ubicación + tipo/estado, AND) ================= */
+function aplicarFiltros(){
+  const loc = document.querySelector('#filters .chip.on').dataset.loc;
+  const attr = document.querySelector('#filters2 .chip.on').dataset.attr;
+  document.querySelectorAll('.card').forEach(card=>{
+    const matchesLoc = loc==='all' || card.dataset.loc===loc;
+    const matchesAttr = attr==='all'
+      || (attr==='preventa' && card.dataset.estado==='Preventa')
+      || (card.dataset.tipologias||'').split('|').includes(attr);
+    card.style.display = (matchesLoc && matchesAttr) ? '' : 'none';
+  });
+}
+document.getElementById('filters').addEventListener('click', e=>{
+  const btn = e.target.closest('.chip');
+  if(!btn) return;
+  document.querySelectorAll('#filters .chip').forEach(c=>c.classList.remove('on'));
+  btn.classList.add('on');
+  aplicarFiltros();
+});
+document.getElementById('filters2').addEventListener('click', e=>{
+  const btn = e.target.closest('.chip');
+  if(!btn) return;
+  document.querySelectorAll('#filters2 .chip').forEach(c=>c.classList.remove('on'));
+  btn.classList.add('on');
+  aplicarFiltros();
+});
+
+/* ================= MODAL DE DETALLE (sin cambios de lógica respecto al sitio actual) ================= */
+function amenidadesActivas(p){
+  const claves = [
+    ['pet','Pet friendly'],['jacuzzi','Jacuzzi'],['alberca','Alberca'],
+    ['rooftop','Rooftop'],['gym','Gym'],['cowork','Cowork'],['lavanderia','Lavandería']
+  ];
+  return claves.filter(([k])=>p[k]==='Sí').map(([,label])=>label);
+}
+let currentModalProp = null;
+let currentModalTipoIndex = -1;
+let currentModalPhotoIndex = 0;
+
+function currentFotos(p, tipoIndex){
+  if(tipoIndex === -1){
+    const portada = p.photoUrlAmenidades;
+    const resto = p.fotosAmenidades || [];
+    return portada ? [portada, ...resto.filter(f=>f!==portada)] : resto;
+  }
+  const tipo = (p.tipologias||[])[tipoIndex];
+  if(tipo && tipo.fotos && tipo.fotos.length) return tipo.fotos;
+  if(tipo && tipo.photoUrl) return [tipo.photoUrl];
+  return [];
+}
+function renderModalArt(){
+  const p = currentModalProp;
+  const fotos = currentFotos(p, currentModalTipoIndex);
+  if(currentModalPhotoIndex >= fotos.length) currentModalPhotoIndex = 0;
+  const fotoUrl = fotos[currentModalPhotoIndex];
+  const nav = fotos.length>1 ? `
+    <button type="button" class="modal-photo-nav prev" onclick="window.modalPhotoNav(-1)" aria-label="Foto anterior">‹</button>
+    <button type="button" class="modal-photo-nav next" onclick="window.modalPhotoNav(1)" aria-label="Foto siguiente">›</button>
+    <div class="modal-photo-counter">${currentModalPhotoIndex+1} / ${fotos.length}</div>
+  ` : '';
+  document.getElementById('modalArt').innerHTML = fotoUrl
+    ? `<img src="${fotoUrl}" alt="${p.nombre}">${nav}`
+    : `<div class="art-fallback"></div>`;
+}
+window.modalPhotoNav = function(dir){
+  const p = currentModalProp;
+  const fotos = currentFotos(p, currentModalTipoIndex);
+  if(!fotos.length) return;
+  currentModalPhotoIndex = (currentModalPhotoIndex + dir + fotos.length) % fotos.length;
+  renderModalArt();
+};
+function renderModalBody(activeIndex){
+  const p = currentModalProp;
+  const tipologias = p.tipologias || [];
+  const tipo = activeIndex>=0 ? tipologias[activeIndex] : null;
+  let tagLabel, precioLabel = money(null), m2Label = '—';
+  if(activeIndex === -1){
+    tagLabel = 'Amenidades';
+    const desde = precioDesde(p);
+    precioLabel = desde!==null ? `Desde ${money(desde)}` : money(null);
+  } else {
+    tagLabel = tipo ? tipo.tipo : (p.estado||'');
+    if(tipo && tipo.unidades && tipo.unidades.length){
+      const precios = tipo.unidades.map(u=>u.precio).filter(n=>typeof n==='number');
+      if(precios.length===1) precioLabel = money(precios[0]);
+      else if(precios.length>1) precioLabel = `Desde ${money(Math.min(...precios))}`;
+      const m2s = tipo.unidades.map(u=>u.m2).filter(n=>typeof n==='number');
+      if(m2s.length===1) m2Label = `${m2s[0]} m²`;
+      else if(m2s.length>1) m2Label = `${Math.min(...m2s)}–${Math.max(...m2s)} m²`;
+    }
+  }
+  const tabsHtml = `<div class="modal-typ-tabs">
+    <button type="button" class="modal-typ-tab${activeIndex===-1?' active':''}" onclick="window.selectModalTipologia('${p.id}',-1)">Amenidades</button>
+    ${tipologias.map((t,i)=>`<button type="button" class="modal-typ-tab${i===activeIndex?' active':''}" onclick="window.selectModalTipologia('${p.id}',${i})">${t.tipo}</button>`).join('')}
+  </div>`;
+  document.getElementById('modalBody').innerHTML = `
+    <span class="tag">${tagLabel}</span>
+    <h3>${p.nombre}</h3>
+    <div class="modal-loc">${p.zona}${p.ciudad ? ' · '+p.ciudad : ''}</div>
+    ${tabsHtml}
+    <div class="modal-price">${precioLabel}</div>
+    <div class="modal-specs">
+      <div>Superficie<b>${m2Label}</b></div>
+      <div>Estado<b>${p.estado || '—'}</b></div>
+      <div>Entrega<b>${p.entrega || '—'}</b></div>
+    </div>
+    <p class="lede" style="max-width:100%;margin-bottom:22px;">${p.desc || ''}</p>
+    <div class="modal-amenities">${amenidadesActivas(p).map(a=>`<span>${a}</span>`).join('')}</div>
+    <div class="modal-actions">
+      <a href="contacto.html?propiedad=${p.id}" class="btn btn-primary">Agendar visita<span>→</span></a>
+      <a href="contacto.html?propiedad=${p.id}" class="btn btn-ghost">Solicitar dossier</a>
+    </div>
+  `;
+}
+window.openModal = function(id){
+  const p = PROPIEDADES.find(x=>x.id===id);
+  if(!p) return;
+  currentModalProp = p;
+  currentModalTipoIndex = -1;
+  currentModalPhotoIndex = 0;
+  renderModalArt();
+  renderModalBody(-1);
+  document.getElementById('modalOverlay').classList.add('show');
+  document.body.style.overflow='hidden';
+};
+window.selectModalTipologia = function(propId, index){
+  if(!currentModalProp || currentModalProp.id!==propId) return;
+  currentModalTipoIndex = index;
+  currentModalPhotoIndex = 0;
+  renderModalArt();
+  renderModalBody(index);
+};
+window.closeModal = function(){
+  document.getElementById('modalOverlay').classList.remove('show');
+  document.body.style.overflow='';
+};
+document.getElementById('modalOverlay').addEventListener('click', e=>{
+  if(e.target.id==='modalOverlay') window.closeModal();
+});
+
+/* ================= CARGA DE DATOS ================= */
+async function cargarPropiedades(){
+  const snap = await getDocs(collection(db,'propiedades'));
+  PROPIEDADES = snap.docs.map(d=>{
+    const data = d.data();
+    return { id:d.id, ...data, tipologias:(data.tipologias||[]).filter(t=>!TIPOLOGIAS_OCULTAS.includes(t.tipo)) };
+  });
+  renderGrid();
+
+  // Si se llegó desde el nav "Preventa" (proyectos.html?filtro=preventa), activar ese chip solo.
+  const params = new URLSearchParams(location.search);
+  if(params.get('filtro') === 'preventa'){
+    document.querySelectorAll('#filters2 .chip').forEach(c=>c.classList.remove('on'));
+    document.querySelector('#filters2 .chip[data-attr="preventa"]').classList.add('on');
+    aplicarFiltros();
+  }
+}
+cargarPropiedades();
+</script>
+</body>
+</html>

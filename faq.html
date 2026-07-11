@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preguntas frecuentes — ALMAHÁ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Instrument+Serif:ital@1&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+<link rel="apple-touch-icon" href="favicon-192.png">
+<style>
+  :root{
+    --clove:#3D3129; --clove-old:#53443D; --clove-70:rgba(83,68,61,.7); --clove-40:rgba(83,68,61,.4); --clove-15:rgba(83,68,61,.15);
+    --terracotta:#AD7556; --sandstone-60:rgba(220,207,184,.6);
+    --white:#FFFDF9;
+    --serif:'Fraunces',serif; --mono:'DM Mono',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--white);color:var(--clove-old);font-family:'Plus Jakarta Sans',sans-serif;}
+  .ita{font-family:'Instrument Serif',serif;font-style:italic;color:var(--terracotta);}
+  h2{text-wrap:balance;}
+
+  nav{display:flex;justify-content:space-between;align-items:center;padding:26px 56px;border-bottom:1px solid rgba(61,49,41,.1);}
+  nav .logo{font-weight:800;font-size:18px;letter-spacing:.04em;color:var(--clove-old);text-decoration:none;}
+  nav a{color:inherit;text-decoration:none;}
+  nav .links{display:flex;gap:32px;font-size:13px;font-weight:500;color:rgba(61,49,41,.6);}
+  nav .wa{background:var(--terracotta);color:var(--white);padding:12px 22px;border-radius:100px;font-size:12.5px;font-weight:700;}
+
+  .head{padding:70px 56px 10px; background:var(--sandstone-60);}
+  .head .eyebrow{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--terracotta);margin-bottom:16px;}
+  .head h2{font-weight:800;font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(28px,3.4vw,44px);margin-bottom:44px;}
+
+  /* ---------- Acordeón FAQ — diseño actual sin cambios ---------- */
+  .faq-wrap{max-width:820px; margin:0 auto; padding:0 56px 120px; background:var(--sandstone-60);}
+  .faq-item{border-top:1px solid var(--clove-15);}
+  .faq-item:last-child{border-bottom:1px solid var(--clove-15);}
+  .faq-q{padding:26px 0; display:flex; justify-content:space-between; align-items:center; gap:20px; cursor:pointer;}
+  .faq-q h4{font-family:var(--serif); font-weight:500; font-size:17px;}
+  .faq-plus{width:18px;height:18px; position:relative; flex-shrink:0;}
+  .faq-plus::before, .faq-plus::after{content:""; position:absolute; background:var(--clove-old); transition:transform .35s;}
+  .faq-plus::before{width:100%; height:1px; top:50%; left:0;}
+  .faq-plus::after{width:1px; height:100%; left:50%; top:0;}
+  .faq-item.open .faq-plus::after{transform:rotate(90deg);}
+  .faq-a{max-height:0; overflow:hidden; transition:max-height .4s cubic-bezier(.16,1,.3,1);}
+  .faq-a p{padding-bottom:26px; color:var(--clove-70); max-width:680px; font-size:13px; line-height:1.7;}
+
+  footer{background:var(--clove-old);padding:80px 56px 40px;}
+  .foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:50px;padding-bottom:56px;border-bottom:1px solid rgba(255,253,249,.15);}
+  .foot-logo{font-weight:800;font-size:20px;color:var(--white);margin-bottom:16px;}
+  .foot-top p{font-size:13px;color:rgba(255,253,249,.6);line-height:1.7;max-width:280px;}
+  .foot-col h4{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#DCCFB8;margin-bottom:18px;}
+  .foot-col div, .foot-col a{font-size:13px;color:rgba(255,253,249,.75);margin-bottom:12px;display:block;text-decoration:none;}
+  .foot-bottom{display:flex;justify-content:space-between;padding-top:26px;font-size:12px;color:rgba(255,253,249,.45);}
+
+  .wa-fab{position:fixed;bottom:28px;right:28px;z-index:50;width:56px;height:56px;border-radius:50%;background:var(--terracotta);display:flex;align-items:center;justify-content:center;box-shadow:0 14px 30px -8px rgba(0,0,0,.4);}
+  .wa-fab svg{width:26px;height:26px;fill:#fff;}
+
+  @media(max-width:900px){
+    nav .links{display:none;}
+    .foot-top{grid-template-columns:1fr;gap:34px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">ALMAHÁ</a>
+  <div class="links">
+    <a href="proyectos.html">Proyectos</a>
+    <a href="proyectos.html?filtro=preventa">Preventa</a>
+    <a href="quienes-somos.html">Quiénes somos</a>
+    <a href="faq.html">Preguntas frecuentes</a>
+    <a href="contacto.html">Contacto</a>
+  </div>
+  <a class="wa" href="https://wa.me/5219841855836" target="_blank" rel="noopener">Agendar una consulta</a>
+</nav>
+
+<section class="head">
+  <div class="eyebrow">Antes de escribirnos</div>
+  <h2>Preguntas <span class="ita">frecuentes.</span></h2>
+</section>
+
+<div class="faq-wrap" id="faqList"></div>
+
+<footer>
+  <div class="foot-top">
+    <div>
+      <div class="foot-logo">ALMAHÁ</div>
+      <p>Bienes raíces de autor en el Caribe mexicano. Tulum, Playa del Carmen y alrededores.</p>
+    </div>
+    <div class="foot-col">
+      <h4>Contacto</h4>
+      <a href="https://wa.me/5219841855836" target="_blank" rel="noopener">+52 1 984 185 5836</a>
+      <a href="mailto:sofiasuarezasesora@gmail.com">sofiasuarezasesora@gmail.com</a>
+    </div>
+    <div class="foot-col">
+      <h4>Seguinos</h4>
+      <a href="https://www.instagram.com/sofiarealtor_/" target="_blank" rel="noopener">Instagram — @sofiarealtor_</a>
+      <a href="https://www.tiktok.com/@sofi.realtor" target="_blank" rel="noopener">TikTok — @sofi.realtor</a>
+    </div>
+  </div>
+  <div class="foot-bottom"><span>© 2026 Almahá</span><span>20.2114° N, 87.4654° O</span></div>
+</footer>
+
+<a class="wa-fab" href="https://wa.me/5219841855836" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.87.5 3.62 1.38 5.13L2 22l4.99-1.35C8.44 21.5 10.17 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.3c-.22.62-1.28 1.18-1.77 1.24-.45.06-1.02.09-1.65-.1-.38-.12-.87-.28-1.5-.55-2.63-1.14-4.34-3.8-4.48-3.98-.13-.18-1.07-1.42-1.07-2.72 0-1.29.68-1.93.92-2.19.24-.26.53-.32.7-.32.18 0 .35 0 .5.01.16.01.38-.06.6.46.22.53.75 1.83.82 1.96.07.13.11.29.02.47-.09.18-.14.29-.27.45-.13.16-.28.35-.4.47-.13.13-.27.27-.12.53.16.26.7 1.15 1.5 1.86 1.03.92 1.9 1.2 2.16 1.34.26.13.41.11.56-.07.16-.18.66-.77.84-1.03.18-.26.35-.22.59-.13.24.09 1.53.72 1.79.85.26.13.44.2.5.31.07.11.07.64-.15 1.26z"/></svg></a>
+
+<script>
+const FAQS = [
+  {q:"¿Pueden los extranjeros comprar propiedad en México?", a:"Sí. En zona costera (dentro de los primeros 50 km desde la playa), los extranjeros compran a través de un fideicomiso bancario, un instrumento legal que otorga todos los derechos de uso, renta, herencia y venta sobre el inmueble. Nosotros gestionamos el trámite completo con el banco fiduciario que elijas."},
+  {q:"¿Cuánto tiempo toma cerrar una compra?", a:"En promedio entre 6 y 10 semanas desde que se firma la oferta, dependiendo de si la propiedad ya cuenta con fideicomiso vigente o si hay que constituir uno nuevo. Preventas suelen tomar menos tiempo administrativo pero implican plazos de entrega de obra."},
+  {q:"¿Qué gastos adicionales debo considerar?", a:"Además del precio de la propiedad, se estiman entre 6% y 8% adicional en gastos de cierre: impuesto de adquisición, honorarios notariales, avalúo, y en su caso, constitución del fideicomiso y primer año de mantenimiento bancario."},
+  {q:"¿Ofrecen financiamiento?", a:"Trabajamos con dos fideicomisos financieros que ofrecen crédito a extranjeros con enganche desde 30%, y con planes de pago directo con desarrolladores en propiedades de preventa."},
+  {q:"¿Gestionan la propiedad si no vivo en México?", a:"Sí. Nuestro equipo de gestión se encarga de mantenimiento, reservas, limpieza y reporte financiero mensual, con opción de administración completa o solo supervisión."},
+  {q:"¿Qué garantías tengo sobre la legalidad del terreno?", a:"Antes de publicar cualquier propiedad, verificamos escritura, historial de registro público, uso de suelo y ausencia de gravámenes. Ese informe de debida diligencia se entrega a cada comprador antes de firmar."},
+];
+
+const faqList = document.getElementById('faqList');
+FAQS.forEach((f,i)=>{
+  faqList.innerHTML += `
+  <div class="faq-item" id="faqItem${i}">
+    <div class="faq-q" onclick="toggleFaq(${i})"><h4>${f.q}</h4><div class="faq-plus"></div></div>
+    <div class="faq-a" id="faqA${i}"><p>${f.a}</p></div>
+  </div>`;
+});
+
+window.toggleFaq = function(i){
+  const item = document.getElementById('faqItem'+i);
+  const answer = document.getElementById('faqA'+i);
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(el=>{
+    el.classList.remove('open');
+    el.querySelector('.faq-a').style.maxHeight = null;
+  });
+  if(!isOpen){
+    item.classList.add('open');
+    answer.style.maxHeight = answer.scrollHeight + 'px';
+  }
+};
+</script>
+</body>
+</html>
