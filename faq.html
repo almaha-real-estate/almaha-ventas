@@ -88,7 +88,6 @@
   .rail-arrow svg{width:18px;height:18px;}
   .rail-arrow:hover{background:var(--clove); color:var(--muslin); border-color:var(--clove);}
   h1,h2,h3,h4{
-    font-family:var(--serif);
     font-weight:500;
     letter-spacing:-.01em;
     color:var(--clove);
@@ -773,6 +772,7 @@
     .foot-new .foot-top{grid-template-columns:1fr; gap:34px;}
   }
 
+  .page-head-bg{background:var(--sandstone-60);}
   .page-head{padding:70px var(--edge) 20px; max-width:1240px; margin:0 auto;}
   .page-head h1{font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:clamp(32px,4vw,52px); line-height:1.1; max-width:700px; margin-top:16px;}
 
@@ -794,10 +794,12 @@
   <a class="wa-new" href="https://wa.me/5219841855836" target="_blank" rel="noopener">Agendar una consulta</a>
 </nav>
 
-<section class="page-head" style="background:var(--sandstone-60);">
+<div class="page-head-bg">
+<section class="page-head">
   <div class="eyebrow">Antes de escribirnos</div>
   <h1>Preguntas <span class="ita" style="font-family:'Instrument Serif',serif;font-style:italic;color:var(--terracotta-accent,var(--terracotta));">frecuentes.</span></h1>
 </section>
+</div>
 
 <section class="section" style="background:var(--sandstone-60); padding-top:20px;">
   <div class="container">
