@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Proyectos — ALMAHÁ</title>
+<title>ALMAHÁ — Bienes Raíces del Caribe Mexicano</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
@@ -88,7 +88,6 @@
   .rail-arrow svg{width:18px;height:18px;}
   .rail-arrow:hover{background:var(--clove); color:var(--muslin); border-color:var(--clove);}
   h1,h2,h3,h4{
-    font-family:var(--serif);
     font-weight:500;
     letter-spacing:-.01em;
     color:var(--clove);
@@ -641,11 +640,6 @@
   .modal-amenities{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:28px;}
   .modal-amenities span{font-size:12px; padding:6px 12px; background:var(--sandstone-60); font-family:var(--mono);}
   .modal-actions{display:flex; gap:12px; flex-wrap:wrap;}
-  .modal-actions .btn{
-    border-radius:100px;
-    padding:12px 22px;
-    font-size:12.5px;
-  }
 
   /* ---------- WHATSAPP FAB ---------- */
   .wa-fab{
@@ -778,70 +772,44 @@
     .foot-new .foot-top{grid-template-columns:1fr; gap:34px;}
   }
 
-  /* ---------- PROYECTOS: header + buscador compacto + grilla nueva ---------- */
-  .search-bar{display:flex; gap:12px; max-width:1240px; margin:0 auto; padding:24px var(--edge) 20px;}
-  .search-bar input{
-    flex:1; padding:14px 20px; border-radius:var(--radius-pill); border:1px solid rgba(83,68,61,.18);
-    font-size:14px; font-family:'Plus Jakarta Sans',sans-serif; background:var(--white);
+
+  /* ---------- HOME: HERO CARRUSEL ---------- */
+  .home-hero{position:relative; height:100vh; overflow:hidden;}
+  .home-hero .slide{position:absolute; inset:0; opacity:0; transition:opacity 1.6s ease;}
+  .home-hero .slide.on{opacity:1;}
+  .home-hero .slide img{width:100%; height:100%; object-fit:cover;}
+  .home-hero::after{content:""; position:absolute; inset:0; z-index:1; background:linear-gradient(180deg, rgba(20,16,12,.5) 0%, rgba(20,16,12,.12) 32%, rgba(20,16,12,.68) 100%);}
+  .home-kicker{position:relative; z-index:2; display:flex; justify-content:center; align-items:center; gap:10px; padding-top:150px; color:rgba(255,253,249,.85); font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;}
+  .home-kicker .dot{width:7px; height:7px; border-radius:50%; background:var(--terracotta-accent,var(--terracotta)); animation:pulseDot 2s ease-in-out infinite;}
+  @keyframes pulseDot{0%,100%{opacity:1; transform:scale(1);} 50%{opacity:.4; transform:scale(1.5);}}
+  .home-hero-content{position:relative; z-index:2; display:flex; flex-direction:column; align-items:center; text-align:center; padding:22px 40px 0;}
+  .home-hero-content h1{color:#fff; font-weight:800; font-size:clamp(36px,5.4vw,72px); line-height:1.1; letter-spacing:-.01em; max-width:760px;}
+  .home-hero-content .lede{color:rgba(255,253,249,.85); font-weight:500; font-size:14.5px; line-height:1.7; max-width:460px; margin-top:22px; font-family:'Plus Jakarta Sans',sans-serif;}
+  .home-hero-btn{margin-top:36px; background:var(--white); color:var(--clove); padding:17px 34px; border-radius:var(--radius-pill); font-weight:800; font-size:12.5px; letter-spacing:.03em; text-transform:uppercase; text-decoration:none; transition:transform .3s;}
+  .home-hero-btn:hover{transform:translateY(-2px);}
+  .home-dots{position:absolute; z-index:3; bottom:44px; left:50%; transform:translateX(-50%); display:flex; gap:8px;}
+  .home-dots span{width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,.4);}
+  .home-dots span.on{background:#fff;}
+
+  /* ---------- HOME: NOSOTRAS TEASER ---------- */
+  .nosotras-teaser{padding:120px var(--edge); display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:center; max-width:1240px; margin:0 auto;}
+  .nosotras-teaser .ph{aspect-ratio:4/3.2; border-radius:var(--radius-card); overflow:hidden;}
+  .nosotras-teaser .ph img{width:100%; height:100%; object-fit:cover;}
+  .nosotras-teaser p{font-size:14.5px; line-height:1.75; color:rgba(61,49,41,.7); max-width:440px; font-family:'Plus Jakarta Sans',sans-serif;}
+  .nosotras-teaser .conocer-mas{display:inline-flex; align-items:center; gap:8px; margin-top:26px; font-weight:700; font-size:13px; color:var(--terracotta-accent,var(--terracotta)); text-decoration:none;}
+
+  /* ---------- HOME: INSTAGRAM ---------- */
+  .social-new{background:var(--sandstone-60); padding:110px var(--edge);}
+  .social-new .social-head{text-align:center; margin-bottom:56px;}
+  .social-new .handle{font-size:13px; color:rgba(61,49,41,.55); margin-top:10px; font-family:'Plus Jakarta Sans',sans-serif;}
+  .igrid{display:grid; grid-template-columns:repeat(6,1fr); gap:6px; max-width:1100px; margin:0 auto;}
+  .igrid .cell{aspect-ratio:1/1; overflow:hidden; background:var(--sandstone);}
+  .igrid .cell img{width:100%; height:100%; object-fit:cover; display:block;}
+
+  @media(max-width:900px){
+    .nosotras-teaser{grid-template-columns:1fr; gap:40px;}
+    .igrid{grid-template-columns:repeat(3,1fr);}
   }
-  .search-bar input:focus{outline:none; border-color:var(--terracotta-accent,var(--terracotta));}
-  .filters-btn{
-    padding:14px 24px; border-radius:var(--radius-pill); border:1px solid var(--clove); background:var(--clove);
-    color:var(--white); font-size:13px; font-weight:700; white-space:nowrap; cursor:pointer; font-family:'Plus Jakarta Sans',sans-serif;
-  }
-  .filters-btn.active{background:var(--terracotta-accent,var(--terracotta)); border-color:var(--terracotta-accent,var(--terracotta));}
-  #filtersCount{font-family:'Instrument Serif',serif; font-style:italic;}
-
-  .loc-chips{display:flex; gap:12px; padding:0 var(--edge) 20px; flex-wrap:wrap; max-width:1240px; margin:0 auto;}
-
-  .filters-panel{
-    max-height:0; overflow:hidden; opacity:0;
-    transition:max-height .4s cubic-bezier(.16,1,.3,1), opacity .3s;
-    padding:0 var(--edge); display:grid; grid-template-columns:1fr 1.6fr 1.4fr; gap:36px;
-    max-width:1240px; margin:0 auto;
-  }
-  .filters-panel.open{max-height:400px; opacity:1; padding-bottom:36px;}
-  .fp-col label{font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:rgba(83,68,61,.6); display:block; margin-bottom:14px; font-family:'Plus Jakarta Sans',sans-serif;}
-  .fp-col .filters, .fp-col .filters-caract{padding:0; flex-wrap:wrap;}
-
-  .range-values{font-family:'Instrument Serif',serif; font-style:italic; font-size:18px; color:var(--terracotta-accent,var(--terracotta)); margin:8px 0 14px;}
-  .range-slider{position:relative; height:36px;}
-  .range-slider input[type="range"]{
-    position:absolute; width:100%; top:14px; margin:0; -webkit-appearance:none; background:none; pointer-events:none;
-  }
-  .range-slider input[type="range"]::-webkit-slider-thumb{
-    -webkit-appearance:none; pointer-events:all; width:18px; height:18px; border-radius:50%;
-    background:var(--terracotta-accent,var(--terracotta)); cursor:pointer; border:3px solid var(--white); box-shadow:0 2px 6px rgba(0,0,0,.25);
-  }
-  .range-slider input[type="range"]::-webkit-slider-runnable-track{height:3px; background:rgba(83,68,61,.15);}
-
-  .filters-caract{display:flex; gap:20px; flex-wrap:wrap;}
-  .check{display:flex; align-items:center; gap:8px; font-size:13px; font-weight:500; color:rgba(83,68,61,.75); cursor:pointer; font-family:'Plus Jakarta Sans',sans-serif;}
-  .check input{accent-color:var(--terracotta-accent,var(--terracotta)); width:16px; height:16px;}
-
-  @media(max-width:900px){ .filters-panel{grid-template-columns:1fr;} }
-
-  .proy-head{padding:70px var(--edge) 8px; max-width:1240px; margin:0 auto;}
-  .proy-head h1{font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:clamp(32px,4vw,52px); line-height:1.1; max-width:700px;}
-
-  .filters{display:flex; gap:12px; padding:24px var(--edge) 0; flex-wrap:wrap; max-width:1240px; margin:0 auto;}
-  .filters + .filters{padding-top:0; padding-bottom:44px;}
-  .chip{padding:12px 22px; border-radius:var(--radius-pill); border:1px solid rgba(83,68,61,.18); font-size:13px; font-weight:500; color:rgba(83,68,61,.7); cursor:pointer; background:none; font-family:'Plus Jakarta Sans',sans-serif;}
-  .chip.active, .chip.on{background:var(--clove); color:var(--white); border-color:var(--clove);}
-
-  .grid-new{display:grid; grid-template-columns:repeat(3,1fr); gap:36px; padding:20px var(--edge) 140px; max-width:1240px; margin:0 auto;}
-  .card-new{cursor:pointer;}
-  .card-new .ph{aspect-ratio:5/4; border-radius:var(--radius-card); overflow:hidden; position:relative; background:var(--muslin);}
-  .card-new .ph img{width:100%; height:100%; object-fit:cover; display:block;}
-  .card-new .badge-new{position:absolute; top:18px; left:18px; background:rgba(255,253,249,.92); color:var(--clove); padding:8px 15px; border-radius:var(--radius-pill); font-size:11px; font-weight:700; font-family:'Plus Jakarta Sans',sans-serif;}
-  .card-new .body-new{padding:22px 4px 0; display:flex; justify-content:space-between; align-items:flex-start;}
-  .card-new h3{font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:19px;}
-  .card-new .loc-new{font-size:12.5px; color:rgba(83,68,61,.55); font-weight:500; margin-top:5px; font-family:'Plus Jakarta Sans',sans-serif;}
-  .card-new .px{text-align:right;}
-  .card-new .px .lbl{font-size:10.5px; color:rgba(83,68,61,.5); font-weight:500; font-family:'Plus Jakarta Sans',sans-serif;}
-  .card-new .px .amt{font-family:'Instrument Serif',serif; font-style:italic; font-size:18px; color:var(--terracotta-accent,var(--terracotta)); margin-top:2px;}
-
-  @media(max-width:900px){ .grid-new{grid-template-columns:1fr;} }
 
 </style>
 <link rel="icon" href="favicon.ico" sizes="any">
@@ -850,88 +818,7 @@
 </head>
 <body>
 
-<svg class="art-defs" aria-hidden="true">
-<defs>
-  <symbol id="art-villa-pool" viewBox="0 0 240 180">
-    <line x1="10" y1="140" x2="230" y2="140" stroke="currentColor" stroke-width="1"/>
-    <path d="M40 140 L40 95 L120 70 L200 95 L200 140" fill="none" stroke="currentColor" stroke-width="1.4"/>
-    <line x1="40" y1="95" x2="200" y2="95" stroke="currentColor" stroke-width="1"/>
-    <rect x="55" y="105" width="24" height="35" fill="none" stroke="currentColor" stroke-width="1"/>
-    <rect x="95" y="105" width="50" height="20" fill="none" stroke="currentColor" stroke-width="1"/>
-    <rect x="160" y="105" width="24" height="35" fill="none" stroke="currentColor" stroke-width="1"/>
-    <ellipse cx="120" cy="158" rx="66" ry="10" fill="none" stroke="currentColor" stroke-width="1.2"/>
-    <path d="M10 165 q10 -6 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0" fill="none" stroke="currentColor" stroke-width="1" opacity=".5"/>
-    <circle cx="205" cy="35" r="14" fill="none" stroke="currentColor" stroke-width="1"/>
-  </symbol>
-
-  <symbol id="art-villa-beach" viewBox="0 0 240 180">
-    <path d="M0 150 q30 -14 60 0 t60 0 t60 0 t60 0" fill="none" stroke="currentColor" stroke-width="1.2"/>
-    <path d="M0 165 q30 -10 60 0 t60 0 t60 0 t60 0" fill="none" stroke="currentColor" stroke-width="1" opacity=".55"/>
-    <path d="M55 130 L55 88 L120 60 L185 88 L185 130 Z" fill="none" stroke="currentColor" stroke-width="1.4"/>
-    <line x1="55" y1="100" x2="185" y2="100" stroke="currentColor" stroke-width="1"/>
-    <rect x="70" y="106" width="20" height="24" fill="none" stroke="currentColor" stroke-width="1"/>
-    <rect x="150" y="106" width="20" height="24" fill="none" stroke="currentColor" stroke-width="1"/>
-    <path d="M120 60 L120 30" stroke="currentColor" stroke-width="1"/>
-    <path d="M120 30 q18 4 18 22" fill="none" stroke="currentColor" stroke-width="1"/>
-    <path d="M120 34 q-16 6 -14 22" fill="none" stroke="currentColor" stroke-width="1"/>
-    <path d="M120 38 q20 10 12 30" fill="none" stroke="currentColor" stroke-width="1"/>
-  </symbol>
-
-  <symbol id="art-penthouse" viewBox="0 0 240 180">
-    <rect x="80" y="30" width="80" height="115" fill="none" stroke="currentColor" stroke-width="1.4"/>
-    <line x1="80" y1="55" x2="160" y2="55" stroke="currentColor" stroke-width=".8"/>
-    <line x1="80" y1="80" x2="160" y2="80" stroke="currentColor" stroke-width=".8"/>
-    <line x1="80" y1="105" x2="160" y2="105" stroke="currentColor" stroke-width=".8"/>
-    <line x1="105" y1="30" x2="105" y2="145" stroke="currentColor" stroke-width=".8"/>
-    <line x1="135" y1="30" x2="135" y2="145" stroke="currentColor" stroke-width=".8"/>
-    <rect x="60" y="10" width="120" height="20" fill="none" stroke="currentColor" stroke-width="1.2"/>
-    <line x1="10" y1="145" x2="230" y2="145" stroke="currentColor" stroke-width="1"/>
-    <circle cx="200" cy="45" r="10" fill="none" stroke="currentColor" stroke-width="1"/>
-  </symbol>
-
-  <symbol id="art-lagoon" viewBox="0 0 240 180">
-    <path d="M50 128 L50 92 L120 68 L190 92 L190 128 Z" fill="none" stroke="currentColor" stroke-width="1.4"/>
-    <line x1="50" y1="98" x2="190" y2="98" stroke="currentColor" stroke-width="1"/>
-    <rect x="65" y="104" width="18" height="24" fill="none" stroke="currentColor" stroke-width="1"/>
-    <rect x="155" y="104" width="18" height="24" fill="none" stroke="currentColor" stroke-width="1"/>
-    <line x1="120" y1="128" x2="120" y2="165" stroke="currentColor" stroke-width="1.2"/>
-    <line x1="100" y1="165" x2="140" y2="165" stroke="currentColor" stroke-width="1.2"/>
-    <path d="M0 150 q30 -8 60 0 t60 0 t60 0 t60 0" fill="none" stroke="currentColor" stroke-width="1" opacity=".6"/>
-    <path d="M0 160 q30 -6 60 0 t60 0 t60 0 t60 0" fill="none" stroke="currentColor" stroke-width="1" opacity=".35"/>
-  </symbol>
-
-  <symbol id="art-land" viewBox="0 0 240 180">
-    <path d="M30 40 L210 40 L190 150 L50 150 Z" fill="none" stroke-dasharray="5 5" stroke="currentColor" stroke-width="1.2"/>
-    <circle cx="70" cy="70" r="9" fill="none" stroke="currentColor" stroke-width="1"/>
-    <circle cx="100" cy="90" r="7" fill="none" stroke="currentColor" stroke-width="1"/>
-    <circle cx="150" cy="65" r="10" fill="none" stroke="currentColor" stroke-width="1"/>
-    <circle cx="170" cy="110" r="8" fill="none" stroke="currentColor" stroke-width="1"/>
-    <circle cx="90" cy="125" r="6" fill="none" stroke="currentColor" stroke-width="1"/>
-    <path d="M40 45 L40 35 M60 40 L58 32 M200 45 L200 35" stroke="currentColor" stroke-width="1"/>
-  </symbol>
-
-  <symbol id="art-loft" viewBox="0 0 240 180">
-    <rect x="55" y="45" width="130" height="95" fill="none" stroke="currentColor" stroke-width="1.4"/>
-    <line x1="55" y1="80" x2="185" y2="80" stroke="currentColor" stroke-width=".8"/>
-    <line x1="55" y1="112" x2="185" y2="112" stroke="currentColor" stroke-width=".8"/>
-    <rect x="90" y="88" width="22" height="24" fill="none" stroke="currentColor" stroke-width="1"/>
-    <rect x="128" y="88" width="22" height="24" fill="none" stroke="currentColor" stroke-width="1"/>
-    <path d="M10 150 q40 -30 60 -4" fill="none" stroke="currentColor" stroke-width="1" opacity=".6"/>
-    <path d="M170 150 q30 -22 50 -2" fill="none" stroke="currentColor" stroke-width="1" opacity=".6"/>
-    <line x1="10" y1="150" x2="230" y2="150" stroke="currentColor" stroke-width="1"/>
-  </symbol>
-
-  <symbol id="art-compass" viewBox="0 0 100 100">
-    <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="1"/>
-    <circle cx="50" cy="50" r="2" fill="currentColor"/>
-    <path d="M50 8 L56 50 L50 92 L44 50 Z" fill="none" stroke="currentColor" stroke-width="1"/>
-    <path d="M8 50 L50 44 L92 50 L50 56 Z" fill="none" stroke="currentColor" stroke-width="1"/>
-    <text x="50" y="22" text-anchor="middle" font-size="8" fill="currentColor" font-family="DM Mono">N</text>
-  </symbol>
-</defs>
-</svg>
-
-<nav class="nav-new">
+<nav class="nav-new on-hero">
   <a href="index.html" class="logo-new">Almahá</a>
   <div class="links-new">
     <a href="proyectos.html">Proyectos</a>
@@ -942,76 +829,43 @@
   <a class="wa-new" href="https://wa.me/5219841855836" target="_blank" rel="noopener">Agendar una consulta</a>
 </nav>
 
-<section class="proy-head">
-  <div class="eyebrow">Catálogo Almahá</div>
-  <h1>Una selección curada, no un <span class="ita" style="font-family:'Instrument Serif',serif;font-style:italic;color:var(--terracotta-accent,var(--terracotta));">portal de propiedades.</span></h1>
+<section class="home-hero">
+  <div class="slide on"><img src="assets/hero-carrusel-1.jpg" alt="Terraza y alberca, arquitectura Almahá"></div>
+  <div class="slide"><img src="assets/hero-carrusel-2.jpg" alt="Living y cocina integrada"></div>
+  <div class="slide"><img src="assets/hero-carrusel-3.jpg" alt="Sala de estar con escalera"></div>
+  <div class="slide"><img src="assets/hero-carrusel-4.jpg" alt="Fachada al atardecer"></div>
+  <div class="slide"><img src="assets/hero-carrusel-5.jpg" alt="Alberca y palapa"></div>
+  <div class="home-kicker"><span class="dot"></span>Bienes raíces boutique — Caribe mexicano</div>
+  <div class="home-hero-content">
+    <h1>Invertí donde otros <span class="ita" style="font-family:'Instrument Serif',serif;font-style:italic;color:var(--sandstone);">sueñan</span> vivir.</h1>
+    <p class="lede">Encontramos propiedades con verdadero potencial en el Caribe mexicano para quienes buscan hacer crecer su patrimonio con confianza.</p>
+    <a class="home-hero-btn" href="proyectos.html">Explorar proyectos</a>
+  </div>
+  <div class="home-dots"><span class="on"></span><span></span><span></span><span></span><span></span></div>
 </section>
 
-<div class="search-bar">
-  <input type="text" id="searchText" placeholder="Buscá por ciudad, zona o nombre del proyecto...">
-  <button type="button" id="filtersToggle" class="filters-btn">
-    Filtros <span id="filtersCount"></span>
-  </button>
-</div>
-
-<div class="loc-chips" id="filters">
-  <button class="chip active" data-loc="all">Todos los destinos</button>
-  <button class="chip" data-loc="tulum">Tulum</button>
-  <button class="chip" data-loc="pdc">Playa del Carmen</button>
-  <button class="chip" data-loc="bacalar">Bacalar</button>
-  <button class="chip" data-loc="akumal">Akumal</button>
-  <button class="chip" data-loc="puerto">Puerto Aventuras</button>
-</div>
-
-<div class="filters-panel" id="filtersPanel">
-  <div class="fp-col">
-    <label>Presupuesto</label>
-    <div class="range-values"><span id="priceMinLabel">$0</span> — <span id="priceMaxLabel">$15,000,000+</span></div>
-    <div class="range-slider">
-      <input type="range" id="priceMin" min="0" max="15000000" step="500000" value="0">
-      <input type="range" id="priceMax" min="0" max="15000000" step="500000" value="15000000">
-    </div>
+<!-- Foto placeholder: reemplazar por una foto real de equipo/oficina si la tenés — usé una que ya estaba en tu repo para no dejarlo roto. -->
+<section class="nosotras-teaser">
+  <div class="ph"><img src="assets/tulum-ruinas-costa.jpg" alt="Almahá en Tulum"></div>
+  <div>
+    <div class="eyebrow">Quiénes somos</div>
+    <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:clamp(28px,3vw,40px);line-height:1.15;margin-bottom:22px;">Detrás de cada propiedad, hay personas.</h2>
+    <p>Somos dos socias argentinas que encontramos en Tulum un lugar para crecer, emprender y construir un proyecto propio. Creemos en el asesoramiento honesto y en seleccionar oportunidades que realmente generen valor.</p>
+    <a class="conocer-mas" href="quienes-somos.html">Conocer más →</a>
   </div>
-  <div class="fp-col">
-    <label>Tipo y estado</label>
-    <div class="filters" id="filters2">
-      <button class="chip active" data-attr="all">Todas las características</button>
-      <button class="chip" data-attr="preventa">Preventa</button>
-      <button class="chip" data-attr="Estudio">Estudio</button>
-      <button class="chip" data-attr="Local">Local</button>
-      <button class="chip" data-attr="1 Recámara">1 Recámara</button>
-      <button class="chip" data-attr="2 Recámaras">2 Recámaras</button>
-      <button class="chip" data-attr="3 Recámaras">3 Recámaras</button>
-      <button class="chip" data-attr="4 Recámaras">4 Recámaras</button>
-      <button class="chip" data-attr="Casa">Casa</button>
-      <button class="chip" data-attr="Villa">Villa</button>
-      <button class="chip" data-attr="Terreno">Terreno</button>
-    </div>
-  </div>
-  <div class="fp-col">
-    <label>Amenidades</label>
-    <div class="filters-caract" id="filtersCaract">
-      <label class="check"><input type="checkbox" value="alberca"> Alberca</label>
-      <label class="check"><input type="checkbox" value="jacuzzi"> Jacuzzi</label>
-      <label class="check"><input type="checkbox" value="rooftop"> Rooftop</label>
-      <label class="check"><input type="checkbox" value="gym"> Gym</label>
-      <label class="check"><input type="checkbox" value="cowork"> Cowork</label>
-      <label class="check"><input type="checkbox" value="lavanderia"> Lavandería</label>
-      <label class="check"><input type="checkbox" value="pet"> Pet friendly</label>
-    </div>
-  </div>
-</div>
+</section>
 
-<div class="grid-new" id="grid"></div>
-
-<!-- ============ MODAL DE DETALLE — sin tocar, igual al que ya está en producción ============ -->
-<div class="modal-overlay" id="modalOverlay">
-  <div class="modal">
-    <div class="modal-close" onclick="closeModal()">✕</div>
-    <div class="modal-art" id="modalArt"></div>
-    <div class="modal-body" id="modalBody"></div>
+<!-- ============ INSTAGRAM ============ -->
+<section class="social-new">
+  <div class="social-head">
+    <div class="eyebrow">Seguinos</div>
+    <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:clamp(26px,2.8vw,36px);">Lo último en Instagram</h2>
+    <div class="handle">@sofiarealtor_</div>
   </div>
-</div>
+  <!-- Elfsight Instagram Feed | Untitled Instagram Feed -->
+  <script src="https://elfsightcdn.com/platform.js" async></script>
+  <div class="elfsight-app-fbaa6541-146c-401e-aaf2-c6ecc41fad02" data-elfsight-app-lazy></div>
+</section>
 
 <footer class="foot-new">
   <div class="foot-top">
@@ -1035,294 +889,15 @@
 
 <a class="wa-fab" href="https://wa.me/5219841855836" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.87.5 3.62 1.38 5.13L2 22l4.99-1.35C8.44 21.5 10.17 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.3c-.22.62-1.28 1.18-1.77 1.24-.45.06-1.02.09-1.65-.1-.38-.12-.87-.28-1.5-.55-2.63-1.14-4.34-3.8-4.48-3.98-.13-.18-1.07-1.42-1.07-2.72 0-1.29.68-1.93.92-2.19.24-.26.53-.32.7-.32.18 0 .35 0 .5.01.16.01.38-.06.6.46.22.53.75 1.83.82 1.96.07.13.11.29.02.47-.09.18-.14.29-.27.45-.13.16-.28.35-.4.47-.13.13-.27.27-.12.53.16.26.7 1.15 1.5 1.86 1.03.92 1.9 1.2 2.16 1.34.26.13.41.11.56-.07.16-.18.66-.77.84-1.03.18-.26.35-.22.59-.13.24.09 1.53.72 1.79.85.26.13.44.2.5.31.07.11.07.64-.15 1.26z"/></svg></a>
 
-<script type="module">
-/* ================= FIREBASE ================= */
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyD4_pL8l0wOR3elbI3_VZd89a-UffnV5oE",
-  authDomain: "almaha-ventas.firebaseapp.com",
-  projectId: "almaha-ventas",
-  storageBucket: "almaha-ventas.firebasestorage.app",
-  messagingSenderId: "495551253531",
-  appId: "1:495551253531:web:7f8034f9b6a98562763cbe"
-};
-const firebaseApp = initializeApp(firebaseConfig);
-const db = getFirestore(firebaseApp);
-
-let PROPIEDADES = [];
-
-/* ================= HELPERS (idénticos a los ya existentes en el sitio) ================= */
-function money(n){
-  if(typeof n !== 'number') return 'Consultar precio';
-  return `$${n.toLocaleString('es-MX')} MXN`;
-}
-function precioDesde(propiedad){
-  let min = Infinity;
-  (propiedad.tipologias||[]).forEach(t=>{
-    (t.unidades||[]).forEach(u=>{
-      if(typeof u.precio === 'number' && u.precio < min) min = u.precio;
-    });
-  });
-  return min === Infinity ? null : min;
-}
-function chipsTipologias(propiedad){
-  return (propiedad.tipologias||[]).map(t=>t.tipo);
-}
-function portadaCard(p){
-  return p.photoUrlAmenidades || p.tipologias?.[0]?.photoUrl || null;
-}
-function locKeyFromZonaCiudad(zona, ciudad){
-  const text = `${zona||''} ${ciudad||''}`.toLowerCase();
-  if(text.includes('tulum')) return 'tulum';
-  if(text.includes('playa del carmen')) return 'pdc';
-  if(text.includes('akumal')) return 'akumal';
-  if(text.includes('puerto aventuras')) return 'puerto';
-  if(text.includes('bacalar')) return 'bacalar';
-  return 'otros';
-}
-
-const TIPOLOGIAS_OCULTAS = ['Oficinas'];
-
-/* ================= RENDER: GRILLA NUEVA ================= */
-const grid = document.getElementById('grid');
-function renderGrid(){
-  grid.innerHTML = '';
-  PROPIEDADES.forEach(p=>{
-    const locKey = locKeyFromZonaCiudad(p.zona, p.ciudad);
-    const desde = precioDesde(p);
-    const tag = (p.tipologias||[]).length>1 ? 'Distintas unidades' : ((p.tipologias||[])[0]?.tipo || p.estado || '');
-    const foto = portadaCard(p);
-    const card = document.createElement('div');
-    card.className = 'card-new';
-    card.dataset.id = p.id;
-    card.dataset.loc = locKey;
-    card.dataset.tipologias = chipsTipologias(p).join('|');
-    card.dataset.estado = p.estado || '';
-    card.onclick = () => window.openModal(p.id);
-    card.innerHTML = `
-      <div class="ph">
-        ${foto ? `<img src="${foto}" alt="${p.nombre}">` : `<div class="art-fallback"><svg class="lineart" style="width:60%;color:var(--clove);"><use href="#art-villa-pool"/></svg></div>`}
-        <div class="badge-new">${tag}</div>
-      </div>
-      <div class="body-new">
-        <div><h3>${p.nombre}</h3><div class="loc-new">${p.zona}${p.ciudad ? ' · '+p.ciudad : ''}</div></div>
-        <div class="px"><div class="lbl">Desde</div><div class="amt">${desde!==null ? money(desde) : 'Consultar'}</div></div>
-      </div>`;
-    grid.appendChild(card);
-  });
-}
-
-/* ================= FILTROS (ubicación + tipo/estado + texto libre + precio + características, todos combinados con AND) ================= */
-// Quita acentos para que la búsqueda de texto encuentre "Aldea Zama" tanto si el visitante
-// escribe con o sin acento — el prompt lo pedía explícitamente ("sin importar mayúsculas/acentos")
-// pero el fragmento de código que me pasaron solo hacía toLowerCase(), que no saca acentos.
-// Lo agrego para que el buscador cumpla lo que describe, no solo lo que el código literal hacía.
-function normalizar(s){
-  return (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
-}
-
-function aplicarFiltros(){
-  const loc = document.querySelector('#filters .chip.active').dataset.loc;
-  const attr = document.querySelector('#filters2 .chip.active').dataset.attr;
-  const texto = normalizar(document.getElementById('searchText').value.trim());
-  const pMin = +document.getElementById('priceMin').value;
-  const pMax = +document.getElementById('priceMax').value;
-  const caractActivas = Array.from(document.querySelectorAll('#filtersCaract input:checked')).map(i=>i.value);
-
-  PROPIEDADES.forEach(p=>{
-    const card = document.querySelector(`.card-new[data-id="${p.id}"]`);
-    if(!card) return;
-    const locKey = locKeyFromZonaCiudad(p.zona, p.ciudad);
-    const matchesLoc = loc==='all' || locKey===loc;
-    const matchesAttr = attr==='all'
-      || (attr==='preventa' && p.estado==='Preventa')
-      || chipsTipologias(p).includes(attr);
-    const textoBusqueda = normalizar(`${p.nombre} ${p.zona} ${p.ciudad} ${p.desc||''}`);
-    const matchesTexto = !texto || textoBusqueda.includes(texto);
-    const desde = precioDesde(p);
-    const matchesPrecio = desde===null || (desde>=pMin && desde<=pMax);
-    const matchesCaract = caractActivas.every(c => p[c]==='Sí');
-
-    card.style.display = (matchesLoc && matchesAttr && matchesTexto && matchesPrecio && matchesCaract) ? '' : 'none';
-  });
-  actualizarContadorFiltros();
-}
-document.getElementById('filters').addEventListener('click', e=>{
-  const btn = e.target.closest('.chip');
-  if(!btn) return;
-  document.querySelectorAll('#filters .chip').forEach(c=>c.classList.remove('active'));
-  btn.classList.add('active');
-  aplicarFiltros();
-});
-document.getElementById('filters2').addEventListener('click', e=>{
-  const btn = e.target.closest('.chip');
-  if(!btn) return;
-  document.querySelectorAll('#filters2 .chip').forEach(c=>c.classList.remove('active'));
-  btn.classList.add('active');
-  aplicarFiltros();
-});
-document.getElementById('searchText').addEventListener('input', aplicarFiltros);
-document.getElementById('filtersCaract').addEventListener('change', aplicarFiltros);
-
-const priceMin = document.getElementById('priceMin');
-const priceMax = document.getElementById('priceMax');
-function fmtMXN(n){ return n>=15000000 ? '$15,000,000+' : '$'+n.toLocaleString('es-MX'); }
-function actualizarLabelsPrecio(){
-  if(+priceMin.value > +priceMax.value) priceMin.value = priceMax.value;
-  document.getElementById('priceMinLabel').textContent = fmtMXN(+priceMin.value);
-  document.getElementById('priceMaxLabel').textContent = fmtMXN(+priceMax.value);
-}
-priceMin.addEventListener('input', ()=>{ actualizarLabelsPrecio(); aplicarFiltros(); });
-priceMax.addEventListener('input', ()=>{ actualizarLabelsPrecio(); aplicarFiltros(); });
-
-const filtersPanel = document.getElementById('filtersPanel');
-const filtersToggle = document.getElementById('filtersToggle');
-filtersToggle.addEventListener('click', ()=>{
-  filtersPanel.classList.toggle('open');
-});
-
-function actualizarContadorFiltros(){
-  let n = 0;
-  if(document.querySelector('#filters2 .chip.active').dataset.attr !== 'all') n++;
-  if(+priceMin.value > 0 || +priceMax.value < 15000000) n++;
-  n += document.querySelectorAll('#filtersCaract input:checked').length;
-  document.getElementById('filtersCount').textContent = n>0 ? `(${n})` : '';
-  filtersToggle.classList.toggle('active', n>0);
-}
-
-async function cargarPropiedades(){
-  const snap = await getDocs(collection(db,'propiedades'));
-  PROPIEDADES = snap.docs.map(d=>{
-    const data = d.data();
-    return { id:d.id, ...data, tipologias:(data.tipologias||[]).filter(t=>!TIPOLOGIAS_OCULTAS.includes(t.tipo)) };
-  });
-  renderGrid();
-}
-cargarPropiedades();
-
-/* ================= MODAL — copiado literal del sitio actual, sin cambios de lógica ================= */
-function amenidadesActivas(p){
-  const claves = [
-    ['pet','Pet friendly'],['jacuzzi','Jacuzzi'],['alberca','Alberca'],
-    ['rooftop','Rooftop'],['gym','Gym'],['cowork','Cowork'],['lavanderia','Lavandería']
-  ];
-  return claves.filter(([k])=>p[k]==='Sí').map(([,label])=>label);
-}
-
-let currentModalProp = null;
-let currentModalTipoIndex = -1;
-let currentModalPhotoIndex = 0;
-
-function currentFotos(p, tipoIndex){
-  if(tipoIndex === -1){
-    const portada = p.photoUrlAmenidades;
-    const resto = p.fotosAmenidades || [];
-    return portada ? [portada, ...resto.filter(f=>f!==portada)] : resto;
-  }
-  const tipo = (p.tipologias||[])[tipoIndex];
-  if(tipo && tipo.fotos && tipo.fotos.length) return tipo.fotos;
-  if(tipo && tipo.photoUrl) return [tipo.photoUrl];
-  return [];
-}
-
-function renderModalArt(){
-  const p = currentModalProp;
-  const fotos = currentFotos(p, currentModalTipoIndex);
-  if(currentModalPhotoIndex >= fotos.length) currentModalPhotoIndex = 0;
-  const fotoUrl = fotos[currentModalPhotoIndex];
-  const nav = fotos.length>1 ? `
-    <button type="button" class="modal-photo-nav prev" onclick="window.modalPhotoNav(-1)" aria-label="Foto anterior">‹</button>
-    <button type="button" class="modal-photo-nav next" onclick="window.modalPhotoNav(1)" aria-label="Foto siguiente">›</button>
-    <div class="modal-photo-counter">${currentModalPhotoIndex+1} / ${fotos.length}</div>
-  ` : '';
-  document.getElementById('modalArt').innerHTML = fotoUrl
-    ? `<img src="${fotoUrl}" alt="${p.nombre}">${nav}`
-    : `<div class="art-fallback"><svg class="lineart" style="width:80%;color:var(--clove);"><use href="#art-villa-pool"/></svg></div>`;
-}
-
-window.modalPhotoNav = function(dir){
-  const p = currentModalProp;
-  const fotos = currentFotos(p, currentModalTipoIndex);
-  if(!fotos.length) return;
-  currentModalPhotoIndex = (currentModalPhotoIndex + dir + fotos.length) % fotos.length;
-  renderModalArt();
-};
-
-function renderModalBody(activeIndex){
-  const p = currentModalProp;
-  const tipologias = p.tipologias || [];
-  const tipo = activeIndex>=0 ? tipologias[activeIndex] : null;
-
-  let tagLabel, precioLabel = money(null), m2Label = '—';
-  if(activeIndex === -1){
-    tagLabel = 'Amenidades';
-    const desde = precioDesde(p);
-    precioLabel = desde!==null ? `Desde ${money(desde)}` : money(null);
-  } else {
-    tagLabel = tipo ? tipo.tipo : (p.estado||'');
-    if(tipo && tipo.unidades && tipo.unidades.length){
-      const precios = tipo.unidades.map(u=>u.precio).filter(n=>typeof n==='number');
-      if(precios.length===1) precioLabel = money(precios[0]);
-      else if(precios.length>1) precioLabel = `Desde ${money(Math.min(...precios))}`;
-      const m2s = tipo.unidades.map(u=>u.m2).filter(n=>typeof n==='number');
-      if(m2s.length===1) m2Label = `${m2s[0]} m²`;
-      else if(m2s.length>1) m2Label = `${Math.min(...m2s)}–${Math.max(...m2s)} m²`;
-    }
-  }
-
-  const tabsHtml = `<div class="modal-typ-tabs">
-    <button type="button" class="modal-typ-tab${activeIndex===-1?' active':''}" onclick="window.selectModalTipologia('${p.id}',-1)">Amenidades</button>
-    ${tipologias.map((t,i)=>`<button type="button" class="modal-typ-tab${i===activeIndex?' active':''}" onclick="window.selectModalTipologia('${p.id}',${i})">${t.tipo}</button>`).join('')}
-  </div>`;
-
-  document.getElementById('modalBody').innerHTML = `
-    <span class="tag">${tagLabel}</span>
-    <h3>${p.nombre}</h3>
-    <div class="modal-loc">${p.zona}${p.ciudad ? ' · '+p.ciudad : ''}</div>
-    ${tabsHtml}
-    <div class="modal-price">${precioLabel}</div>
-    <div class="modal-specs">
-      <div>Superficie<b>${m2Label}</b></div>
-      <div>Estado<b>${p.estado || '—'}</b></div>
-      <div>Entrega<b>${p.entrega || '—'}</b></div>
-    </div>
-    <p class="lede" style="max-width:100%;margin-bottom:22px;">${p.desc || ''}</p>
-    <div class="modal-amenities">${amenidadesActivas(p).map(a=>`<span>${a}</span>`).join('')}</div>
-    <div class="modal-actions">
-      <a href="contacto.html?propiedad=${encodeURIComponent(p.id)}" class="btn btn-primary">Agendar visita<span class="btn-arrow">→</span></a>
-    </div>
-  `;
-}
-
-window.openModal = function(id){
-  const p = PROPIEDADES.find(x=>x.id===id);
-  if(!p) return;
-  currentModalProp = p;
-  currentModalTipoIndex = -1;
-  currentModalPhotoIndex = 0;
-  renderModalArt();
-  renderModalBody(-1);
-  document.getElementById('modalOverlay').classList.add('show');
-  document.body.style.overflow='hidden';
-};
-
-window.selectModalTipologia = function(propId, index){
-  if(!currentModalProp || currentModalProp.id!==propId) return;
-  currentModalTipoIndex = index;
-  currentModalPhotoIndex = 0;
-  renderModalArt();
-  renderModalBody(index);
-};
-
-window.closeModal = function(){
-  document.getElementById('modalOverlay').classList.remove('show');
-  document.body.style.overflow='';
-};
-document.getElementById('modalOverlay').addEventListener('click',e=>{
-  if(e.target.id==='modalOverlay') window.closeModal();
-});
+<script>
+const slides = document.querySelectorAll('.home-hero .slide');
+const dots = document.querySelectorAll('.home-dots span');
+let heroSlideIndex = 0;
+setInterval(()=>{
+  slides[heroSlideIndex].classList.remove('on'); dots[heroSlideIndex].classList.remove('on');
+  heroSlideIndex = (heroSlideIndex+1) % slides.length;
+  slides[heroSlideIndex].classList.add('on'); dots[heroSlideIndex].classList.add('on');
+}, 4500);
 
 const io = new IntersectionObserver((entries)=>{
   entries.forEach(entry=>{
