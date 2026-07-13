@@ -777,21 +777,29 @@
     .foot-new .foot-top{grid-template-columns:1fr; gap:34px;}
   }
 
-  /* ---------- PROYECTOS: header + buscador compacto + grilla nueva ---------- */
-  .search-bar{display:flex; gap:12px; max-width:1240px; margin:0 auto; padding:24px var(--edge) 20px;}
-  .search-bar input{
-    flex:1; padding:14px 20px; border-radius:var(--radius-pill); border:1px solid rgba(83,68,61,.18);
-    font-size:14px; font-family:'Plus Jakarta Sans',sans-serif; background:var(--white);
+  /* ---------- PROYECTOS: buscador grande + chips + panel colapsable + resultados ---------- */
+  .search-row{max-width:1240px; margin:0 auto; padding:24px var(--edge) 0;}
+  .search-big{
+    display:flex; align-items:center; gap:14px;
+    max-width:640px; margin:0 auto 24px; padding:18px 26px;
+    border-radius:100px; border:1px solid rgba(83,68,61,.15); background:var(--white);
   }
-  .search-bar input:focus{outline:none; border-color:var(--terracotta-accent,var(--terracotta));}
-  .filters-btn{
-    padding:14px 24px; border-radius:var(--radius-pill); border:1px solid var(--clove); background:var(--clove);
-    color:var(--white); font-size:13px; font-weight:700; white-space:nowrap; cursor:pointer; font-family:'Plus Jakarta Sans',sans-serif;
-  }
-  .filters-btn.active{background:var(--terracotta-accent,var(--terracotta)); border-color:var(--terracotta-accent,var(--terracotta));}
-  #filtersCount{font-family:'Instrument Serif',serif; font-style:italic;}
+  .search-big input{flex:1; border:none; outline:none; font-size:16px; font-family:'Plus Jakarta Sans',sans-serif; background:none;}
+  .search-icon{width:20px; height:20px; color:rgba(83,68,61,.4); flex-shrink:0;}
 
-  .loc-chips{display:flex; gap:12px; padding:0 var(--edge) 20px; flex-wrap:wrap; max-width:1240px; margin:0 auto;}
+  .dest-chips{display:flex; gap:10px; overflow-x:auto; padding:0 var(--edge) 20px; scrollbar-width:none; max-width:1240px; margin:0 auto;}
+  .dest-chips::-webkit-scrollbar{display:none;}
+  .dest-chips .chip{padding:9px 18px; font-size:12.5px; white-space:nowrap;}
+
+  .filters-toggle{
+    display:flex; align-items:center; gap:8px; margin:0 auto 30px; padding:10px 20px;
+    border-radius:100px; border:1px solid var(--clove); background:none; color:var(--clove);
+    font-size:13px; font-weight:700; cursor:pointer; font-family:'Plus Jakarta Sans',sans-serif;
+  }
+  .filters-toggle.active{background:var(--terracotta-accent,var(--terracotta)); border-color:var(--terracotta-accent,var(--terracotta)); color:var(--white);}
+  #filtersCount{font-family:'Instrument Serif',serif; font-style:italic; color:inherit;}
+  .chevron{transition:transform .3s; display:inline-block;}
+  .filters-toggle.open .chevron{transform:rotate(180deg);}
 
   .filters-panel{
     max-height:0; overflow:hidden; opacity:0;
@@ -799,46 +807,48 @@
     padding:0 var(--edge); display:grid; grid-template-columns:1fr 1.6fr 1.4fr; gap:36px;
     max-width:1240px; margin:0 auto;
   }
-  .filters-panel.open{max-height:400px; opacity:1; padding-bottom:36px;}
+  .filters-panel.open{max-height:500px; opacity:1; padding-bottom:36px;}
   .fp-col label{font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:rgba(83,68,61,.6); display:block; margin-bottom:14px; font-family:'Plus Jakarta Sans',sans-serif;}
-  .fp-col .filters, .fp-col .filters-caract{padding:0; flex-wrap:wrap;}
 
-  .range-values{font-family:'Instrument Serif',serif; font-style:italic; font-size:18px; color:var(--terracotta-accent,var(--terracotta)); margin:8px 0 14px;}
-  .range-slider{position:relative; height:36px;}
-  .range-slider input[type="range"]{
-    position:absolute; width:100%; top:14px; margin:0; -webkit-appearance:none; background:none; pointer-events:none;
+  .price-fields{display:flex; align-items:center; gap:10px;}
+  .price-fields input{
+    width:100%; padding:12px 16px; border-radius:14px; border:1px solid rgba(83,68,61,.18);
+    font-size:14px; font-family:'Plus Jakarta Sans',sans-serif;
   }
-  .range-slider input[type="range"]::-webkit-slider-thumb{
-    -webkit-appearance:none; pointer-events:all; width:18px; height:18px; border-radius:50%;
-    background:var(--terracotta-accent,var(--terracotta)); cursor:pointer; border:3px solid var(--white); box-shadow:0 2px 6px rgba(0,0,0,.25);
-  }
-  .range-slider input[type="range"]::-webkit-slider-runnable-track{height:3px; background:rgba(83,68,61,.15);}
 
-  .filters-caract{display:flex; gap:20px; flex-wrap:wrap;}
+  .check-group{display:flex; flex-wrap:wrap; gap:14px 20px;}
   .check{display:flex; align-items:center; gap:8px; font-size:13px; font-weight:500; color:rgba(83,68,61,.75); cursor:pointer; font-family:'Plus Jakarta Sans',sans-serif;}
   .check input{accent-color:var(--terracotta-accent,var(--terracotta)); width:16px; height:16px;}
 
+  .amenity-chips{display:flex; flex-wrap:wrap; gap:10px;}
+  .achip{padding:9px 18px; border-radius:100px; border:1px solid rgba(83,68,61,.2); background:none; color:var(--clove); font-size:12.5px; font-weight:500; cursor:pointer; font-family:'Plus Jakarta Sans',sans-serif;}
+  .achip.active{background:var(--terracotta-accent,var(--terracotta)); color:var(--white); border-color:var(--terracotta-accent,var(--terracotta));}
+
   @media(max-width:900px){ .filters-panel{grid-template-columns:1fr;} }
+
+  .results-bar{
+    display:flex; justify-content:space-between; align-items:center;
+    max-width:1240px; margin:0 auto; padding:0 var(--edge) 24px;
+    font-size:13px; color:rgba(83,68,61,.65); font-family:'Plus Jakarta Sans',sans-serif;
+  }
+  .results-bar select{padding:9px 14px; border-radius:12px; border:1px solid rgba(83,68,61,.18); font-size:13px; font-family:'Plus Jakarta Sans',sans-serif; background:var(--white);}
 
   .proy-head{padding:70px var(--edge) 8px; max-width:1240px; margin:0 auto;}
   .proy-head h1{font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:clamp(32px,4vw,52px); line-height:1.1; max-width:700px;}
 
-  .filters{display:flex; gap:12px; padding:24px var(--edge) 0; flex-wrap:wrap; max-width:1240px; margin:0 auto;}
-  .filters + .filters{padding-top:0; padding-bottom:44px;}
   .chip{padding:12px 22px; border-radius:var(--radius-pill); border:1px solid rgba(83,68,61,.18); font-size:13px; font-weight:500; color:rgba(83,68,61,.7); cursor:pointer; background:none; font-family:'Plus Jakarta Sans',sans-serif;}
   .chip.active, .chip.on{background:var(--clove); color:var(--white); border-color:var(--clove);}
 
-  .grid-new{display:grid; grid-template-columns:repeat(3,1fr); gap:36px; padding:20px var(--edge) 140px; max-width:1240px; margin:0 auto;}
+  .grid-new{display:grid; grid-template-columns:repeat(2,1fr); gap:48px; padding:20px var(--edge) 140px; max-width:1240px; margin:0 auto;}
   .card-new{cursor:pointer;}
-  .card-new .ph{aspect-ratio:5/4; border-radius:var(--radius-card); overflow:hidden; position:relative; background:var(--muslin);}
+  .card-new .ph{aspect-ratio:16/11; border-radius:var(--radius-card); overflow:hidden; position:relative; background:var(--muslin);}
   .card-new .ph img{width:100%; height:100%; object-fit:cover; display:block;}
-  .card-new .badge-new{position:absolute; top:18px; left:18px; background:rgba(255,253,249,.92); color:var(--clove); padding:8px 15px; border-radius:var(--radius-pill); font-size:11px; font-weight:700; font-family:'Plus Jakarta Sans',sans-serif;}
-  .card-new .body-new{padding:22px 4px 0; display:flex; justify-content:space-between; align-items:flex-start;}
-  .card-new h3{font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:19px;}
-  .card-new .loc-new{font-size:12.5px; color:rgba(83,68,61,.55); font-weight:500; margin-top:5px; font-family:'Plus Jakarta Sans',sans-serif;}
-  .card-new .px{text-align:right;}
-  .card-new .px .lbl{font-size:10.5px; color:rgba(83,68,61,.5); font-weight:500; font-family:'Plus Jakarta Sans',sans-serif;}
-  .card-new .px .amt{font-family:'Instrument Serif',serif; font-style:italic; font-size:18px; color:var(--terracotta-accent,var(--terracotta)); margin-top:2px;}
+  .card-new .body-new{padding:22px 4px 0;}
+  .card-new h3{font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:22px;}
+  .card-new .loc-new{font-size:13px; color:rgba(83,68,61,.55); font-weight:500; margin-top:6px; font-family:'Plus Jakarta Sans',sans-serif;}
+  .card-new .px-new{font-family:'Instrument Serif',serif; font-style:italic; font-size:22px; color:var(--terracotta-accent,var(--terracotta)); margin-top:12px;}
+  .card-new .tipologias-count{font-size:12.5px; color:rgba(83,68,61,.55); margin-top:6px; font-family:'Plus Jakarta Sans',sans-serif;}
+  .card-new .ver-proyecto{display:inline-block; margin-top:16px; font-size:13px; font-weight:700; color:var(--clove); text-decoration:none; font-family:'Plus Jakarta Sans',sans-serif;}
 
   @media(max-width:900px){ .grid-new{grid-template-columns:1fr;} }
 
@@ -946,59 +956,71 @@
   <h1>Una selección curada, no un <span class="ita" style="font-family:'Instrument Serif',serif;font-style:italic;color:var(--terracotta-accent,var(--terracotta));">portal de propiedades.</span></h1>
 </section>
 
-<div class="search-bar">
-  <input type="text" id="searchText" placeholder="Buscá por ciudad, zona o nombre del proyecto...">
-  <button type="button" id="filtersToggle" class="filters-btn">
-    Filtros <span id="filtersCount"></span>
-  </button>
+<div class="search-row">
+  <div class="search-big">
+    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+    <input type="text" id="searchText" placeholder="Buscar proyecto o ubicación...">
+  </div>
 </div>
 
-<div class="loc-chips" id="filters">
-  <button class="chip active" data-loc="all">Todos los destinos</button>
+<div class="dest-chips" id="filters">
+  <button class="chip active" data-loc="all">Todos</button>
   <button class="chip" data-loc="tulum">Tulum</button>
-  <button class="chip" data-loc="pdc">Playa del Carmen</button>
+  <button class="chip" data-loc="pdc">Playa</button>
   <button class="chip" data-loc="bacalar">Bacalar</button>
   <button class="chip" data-loc="akumal">Akumal</button>
   <button class="chip" data-loc="puerto">Puerto Aventuras</button>
 </div>
 
+<button class="filters-toggle" id="filtersToggle">
+  Filtros avanzados <span id="filtersCount"></span> <span class="chevron">⌄</span>
+</button>
+
 <div class="filters-panel" id="filtersPanel">
   <div class="fp-col">
-    <label>Presupuesto</label>
-    <div class="range-values"><span id="priceMinLabel">$0</span> — <span id="priceMaxLabel">$15,000,000+</span></div>
-    <div class="range-slider">
-      <input type="range" id="priceMin" min="0" max="15000000" step="500000" value="0">
-      <input type="range" id="priceMax" min="0" max="15000000" step="500000" value="15000000">
+    <label>Presupuesto (MXN)</label>
+    <div class="price-fields">
+      <input type="number" id="priceMin" placeholder="Desde">
+      <span>—</span>
+      <input type="number" id="priceMax" placeholder="Hasta">
     </div>
   </div>
   <div class="fp-col">
-    <label>Tipo y estado</label>
-    <div class="filters" id="filters2">
-      <button class="chip active" data-attr="all">Todas las características</button>
-      <button class="chip" data-attr="preventa">Preventa</button>
-      <button class="chip" data-attr="Estudio">Estudio</button>
-      <button class="chip" data-attr="Local">Local</button>
-      <button class="chip" data-attr="1 Recámara">1 Recámara</button>
-      <button class="chip" data-attr="2 Recámaras">2 Recámaras</button>
-      <button class="chip" data-attr="3 Recámaras">3 Recámaras</button>
-      <button class="chip" data-attr="4 Recámaras">4 Recámaras</button>
-      <button class="chip" data-attr="Casa">Casa</button>
-      <button class="chip" data-attr="Villa">Villa</button>
-      <button class="chip" data-attr="Terreno">Terreno</button>
+    <label>Tipo</label>
+    <div class="check-group" id="filters2">
+      <label class="check"><input type="checkbox" value="Estudio"> Estudio</label>
+      <label class="check"><input type="checkbox" value="1 Recámara"> 1 Rec</label>
+      <label class="check"><input type="checkbox" value="2 Recámaras"> 2 Rec</label>
+      <label class="check"><input type="checkbox" value="3 Recámaras"> 3 Rec</label>
+      <label class="check"><input type="checkbox" value="4 Recámaras"> 4+</label>
+      <label class="check"><input type="checkbox" value="Local"> Local</label>
+      <label class="check"><input type="checkbox" value="Casa"> Casa</label>
+      <label class="check"><input type="checkbox" value="Villa"> Villa</label>
+      <label class="check"><input type="checkbox" value="Terreno"> Terreno</label>
+      <label class="check"><input type="checkbox" value="__preventa__"> Preventa</label>
     </div>
   </div>
   <div class="fp-col">
     <label>Amenidades</label>
-    <div class="filters-caract" id="filtersCaract">
-      <label class="check"><input type="checkbox" value="alberca"> Alberca</label>
-      <label class="check"><input type="checkbox" value="jacuzzi"> Jacuzzi</label>
-      <label class="check"><input type="checkbox" value="rooftop"> Rooftop</label>
-      <label class="check"><input type="checkbox" value="gym"> Gym</label>
-      <label class="check"><input type="checkbox" value="cowork"> Cowork</label>
-      <label class="check"><input type="checkbox" value="lavanderia"> Lavandería</label>
-      <label class="check"><input type="checkbox" value="pet"> Pet friendly</label>
+    <div class="amenity-chips" id="filtersCaract">
+      <button type="button" class="achip" data-val="alberca">Alberca</button>
+      <button type="button" class="achip" data-val="gym">Gym</button>
+      <button type="button" class="achip" data-val="pet">Pet Friendly</button>
+      <button type="button" class="achip" data-val="cowork">Cowork</button>
+      <button type="button" class="achip" data-val="rooftop">Rooftop</button>
+      <button type="button" class="achip" data-val="jacuzzi">Jacuzzi</button>
+      <button type="button" class="achip" data-val="lavanderia">Lavandería</button>
     </div>
   </div>
+</div>
+
+<div class="results-bar">
+  <span id="resultsCount">0 proyectos encontrados</span>
+  <select id="sortBy">
+    <option value="recientes">Más recientes</option>
+    <option value="precio-asc">Precio: menor a mayor</option>
+    <option value="precio-desc">Precio: mayor a menor</option>
+  </select>
 </div>
 
 <div class="grid-new" id="grid"></div>
@@ -1084,15 +1106,15 @@ function locKeyFromZonaCiudad(zona, ciudad){
 
 const TIPOLOGIAS_OCULTAS = ['Oficinas'];
 
-/* ================= RENDER: GRILLA NUEVA ================= */
+/* ================= RENDER: GRILLA NUEVA (cards grandes, foto protagonista) ================= */
 const grid = document.getElementById('grid');
-function renderGrid(){
+function renderGrid(lista){
   grid.innerHTML = '';
-  PROPIEDADES.forEach(p=>{
+  (lista || PROPIEDADES).forEach(p=>{
     const locKey = locKeyFromZonaCiudad(p.zona, p.ciudad);
     const desde = precioDesde(p);
-    const tag = (p.tipologias||[]).length>1 ? 'Distintas unidades' : ((p.tipologias||[])[0]?.tipo || p.estado || '');
     const foto = portadaCard(p);
+    const nTipologias = (p.tipologias||[]).length;
     const card = document.createElement('div');
     card.className = 'card-new';
     card.dataset.id = p.id;
@@ -1103,51 +1125,71 @@ function renderGrid(){
     card.innerHTML = `
       <div class="ph">
         ${foto ? `<img src="${foto}" alt="${p.nombre}">` : `<div class="art-fallback"><svg class="lineart" style="width:60%;color:var(--clove);"><use href="#art-villa-pool"/></svg></div>`}
-        <div class="badge-new">${tag}</div>
       </div>
       <div class="body-new">
-        <div><h3>${p.nombre}</h3><div class="loc-new">${p.zona}${p.ciudad ? ' · '+p.ciudad : ''}</div></div>
-        <div class="px"><div class="lbl">Desde</div><div class="amt">${desde!==null ? money(desde) : 'Consultar'}</div></div>
+        <h3>${p.nombre}</h3>
+        <div class="loc-new">${p.zona}${p.ciudad ? ' · '+p.ciudad : ''}</div>
+        <div class="px-new">${desde!==null ? 'Desde '+money(desde) : 'Consultar precio'}</div>
+        <div class="tipologias-count">${nTipologias} tipolog${nTipologias===1?'ía':'ías'} disponible${nTipologias===1?'':'s'}</div>
+        <a class="ver-proyecto">Ver proyecto →</a>
       </div>`;
     grid.appendChild(card);
   });
 }
 
-/* ================= FILTROS (ubicación + tipo/estado + texto libre + precio + características, todos combinados con AND) ================= */
+function ordenarPropiedades(lista){
+  const sortBy = document.getElementById('sortBy').value;
+  const copia = [...lista];
+  if(sortBy === 'precio-asc') copia.sort((a,b)=>(precioDesde(a) ?? Infinity)-(precioDesde(b) ?? Infinity));
+  else if(sortBy === 'precio-desc') copia.sort((a,b)=>(precioDesde(b) ?? -Infinity)-(precioDesde(a) ?? -Infinity));
+  else copia.sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
+  return copia;
+}
+
+/* ================= FILTROS (ubicación + tipo multi-select + texto libre + precio + amenidades, todos combinados con AND) ================= */
 // Quita acentos para que la búsqueda de texto encuentre "Aldea Zama" tanto si el visitante
-// escribe con o sin acento — el prompt lo pedía explícitamente ("sin importar mayúsculas/acentos")
-// pero el fragmento de código que me pasaron solo hacía toLowerCase(), que no saca acentos.
-// Lo agrego para que el buscador cumpla lo que describe, no solo lo que el código literal hacía.
+// escribe con o sin acento.
 function normalizar(s){
   return (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
 }
 
 function aplicarFiltros(){
   const loc = document.querySelector('#filters .chip.active').dataset.loc;
-  const attr = document.querySelector('#filters2 .chip.active').dataset.attr;
   const texto = normalizar(document.getElementById('searchText').value.trim());
-  const pMin = +document.getElementById('priceMin').value;
-  const pMax = +document.getElementById('priceMax').value;
-  const caractActivas = Array.from(document.querySelectorAll('#filtersCaract input:checked')).map(i=>i.value);
+  const pMinRaw = document.getElementById('priceMin').value;
+  const pMaxRaw = document.getElementById('priceMax').value;
+  const pMin = pMinRaw === '' ? 0 : +pMinRaw;
+  const pMax = pMaxRaw === '' ? Infinity : +pMaxRaw;
+  // Tipo: multi-selección — una card matchea si tiene ALGUNA de las tildadas (OR), no todas.
+  // "__preventa__" es un valor especial que no es una tipología: filtra por p.estado en vez de por tipo.
+  const tiposActivos = Array.from(document.querySelectorAll('#filters2 input:checked')).map(i=>i.value);
+  // Amenidades: siguen siendo AND — todas las chips activas deben cumplirse a la vez.
+  const caractActivas = Array.from(document.querySelectorAll('#filtersCaract .achip.active')).map(b=>b.dataset.val);
 
+  let visibles = 0;
   PROPIEDADES.forEach(p=>{
     const card = document.querySelector(`.card-new[data-id="${p.id}"]`);
     if(!card) return;
     const locKey = locKeyFromZonaCiudad(p.zona, p.ciudad);
     const matchesLoc = loc==='all' || locKey===loc;
-    const matchesAttr = attr==='all'
-      || (attr==='preventa' && p.estado==='Preventa')
-      || chipsTipologias(p).includes(attr);
+    const matchesTipo = tiposActivos.length===0 || tiposActivos.some(t=>
+      t==='__preventa__' ? p.estado==='Preventa' : chipsTipologias(p).includes(t)
+    );
     const textoBusqueda = normalizar(`${p.nombre} ${p.zona} ${p.ciudad} ${p.desc||''}`);
     const matchesTexto = !texto || textoBusqueda.includes(texto);
     const desde = precioDesde(p);
     const matchesPrecio = desde===null || (desde>=pMin && desde<=pMax);
     const matchesCaract = caractActivas.every(c => p[c]==='Sí');
 
-    card.style.display = (matchesLoc && matchesAttr && matchesTexto && matchesPrecio && matchesCaract) ? '' : 'none';
+    const visible = matchesLoc && matchesTipo && matchesTexto && matchesPrecio && matchesCaract;
+    card.style.display = visible ? '' : 'none';
+    if(visible) visibles++;
   });
+
+  document.getElementById('resultsCount').textContent = `${visibles} proyecto${visibles===1?'':'s'} encontrado${visibles===1?'':'s'}`;
   actualizarContadorFiltros();
 }
+
 document.getElementById('filters').addEventListener('click', e=>{
   const btn = e.target.closest('.chip');
   if(!btn) return;
@@ -1155,38 +1197,33 @@ document.getElementById('filters').addEventListener('click', e=>{
   btn.classList.add('active');
   aplicarFiltros();
 });
-document.getElementById('filters2').addEventListener('click', e=>{
-  const btn = e.target.closest('.chip');
+document.getElementById('filters2').addEventListener('change', aplicarFiltros);
+document.getElementById('searchText').addEventListener('input', aplicarFiltros);
+document.getElementById('priceMin').addEventListener('input', aplicarFiltros);
+document.getElementById('priceMax').addEventListener('input', aplicarFiltros);
+document.getElementById('filtersCaract').addEventListener('click', e=>{
+  const btn = e.target.closest('.achip');
   if(!btn) return;
-  document.querySelectorAll('#filters2 .chip').forEach(c=>c.classList.remove('active'));
-  btn.classList.add('active');
+  btn.classList.toggle('active');
   aplicarFiltros();
 });
-document.getElementById('searchText').addEventListener('input', aplicarFiltros);
-document.getElementById('filtersCaract').addEventListener('change', aplicarFiltros);
-
-const priceMin = document.getElementById('priceMin');
-const priceMax = document.getElementById('priceMax');
-function fmtMXN(n){ return n>=15000000 ? '$15,000,000+' : '$'+n.toLocaleString('es-MX'); }
-function actualizarLabelsPrecio(){
-  if(+priceMin.value > +priceMax.value) priceMin.value = priceMax.value;
-  document.getElementById('priceMinLabel').textContent = fmtMXN(+priceMin.value);
-  document.getElementById('priceMaxLabel').textContent = fmtMXN(+priceMax.value);
-}
-priceMin.addEventListener('input', ()=>{ actualizarLabelsPrecio(); aplicarFiltros(); });
-priceMax.addEventListener('input', ()=>{ actualizarLabelsPrecio(); aplicarFiltros(); });
+document.getElementById('sortBy').addEventListener('change', ()=>{
+  renderGrid(ordenarPropiedades(PROPIEDADES));
+  aplicarFiltros();
+});
 
 const filtersPanel = document.getElementById('filtersPanel');
 const filtersToggle = document.getElementById('filtersToggle');
 filtersToggle.addEventListener('click', ()=>{
   filtersPanel.classList.toggle('open');
+  filtersToggle.classList.toggle('open');
 });
 
 function actualizarContadorFiltros(){
   let n = 0;
-  if(document.querySelector('#filters2 .chip.active').dataset.attr !== 'all') n++;
-  if(+priceMin.value > 0 || +priceMax.value < 15000000) n++;
-  n += document.querySelectorAll('#filtersCaract input:checked').length;
+  if(document.querySelectorAll('#filters2 input:checked').length>0) n++;
+  if(document.getElementById('priceMin').value !== '' || document.getElementById('priceMax').value !== '') n++;
+  if(document.querySelectorAll('#filtersCaract .achip.active').length>0) n++;
   document.getElementById('filtersCount').textContent = n>0 ? `(${n})` : '';
   filtersToggle.classList.toggle('active', n>0);
 }
@@ -1197,7 +1234,8 @@ async function cargarPropiedades(){
     const data = d.data();
     return { id:d.id, ...data, tipologias:(data.tipologias||[]).filter(t=>!TIPOLOGIAS_OCULTAS.includes(t.tipo)) };
   });
-  renderGrid();
+  renderGrid(ordenarPropiedades(PROPIEDADES));
+  aplicarFiltros();
 }
 cargarPropiedades();
 
