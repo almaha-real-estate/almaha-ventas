@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Proyectos — ALMAHÁ</title>
+<title>Proyectos — Almahá</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
@@ -580,71 +580,70 @@
   }
   .modal-overlay.show{opacity:1; pointer-events:all;}
   .modal{
-    background:var(--paper); max-width:920px; width:100%;
-    height:80vh; max-height:80vh;
-    display:grid; grid-template-columns:1fr 1fr;
+    max-width:1080px; width:100%; margin:0 auto; background:var(--white); border-radius:24px; overflow:hidden;
+    display:grid; grid-template-columns:1.15fr 1fr; box-shadow:0 40px 90px -30px rgba(61,49,41,.35);
+    max-height:85vh;
     transform:translateY(30px); transition:transform .4s cubic-bezier(.16,1,.3,1);
-    overflow:hidden;
+    position:relative;
   }
   .modal-overlay.show .modal{transform:translateY(0);}
-  .modal-art{
-    position:relative;
-    overflow:hidden;
-    height:100%;
-    background:var(--sandstone-60);
-  }
-  .modal-art img{
-    position:absolute; inset:0;
-    width:100%; height:100%;
-    object-fit:cover; object-position:center;
-    display:block;
-  }
-  .modal-art .art-fallback{
-    position:absolute; inset:0;
-    display:flex; align-items:center; justify-content:center;
-  }
-  .modal-photo-nav{
-    position:absolute; top:50%; transform:translateY(-50%); width:38px; height:38px; border-radius:50%;
-    background:var(--white); display:flex; align-items:center; justify-content:center; font-size:18px;
-    color:var(--clove); box-shadow:0 4px 12px rgba(83,68,61,.2); transition:transform .2s;
-  }
-  .modal-photo-nav:hover{transform:translateY(-50%) scale(1.08);}
-  .modal-photo-nav.prev{left:14px;}
-  .modal-photo-nav.next{right:14px;}
-  .modal-photo-counter{
-    position:absolute; bottom:14px; left:50%; transform:translateX(-50%);
-    background:rgba(83,68,61,.75); color:var(--muslin); font-family:var(--mono); font-size:11px;
-    padding:4px 10px; border-radius:20px; letter-spacing:.04em;
-  }
-  .modal-body{padding:44px; height:100%; overflow-y:auto;}
   .modal-close{
-    position:absolute; top:20px; right:20px; width:38px; height:38px; background:var(--white);
-    display:flex; align-items:center; justify-content:center; border-radius:50%; font-size:18px; z-index:5;
+    position:absolute; top:16px; right:16px; width:36px; height:36px; background:var(--white);
+    display:flex; align-items:center; justify-content:center; border-radius:50%; font-size:16px; z-index:6;
+    box-shadow:0 4px 12px rgba(0,0,0,.2); cursor:pointer;
   }
-  .modal-body .tag{display:inline-block; font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--terracotta-dark); border:1px solid var(--terracotta); padding:5px 10px; margin-bottom:16px;}
-  .modal-body h3{font-size:26px; margin-bottom:6px;}
-  .modal-loc{color:var(--clove-70); font-size:11.5px; margin-bottom:20px;}
-  .modal-body p.lede{font-size:12px; max-width:100%;}
-  .modal-typ-tabs{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px;}
-  .modal-typ-tab{
-    padding:8px 14px; border-radius:100px; border:1px solid var(--clove-15);
-    font-family:'Plus Jakarta Sans', sans-serif; font-size:11px; letter-spacing:.05em; text-transform:uppercase;
-    color:var(--clove-70); transition:all .25s;
-  }
-  .modal-typ-tab:hover{border-color:var(--clove);}
-  .modal-typ-tab.active{background:var(--clove); color:var(--muslin); border-color:var(--clove);}
-  .modal-price{font-family:var(--serif); font-style:italic; font-size:32px; margin-bottom:24px;}
-  .modal-specs{display:flex; gap:24px; padding:18px 0; border-top:1px solid var(--clove-15); border-bottom:1px solid var(--clove-15); margin-bottom:22px;}
-  .modal-specs div{font-family:var(--mono); font-size:12px; color:var(--clove-70);}
-  .modal-specs div b{display:block; font-family:var(--serif); font-style:italic; font-size:19px; color:var(--clove); font-weight:500;}
-  .modal-amenities{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:28px;}
-  .modal-amenities span{font-size:12px; padding:6px 14px; border-radius:100px; background:var(--sandstone-60); font-family:'Plus Jakarta Sans', sans-serif;}
-  .modal-actions{display:flex; gap:12px; flex-wrap:wrap;}
-  .modal-actions .btn{
-    border-radius:100px;
-    padding:12px 22px;
-    font-size:12.5px;
-  }
+
+  .gallery{position:relative; background:var(--muslin); display:flex; flex-direction:column; height:100%;}
+  .badge-top{position:absolute; top:18px; left:18px; z-index:3; background:rgba(255,253,249,.92); color:var(--clove); padding:8px 16px; border-radius:100px; font-size:11px; font-weight:700; letter-spacing:.03em; font-family:'Plus Jakarta Sans',sans-serif;}
+  .main-photo{position:relative; flex:1; min-height:0; overflow:hidden; background:var(--sandstone-60);}
+  .main-photo img{width:100%; height:100%; object-fit:cover; display:block;}
+  .main-photo .art-fallback{position:absolute; inset:0; display:flex; align-items:center; justify-content:center;}
+  .nav-arrow{position:absolute; top:50%; transform:translateY(-50%); width:36px; height:36px; border-radius:50%; background:var(--white); display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,.2); cursor:pointer; z-index:3; border:none; font-size:16px; color:var(--clove);}
+  .nav-arrow.prev{left:14px;} .nav-arrow.next{right:14px;}
+  .thumbs{display:flex; gap:6px; padding:8px; background:var(--white); overflow-x:auto;}
+  .thumbs img{width:52px; height:52px; flex-shrink:0; object-fit:cover; border-radius:8px; cursor:pointer; opacity:.55; transition:opacity .2s;}
+  .thumbs img.on{opacity:1; outline:2px solid var(--terracotta-accent,var(--terracotta));}
+
+  .info{padding:30px 32px; overflow-y:auto; max-height:85vh;}
+  .tag-row{display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:14px;}
+  .tag-pill{border:1px solid var(--terracotta-accent,var(--terracotta)); color:var(--terracotta-accent,var(--terracotta)); font-size:10.5px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:5px 12px; border-radius:100px; font-family:'Plus Jakarta Sans',sans-serif;}
+  .info h2{font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:28px; margin-bottom:4px;}
+  .info .loc{font-size:13px; color:rgba(83,68,61,.6); margin-bottom:18px; display:flex; align-items:center; gap:6px; font-family:'Plus Jakarta Sans',sans-serif;}
+
+  .meta3{display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; margin-bottom:22px; padding-bottom:20px; border-bottom:1px solid rgba(83,68,61,.1);}
+  .meta3 .l{font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:rgba(83,68,61,.45); margin-bottom:4px; font-family:'Plus Jakarta Sans',sans-serif;}
+  .meta3 .v{font-size:13.5px; font-weight:700; font-family:'Plus Jakarta Sans',sans-serif;}
+  .estado-chip{display:inline-block; background:var(--terracotta-accent,var(--terracotta)); color:var(--white); font-size:11px; font-weight:700; padding:4px 10px; border-radius:100px; font-family:'Plus Jakarta Sans',sans-serif;}
+
+  .price-row{display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:22px;}
+  .price-block .l{font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:rgba(83,68,61,.45); font-family:'Plus Jakarta Sans',sans-serif;}
+  .price-block .amt{font-family:'Instrument Serif',serif; font-style:italic; font-size:32px; color:var(--clove);}
+  .price-block .m2{font-size:11.5px; color:rgba(83,68,61,.55); font-weight:600; margin-top:2px; font-family:'Plus Jakarta Sans',sans-serif;}
+  .back-amenities{font-size:11.5px; font-weight:700; color:var(--terracotta-accent,var(--terracotta)); cursor:pointer; display:none; align-items:center; gap:4px; font-family:'Plus Jakarta Sans',sans-serif;}
+  .back-amenities.show{display:flex;}
+
+  .desc{font-size:13px; line-height:1.6; color:rgba(83,68,61,.75); margin-bottom:8px; font-family:'Plus Jakarta Sans',sans-serif;}
+  .desc.collapsed{max-height:42px; overflow:hidden; position:relative;}
+  .desc-toggle{font-size:11.5px; font-weight:700; color:var(--terracotta-accent,var(--terracotta)); cursor:pointer; margin-bottom:22px; display:inline-block; font-family:'Plus Jakarta Sans',sans-serif;}
+
+  .typ-label{font-size:11px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--clove); margin-bottom:12px; font-family:'Plus Jakarta Sans',sans-serif;}
+  .typ-row{display:flex; gap:10px; overflow-x:auto; padding-bottom:14px; margin-bottom:20px; scrollbar-width:none;}
+  .typ-row::-webkit-scrollbar{display:none;}
+  .typ-card{flex:0 0 118px; border:1.5px solid rgba(83,68,61,.15); border-radius:14px; padding:12px; cursor:pointer; transition:all .2s;}
+  .typ-card.active{border-color:var(--terracotta-accent,var(--terracotta)); background:rgba(173,117,86,.08);}
+  .typ-card .name{font-size:12px; font-weight:700; margin-bottom:2px; font-family:'Plus Jakarta Sans',sans-serif;}
+  .typ-card .m2{font-size:10px; color:rgba(83,68,61,.5); margin-bottom:8px; font-family:'Plus Jakarta Sans',sans-serif;}
+  .typ-card .from{font-size:9.5px; color:rgba(83,68,61,.45); font-weight:600; text-transform:uppercase; font-family:'Plus Jakarta Sans',sans-serif;}
+  .typ-card .px{font-size:12px; font-weight:700; color:var(--terracotta-accent,var(--terracotta)); font-family:'Plus Jakarta Sans',sans-serif;}
+
+  .cta-row{display:flex; gap:10px; margin-bottom:20px;}
+  .cta-primary{flex:1; background:var(--terracotta-accent,var(--terracotta)); color:var(--white); border:none; border-radius:100px; padding:14px; font-size:12.5px; font-weight:700; cursor:pointer; text-align:center; text-decoration:none; display:flex; align-items:center; justify-content:center; font-family:'Plus Jakarta Sans',sans-serif;}
+  .cta-ghost{flex:1; background:none; border:1px solid var(--clove); color:var(--clove); border-radius:100px; padding:14px; font-size:12.5px; font-weight:700; cursor:pointer; text-align:center; text-decoration:none; display:flex; align-items:center; justify-content:center; font-family:'Plus Jakarta Sans',sans-serif;}
+
+  .amenities-strip{border-top:1px solid rgba(83,68,61,.1); padding-top:16px; display:flex; flex-wrap:wrap; gap:14px 18px;}
+  .amenities-strip .l{width:100%; font-size:10px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:rgba(83,68,61,.45); margin-bottom:4px; font-family:'Plus Jakarta Sans',sans-serif;}
+  .amenity{display:flex; align-items:center; gap:6px; font-size:11.5px; font-weight:600; color:rgba(83,68,61,.75); font-family:'Plus Jakarta Sans',sans-serif;}
+  .amenity svg{width:15px; height:15px; color:var(--terracotta-accent,var(--terracotta)); flex-shrink:0;}
 
   /* ---------- WHATSAPP FAB ---------- */
   .wa-fab{
@@ -691,7 +690,7 @@
     .listing-grid, .value-grid, .team-grid{grid-template-columns:repeat(2,1fr);}
     .why-grid{grid-template-columns:1fr; gap:40px;}
     .modal{grid-template-columns:1fr; height:auto; max-height:88vh; overflow-y:auto;}
-    .modal-body{height:auto; overflow-y:visible;}
+    .info{height:auto; overflow-y:visible; max-height:none;}
     .contact-wrap{grid-template-columns:1fr; gap:40px;}
     .footer-top{grid-template-columns:1fr 1fr; gap:40px;}
   }
@@ -781,7 +780,7 @@
   .search-row{max-width:1240px; margin:0 auto; padding:24px var(--edge) 0;}
   .search-big{
     display:flex; align-items:center; gap:14px;
-    max-width:640px; margin:0 auto 24px; padding:18px 26px;
+    max-width:640px; margin:0 0 24px 0; padding:18px 26px;
     border-radius:100px; border:1px solid rgba(83,68,61,.15); background:var(--white);
   }
   .search-big input{flex:1; border:none; outline:none; font-size:16px; font-family:'Plus Jakarta Sans',sans-serif; background:none;}
@@ -882,9 +881,9 @@
   .chip{padding:12px 22px; border-radius:var(--radius-pill); border:1px solid rgba(83,68,61,.18); font-size:13px; font-weight:500; color:rgba(83,68,61,.7); cursor:pointer; background:none; font-family:'Plus Jakarta Sans',sans-serif;}
   .chip.active, .chip.on{background:var(--clove); color:var(--white); border-color:var(--clove);}
 
-  .grid-new{display:grid; grid-template-columns:repeat(2,1fr); gap:48px; padding:20px var(--edge) 140px; max-width:1240px; margin:0 auto;}
+  .grid-new{display:grid; grid-template-columns:repeat(3,1fr); gap:28px; padding:20px var(--edge) 140px; max-width:1240px; margin:0 auto;}
   .card-new{cursor:pointer;}
-  .card-new .ph{aspect-ratio:16/11; border-radius:var(--radius-card); overflow:hidden; position:relative; background:var(--muslin);}
+  .card-new .ph{aspect-ratio:5/4; border-radius:var(--radius-card); overflow:hidden; position:relative; background:var(--muslin);}
   .card-new .ph img{width:100%; height:100%; object-fit:cover; display:block;}
   .card-new .body-new{padding:22px 4px 0;}
   .card-new h3{font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:22px;}
@@ -984,7 +983,7 @@
 </svg>
 
 <nav class="nav-new">
-  <a href="index.html" class="logo-new">Almahá</a>
+  <a href="index.html" class="logo-new">ALMAHÁ</a>
   <div class="links-new">
     <a href="proyectos.html">Proyectos</a>
     <a href="quienes-somos.html">Quiénes somos</a>
@@ -1082,19 +1081,28 @@
 
 <div class="grid-new" id="grid"></div>
 
-<!-- ============ MODAL DE DETALLE — sin tocar, igual al que ya está en producción ============ -->
+<!-- ============ MODAL DE DETALLE — rediseñado según preview aprobado ============ -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal">
     <div class="modal-close" onclick="closeModal()">✕</div>
-    <div class="modal-art" id="modalArt"></div>
-    <div class="modal-body" id="modalBody"></div>
+    <div class="gallery">
+      <div class="badge-top" id="badgeTop">Amenidades</div>
+      <div class="main-photo">
+        <button type="button" class="nav-arrow prev" onclick="window.modalPhotoNav(-1)" aria-label="Foto anterior">‹</button>
+        <img id="mainImg" src="" alt="">
+        <div class="art-fallback" id="galleryFallback" style="display:none;"><svg class="lineart" style="width:60%;color:var(--clove);"><use href="#art-villa-pool"/></svg></div>
+        <button type="button" class="nav-arrow next" onclick="window.modalPhotoNav(1)" aria-label="Foto siguiente">›</button>
+      </div>
+      <div class="thumbs" id="thumbs"></div>
+    </div>
+    <div class="info" id="modalInfo"></div>
   </div>
 </div>
 
 <footer class="foot-new">
   <div class="foot-top">
     <div>
-      <div class="foot-logo">Almahá</div>
+      <div class="foot-logo">ALMAHÁ</div>
       <p>Bienes raíces de autor en el Caribe mexicano. Tulum, Playa del Carmen y alrededores.</p>
     </div>
     <div class="foot-col">
@@ -1348,12 +1356,21 @@ async function cargarPropiedades(){
 cargarPropiedades();
 
 /* ================= MODAL — copiado literal del sitio actual, sin cambios de lógica ================= */
+// Íconos SVG reusados de los achips del panel de filtros, más 2 nuevos para los campos que pide esta ronda
+// (seguridad24, estacionamiento) — hay que agregar estos dos campos "Sí"/"No" a Firestore, mismo patrón que el resto.
 function amenidadesActivas(p){
   const claves = [
-    ['pet','Pet friendly'],['jacuzzi','Jacuzzi'],['alberca','Alberca'],
-    ['rooftop','Rooftop'],['gym','Gym'],['cowork','Cowork'],['lavanderia','Lavandería']
+    ['alberca','Alberca','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 17c1.5 1.5 3 1.5 4.5 0s3-1.5 4.5 0 3 1.5 4.5 0 3-1.5 4.5 0"/><path d="M4 12V7a2 2 0 012-2h12a2 2 0 012 2v5"/></svg>'],
+    ['rooftop','Rooftop','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="6 11 12 5 18 11"/></svg>'],
+    ['jacuzzi','Jacuzzi','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8" cy="8" r="2"/><circle cx="15" cy="6" r="1.4"/><circle cx="17" cy="12" r="1.4"/><path d="M4 20c0-5 3-9 8-9s8 4 8 9"/></svg>'],
+    ['gym','Gym','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 7v10M18 7v10M2 12h4M18 12h4M8 9v6M16 9v6"/></svg>'],
+    ['cowork','Cowork','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3"/><path d="M5 20c0-4 3-6 7-6s7 2 7 6"/></svg>'],
+    ['pet','Pet Friendly','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="7" cy="7" r="1.6"/><circle cx="11" cy="5" r="1.6"/><circle cx="15" cy="7" r="1.6"/><circle cx="17" cy="11" r="1.6"/><path d="M6 18c0-3 2.5-5 6-5s6 2 6 5c0 1.5-1.5 2-3 1.5-1-.3-2-1-3-1s-2 .7-3 1c-1.5.5-3 0-3-1.5z"/></svg>'],
+    ['lavanderia','Lavandería','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="13" r="6"/><circle cx="12" cy="13" r="2.4"/><path d="M8 5h8"/></svg>'],
+    ['seguridad24','Seguridad 24/7','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/></svg>'],
+    ['estacionamiento','Estacionamiento','<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 16V8h3.5a2.5 2.5 0 010 5H9"/></svg>']
   ];
-  return claves.filter(([k])=>p[k]==='Sí').map(([,label])=>label);
+  return claves.filter(([k])=>p[k]==='Sí').map(([,label,icon])=>({label,icon}));
 }
 
 let currentModalProp = null;
@@ -1372,20 +1389,43 @@ function currentFotos(p, tipoIndex){
   return [];
 }
 
+/* ================= GALERÍA (foto grande + flechas + miniaturas de la tipología/amenidades activa) ================= */
+// Nota de interpretación: el preview aprobado usaba una miniatura por tipología (selector rápido).
+// Acá las miniaturas son las FOTOS REALES de la tipología activa (varias por tipología, como ya
+// funcionaba en el sitio) — si hubiera usado el patrón "1 miniatura = 1 tipología" del preview tal
+// cual, se perdía la posibilidad de recorrer varias fotos dentro de una misma tipología, que ya
+// existía antes de esta ronda. El cambio de tipología se hace con las tarjetas de abajo (typ-row),
+// no con las miniaturas.
 function renderModalArt(){
   const p = currentModalProp;
   const fotos = currentFotos(p, currentModalTipoIndex);
   if(currentModalPhotoIndex >= fotos.length) currentModalPhotoIndex = 0;
   const fotoUrl = fotos[currentModalPhotoIndex];
-  const nav = fotos.length>1 ? `
-    <button type="button" class="modal-photo-nav prev" onclick="window.modalPhotoNav(-1)" aria-label="Foto anterior">‹</button>
-    <button type="button" class="modal-photo-nav next" onclick="window.modalPhotoNav(1)" aria-label="Foto siguiente">›</button>
-    <div class="modal-photo-counter">${currentModalPhotoIndex+1} / ${fotos.length}</div>
-  ` : '';
-  document.getElementById('modalArt').innerHTML = fotoUrl
-    ? `<img src="${fotoUrl}" alt="${p.nombre}">${nav}`
-    : `<div class="art-fallback"><svg class="lineart" style="width:80%;color:var(--clove);"><use href="#art-villa-pool"/></svg></div>`;
+  const mainImg = document.getElementById('mainImg');
+  const fallback = document.getElementById('galleryFallback');
+
+  if(fotoUrl){
+    mainImg.src = fotoUrl;
+    mainImg.style.display = '';
+    fallback.style.display = 'none';
+  } else {
+    mainImg.style.display = 'none';
+    fallback.style.display = 'flex';
+  }
+
+  document.querySelectorAll('.nav-arrow').forEach(btn => btn.style.display = fotos.length>1 ? 'flex' : 'none');
+
+  document.getElementById('badgeTop').textContent = currentModalTipoIndex===-1 ? 'Amenidades' : ((p.tipologias||[])[currentModalTipoIndex]?.tipo || '');
+
+  document.getElementById('thumbs').innerHTML = fotos.map((f,i)=>
+    `<img class="${i===currentModalPhotoIndex?'on':''}" src="${f}" onclick="window.modalSelectPhoto(${i})" alt="">`
+  ).join('');
 }
+
+window.modalSelectPhoto = function(i){
+  currentModalPhotoIndex = i;
+  renderModalArt();
+};
 
 window.modalPhotoNav = function(dir){
   const p = currentModalProp;
@@ -1395,51 +1435,98 @@ window.modalPhotoNav = function(dir){
   renderModalArt();
 };
 
+/* ================= INFO (título, meta, precio, descripción, tipologías, CTAs, amenidades) ================= */
 function renderModalBody(activeIndex){
   const p = currentModalProp;
   const tipologias = p.tipologias || [];
   const tipo = activeIndex>=0 ? tipologias[activeIndex] : null;
 
-  let tagLabel, precioLabel = money(null), m2Label = '—';
+  let precioLabel, m2Label = null;
   if(activeIndex === -1){
-    tagLabel = 'Amenidades';
     const desde = precioDesde(p);
     precioLabel = desde!==null ? `Desde ${money(desde)}` : money(null);
+  } else if(tipo){
+    const precios = (tipo.unidades||[]).map(u=>u.precio).filter(n=>typeof n==='number');
+    precioLabel = precios.length===1 ? money(precios[0])
+      : precios.length>1 ? `Desde ${money(Math.min(...precios))}`
+      : money(null);
+    const m2s = (tipo.unidades||[]).map(u=>u.m2).filter(n=>typeof n==='number');
+    if(m2s.length===1) m2Label = `${m2s[0]} m²`;
+    else if(m2s.length>1) m2Label = `${Math.min(...m2s)}–${Math.max(...m2s)} m²`;
   } else {
-    tagLabel = tipo ? tipo.tipo : (p.estado||'');
-    if(tipo && tipo.unidades && tipo.unidades.length){
-      const precios = tipo.unidades.map(u=>u.precio).filter(n=>typeof n==='number');
-      if(precios.length===1) precioLabel = money(precios[0]);
-      else if(precios.length>1) precioLabel = `Desde ${money(Math.min(...precios))}`;
-      const m2s = tipo.unidades.map(u=>u.m2).filter(n=>typeof n==='number');
-      if(m2s.length===1) m2Label = `${m2s[0]} m²`;
-      else if(m2s.length>1) m2Label = `${Math.min(...m2s)}–${Math.max(...m2s)} m²`;
-    }
+    precioLabel = money(null);
   }
 
-  const tabsHtml = `<div class="modal-typ-tabs">
-    <button type="button" class="modal-typ-tab${activeIndex===-1?' active':''}" onclick="window.selectModalTipologia('${p.id}',-1)">Amenidades</button>
-    ${tipologias.map((t,i)=>`<button type="button" class="modal-typ-tab${i===activeIndex?' active':''}" onclick="window.selectModalTipologia('${p.id}',${i})">${t.tipo}</button>`).join('')}
-  </div>`;
+  const nTipologias = tipologias.length;
 
-  document.getElementById('modalBody').innerHTML = `
-    <span class="tag">${tagLabel}</span>
-    <h3>${p.nombre}</h3>
-    <div class="modal-loc">${p.zona}${p.ciudad ? ' · '+p.ciudad : ''}</div>
-    ${tabsHtml}
-    <div class="modal-price">${precioLabel}</div>
-    <div class="modal-specs">
-      <div>Superficie<b>${m2Label}</b></div>
-      <div>Estado<b>${p.estado || '—'}</b></div>
-      <div>Entrega<b>${p.entrega || '—'}</b></div>
+  const typRowHtml = tipologias.map((t,i)=>{
+    const precios = (t.unidades||[]).map(u=>u.precio).filter(n=>typeof n==='number');
+    const desdeT = precios.length ? Math.min(...precios) : null;
+    const m2s = (t.unidades||[]).map(u=>u.m2).filter(n=>typeof n==='number');
+    const m2T = m2s.length ? Math.min(...m2s) : null;
+    return `
+    <div class="typ-card${i===activeIndex?' active':''}" onclick="window.selectModalTipologia('${p.id}',${i})">
+      <div class="name">${t.tipo}</div>
+      <div class="m2">${m2T!==null ? 'Desde '+m2T+' m²' : ''}</div>
+      <div class="from">Desde</div>
+      <div class="px">${desdeT!==null ? money(desdeT) : 'Consultar'}</div>
+    </div>`;
+  }).join('');
+
+  // "Descargar brochure" solo se muestra si la propiedad tiene brochureUrl cargado en Firestore —
+  // si no existe el campo, no se muestra el botón (no un link roto), tal como pide el prompt.
+  const brochureBtn = p.brochureUrl
+    ? `<a href="${p.brochureUrl}" target="_blank" rel="noopener" class="cta-ghost">Descargar brochure</a>`
+    : '';
+
+  const waTexto = encodeURIComponent(`Hola! Me interesa agendar una visita para ${p.nombre}${tipo ? ' - '+tipo.tipo : ''}.`);
+
+  document.getElementById('modalInfo').innerHTML = `
+    <div class="tag-row">
+      <span class="tag-pill">${activeIndex===-1 ? 'Amenidades' : (tipo ? tipo.tipo : '')}</span>
     </div>
-    <p class="lede" style="max-width:100%;margin-bottom:22px;">${p.desc || ''}</p>
-    <div class="modal-amenities">${amenidadesActivas(p).map(a=>`<span>${a}</span>`).join('')}</div>
-    <div class="modal-actions">
-      <a href="contacto.html?propiedad=${encodeURIComponent(p.id)}" class="btn btn-primary">Agendar visita<span class="btn-arrow">→</span></a>
+    <h2>${p.nombre}</h2>
+    <div class="loc">📍 ${p.zona}${p.ciudad ? ', '+p.ciudad : ''}</div>
+
+    <div class="meta3">
+      <div><div class="l">Desarrolladora</div><div class="v">${p.desarrollador || '—'}</div></div>
+      <div><div class="l">Estado</div><div class="estado-chip">${p.estado || '—'}</div></div>
+      <div><div class="l">Tipologías</div><div class="v">${nTipologias} disponible${nTipologias===1?'':'s'}</div></div>
+    </div>
+
+    <div class="price-row">
+      <div class="price-block">
+        <div class="l">Desde</div>
+        <div class="amt">${precioLabel}</div>
+        ${m2Label ? `<div class="m2">${m2Label}</div>` : ''}
+      </div>
+      ${activeIndex!==-1 ? `<span class="back-amenities show" onclick="window.selectModalTipologia('${p.id}',-1)">← Ver amenidades</span>` : ''}
+    </div>
+
+    <p class="desc collapsed" id="modalDesc">${p.desc || ''}</p>
+    <span class="desc-toggle" onclick="window.toggleModalDesc()">Ver descripción completa ⌄</span>
+
+    <div class="typ-label">Tipologías disponibles</div>
+    <div class="typ-row">${typRowHtml}</div>
+
+    <div class="cta-row">
+      <a href="https://wa.me/5219841855836?text=${waTexto}" target="_blank" rel="noopener" class="cta-primary">Agendar por WhatsApp</a>
+      ${brochureBtn}
+    </div>
+
+    <div class="amenities-strip">
+      <div class="l">Amenidades destacadas</div>
+      ${amenidadesActivas(p).map(a=>`<div class="amenity">${a.icon}${a.label}</div>`).join('')}
     </div>
   `;
 }
+
+window.toggleModalDesc = function(){
+  const d = document.getElementById('modalDesc');
+  const t = d.nextElementSibling;
+  d.classList.toggle('collapsed');
+  t.textContent = d.classList.contains('collapsed') ? 'Ver descripción completa ⌄' : 'Ver menos ⌃';
+};
 
 window.openModal = function(id){
   const p = PROPIEDADES.find(x=>x.id===id);
