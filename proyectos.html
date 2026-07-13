@@ -787,44 +787,87 @@
   .search-big input{flex:1; border:none; outline:none; font-size:16px; font-family:'Plus Jakarta Sans',sans-serif; background:none;}
   .search-icon{width:20px; height:20px; color:rgba(83,68,61,.4); flex-shrink:0;}
 
-  .dest-chips{display:flex; gap:10px; overflow-x:auto; padding:0 var(--edge) 20px; scrollbar-width:none; max-width:1240px; margin:0 auto;}
-  .dest-chips::-webkit-scrollbar{display:none;}
+  .dest-row{
+    display:flex; justify-content:space-between; align-items:center; gap:20px;
+    flex-wrap:wrap; margin:0 auto; max-width:1240px; padding:0 var(--edge) 24px;
+    border-bottom:1px solid rgba(83,68,61,.12);
+  }
+  .dest-chips{display:flex; gap:10px; flex-wrap:wrap;}
   .dest-chips .chip{padding:9px 18px; font-size:12.5px; white-space:nowrap;}
 
   .filters-toggle{
-    display:flex; align-items:center; gap:8px; margin:0 auto 30px; padding:10px 20px;
-    border-radius:100px; border:1px solid var(--clove); background:none; color:var(--clove);
-    font-size:13px; font-weight:700; cursor:pointer; font-family:'Plus Jakarta Sans',sans-serif;
+    display:flex; align-items:center; gap:8px; padding:12px 22px; flex-shrink:0;
+    border-radius:100px; border:1.5px solid var(--clove); background:none; color:var(--clove);
+    font-size:12.5px; font-weight:700; letter-spacing:.04em; cursor:pointer; white-space:nowrap;
+    font-family:'Plus Jakarta Sans',sans-serif;
   }
-  .filters-toggle.active{background:var(--terracotta-accent,var(--terracotta)); border-color:var(--terracotta-accent,var(--terracotta)); color:var(--white);}
-  #filtersCount{font-family:'Instrument Serif',serif; font-style:italic; color:inherit;}
+  .filters-toggle.active{background:var(--clove); color:var(--white);}
+  #filtersCount{font-family:'Instrument Serif',serif; font-style:italic; color:var(--terracotta-accent,var(--terracotta));}
+  .filters-toggle.active #filtersCount{color:var(--sandstone);}
   .chevron{transition:transform .3s; display:inline-block;}
   .filters-toggle.open .chevron{transform:rotate(180deg);}
 
   .filters-panel{
     max-height:0; overflow:hidden; opacity:0;
+    background:var(--paper); border-radius:20px;
     transition:max-height .4s cubic-bezier(.16,1,.3,1), opacity .3s;
-    padding:0 var(--edge); display:grid; grid-template-columns:1fr 1.6fr 1.4fr; gap:36px;
     max-width:1240px; margin:0 auto;
   }
-  .filters-panel.open{max-height:500px; opacity:1; padding-bottom:36px;}
-  .fp-col label{font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:rgba(83,68,61,.6); display:block; margin-bottom:14px; font-family:'Plus Jakarta Sans',sans-serif;}
-
-  .price-fields{display:flex; align-items:center; gap:10px;}
-  .price-fields input{
-    width:100%; padding:12px 16px; border-radius:14px; border:1px solid rgba(83,68,61,.18);
-    font-size:14px; font-family:'Plus Jakarta Sans',sans-serif;
+  .filters-panel.open{max-height:700px; opacity:1; margin-top:28px; padding:34px 0; display:grid; grid-template-columns:1.1fr 1.3fr 1.2fr .9fr;}
+  .fp-col{padding:0 34px; border-right:1px solid rgba(83,68,61,.12);}
+  .fp-col:last-child{border-right:none;}
+  .fp-col > label{
+    display:block; font-size:11.5px; font-weight:800; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--clove); margin-bottom:22px; font-family:'Plus Jakarta Sans',sans-serif;
   }
 
-  .check-group{display:flex; flex-wrap:wrap; gap:14px 20px;}
-  .check{display:flex; align-items:center; gap:8px; font-size:13px; font-weight:500; color:rgba(83,68,61,.75); cursor:pointer; font-family:'Plus Jakarta Sans',sans-serif;}
-  .check input{accent-color:var(--terracotta-accent,var(--terracotta)); width:16px; height:16px;}
+  /* Presupuesto */
+  .price-readout{display:flex; align-items:center; gap:14px; margin-bottom:22px;}
+  .price-box{flex:1; border:1px solid rgba(83,68,61,.15); border-radius:12px; padding:10px 14px; background:var(--white);}
+  .price-box .l{font-size:10.5px; color:rgba(83,68,61,.5); font-weight:600; font-family:'Plus Jakarta Sans',sans-serif;}
+  .price-box .v{font-size:15px; font-weight:700; margin-top:2px; font-family:'Plus Jakarta Sans',sans-serif;}
+  .price-readout .dash{color:rgba(83,68,61,.35); font-weight:700;}
+  .range-slider{position:relative; height:30px;}
+  .range-slider input[type="range"]{position:absolute; width:100%; top:10px; margin:0; -webkit-appearance:none; background:none; pointer-events:none;}
+  .range-slider input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none; pointer-events:all; width:18px; height:18px; border-radius:50%; background:var(--terracotta-accent,var(--terracotta)); cursor:pointer; border:3px solid var(--white); box-shadow:0 2px 6px rgba(0,0,0,.25);}
+  .range-slider input[type="range"]::-webkit-slider-runnable-track{height:3px; background:rgba(83,68,61,.15); border-radius:2px;}
 
-  .amenity-chips{display:flex; flex-wrap:wrap; gap:10px;}
-  .achip{padding:9px 18px; border-radius:100px; border:1px solid rgba(83,68,61,.2); background:none; color:var(--clove); font-size:12.5px; font-weight:500; cursor:pointer; font-family:'Plus Jakarta Sans',sans-serif;}
+  /* Tipo de propiedad — tiles */
+  .type-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:10px;}
+  .type-grid.row2{grid-template-columns:repeat(3,1fr); margin-top:10px;}
+  .type-tile{
+    display:flex; flex-direction:column; align-items:center; gap:8px;
+    padding:14px 6px; border:1px solid rgba(83,68,61,.15); border-radius:14px;
+    background:var(--white); cursor:pointer; transition:all .2s;
+  }
+  .type-tile:hover{border-color:var(--clove);}
+  .type-tile svg{width:20px; height:20px; color:var(--clove); transition:color .2s;}
+  .type-tile span{font-size:11.5px; font-weight:600; font-family:'Plus Jakarta Sans',sans-serif;}
+  .type-tile.active{background:var(--terracotta-accent,var(--terracotta)); border-color:var(--terracotta-accent,var(--terracotta));}
+  .type-tile.active svg, .type-tile.active span{color:var(--white);}
+
+  /* Amenidades / Estado — chips con ícono */
+  .achips{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:18px;}
+  .achip{
+    display:flex; align-items:center; gap:8px; padding:11px 18px; border-radius:100px;
+    border:1px solid rgba(83,68,61,.18); background:var(--white); color:var(--clove);
+    font-size:13px; font-weight:600; cursor:pointer; transition:all .2s; font-family:'Plus Jakarta Sans',sans-serif;
+  }
+  .achip svg{width:16px; height:16px;}
   .achip.active{background:var(--terracotta-accent,var(--terracotta)); color:var(--white); border-color:var(--terracotta-accent,var(--terracotta));}
+  .link-more{font-size:12.5px; font-weight:700; color:var(--terracotta-accent,var(--terracotta)); cursor:pointer; display:flex; align-items:center; gap:6px; font-family:'Plus Jakarta Sans',sans-serif;}
+  .link-more .chevron{transition:transform .3s;}
+  .link-more.open .chevron{transform:rotate(180deg);}
 
-  @media(max-width:900px){ .filters-panel{grid-template-columns:1fr;} }
+  .estado-col{display:flex; flex-direction:column; gap:10px;}
+  .achip.wide{width:100%; justify-content:flex-start;}
+  .clear-link{font-size:12px; font-weight:700; color:var(--terracotta-accent,var(--terracotta)); text-align:right; margin-top:18px; cursor:pointer; font-family:'Plus Jakarta Sans',sans-serif;}
+
+  @media(max-width:1100px){
+    .filters-panel.open{grid-template-columns:1fr 1fr;}
+    .fp-col{border-right:none; border-bottom:1px solid rgba(83,68,61,.12); padding-bottom:24px; margin-bottom:24px;}
+  }
+  @media(max-width:900px){ .dest-row{flex-direction:column; align-items:stretch;} }
 
   .results-bar{
     display:flex; justify-content:space-between; align-items:center;
@@ -959,58 +1002,72 @@
 <div class="search-row">
   <div class="search-big">
     <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
-    <input type="text" id="searchText" placeholder="Buscar proyecto o ubicación...">
+    <input type="text" id="searchText" placeholder="Buscar proyecto, zona o ubicación...">
   </div>
 </div>
 
-<div class="dest-chips" id="filters">
-  <button class="chip active" data-loc="all">Todos</button>
-  <button class="chip" data-loc="tulum">Tulum</button>
-  <button class="chip" data-loc="pdc">Playa</button>
-  <button class="chip" data-loc="bacalar">Bacalar</button>
-  <button class="chip" data-loc="akumal">Akumal</button>
-  <button class="chip" data-loc="puerto">Puerto Aventuras</button>
+<div class="dest-row">
+  <div class="dest-chips" id="filters">
+    <button class="chip active" data-loc="all">Todos los destinos</button>
+    <button class="chip" data-loc="tulum">Tulum</button>
+    <button class="chip" data-loc="pdc">Playa del Carmen</button>
+    <button class="chip" data-loc="bacalar">Bacalar</button>
+    <button class="chip" data-loc="akumal">Akumal</button>
+    <button class="chip" data-loc="puerto">Puerto Aventuras</button>
+  </div>
+  <button class="filters-toggle" id="filtersToggle">
+    Filtros avanzados <span id="filtersCount"></span> <span class="chevron">⌄</span>
+  </button>
 </div>
-
-<button class="filters-toggle" id="filtersToggle">
-  Filtros avanzados <span id="filtersCount"></span> <span class="chevron">⌄</span>
-</button>
 
 <div class="filters-panel" id="filtersPanel">
   <div class="fp-col">
     <label>Presupuesto (MXN)</label>
-    <div class="price-fields">
-      <input type="number" id="priceMin" placeholder="Desde">
-      <span>—</span>
-      <input type="number" id="priceMax" placeholder="Hasta">
+    <div class="price-readout">
+      <div class="price-box"><div class="l">Desde</div><div class="v" id="priceMinLabel">$0</div></div>
+      <span class="dash">—</span>
+      <div class="price-box"><div class="l">Hasta</div><div class="v" id="priceMaxLabel">$15,000,000+</div></div>
+    </div>
+    <div class="range-slider">
+      <input type="range" id="priceMin" min="0" max="15000000" step="500000" value="0">
+      <input type="range" id="priceMax" min="0" max="15000000" step="500000" value="15000000">
     </div>
   </div>
+
   <div class="fp-col">
-    <label>Tipo</label>
-    <div class="check-group" id="filters2">
-      <label class="check"><input type="checkbox" value="Estudio"> Estudio</label>
-      <label class="check"><input type="checkbox" value="1 Recámara"> 1 Rec</label>
-      <label class="check"><input type="checkbox" value="2 Recámaras"> 2 Rec</label>
-      <label class="check"><input type="checkbox" value="3 Recámaras"> 3 Rec</label>
-      <label class="check"><input type="checkbox" value="4 Recámaras"> 4+</label>
-      <label class="check"><input type="checkbox" value="Local"> Local</label>
-      <label class="check"><input type="checkbox" value="Casa"> Casa</label>
-      <label class="check"><input type="checkbox" value="Villa"> Villa</label>
-      <label class="check"><input type="checkbox" value="Terreno"> Terreno</label>
-      <label class="check"><input type="checkbox" value="__preventa__"> Preventa</label>
+    <label>Tipo de propiedad</label>
+    <div class="type-grid" id="filters2">
+      <div class="type-tile" data-val="Estudio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg><span>Estudio</span></div>
+      <div class="type-tile" data-val="1 Recámara"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 18v-6a2 2 0 012-2h14a2 2 0 012 2v6"/><path d="M3 18h18"/><path d="M7 10V7a2 2 0 012-2h6a2 2 0 012 2v3"/></svg><span>1 Rec</span></div>
+      <div class="type-tile" data-val="2 Recámaras"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 18v-6a2 2 0 012-2h16a2 2 0 012 2v6"/><path d="M2 18h20"/><path d="M6 10V7a2 2 0 012-2h2a2 2 0 012 2v3"/><path d="M14 10V7a2 2 0 012-2h2a2 2 0 012 2v3"/></svg><span>2 Rec</span></div>
+      <div class="type-tile" data-val="3 Recámaras|4 Recámaras"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg><span>3+ Rec</span></div>
+    </div>
+    <div class="type-grid row2">
+      <div class="type-tile" data-val="Local"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-6h6v6"/></svg><span>Local</span></div>
+      <div class="type-tile" data-val="Villa|Casa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg><span>Villa</span></div>
+      <div class="type-tile" data-val="Terreno"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l4 6h-3l4 6h-3l3 5H7l3-5H7l4-6H8z"/></svg><span>Terreno</span></div>
     </div>
   </div>
+
   <div class="fp-col">
     <label>Amenidades</label>
-    <div class="amenity-chips" id="filtersCaract">
-      <button type="button" class="achip" data-val="alberca">Alberca</button>
-      <button type="button" class="achip" data-val="gym">Gym</button>
-      <button type="button" class="achip" data-val="pet">Pet Friendly</button>
-      <button type="button" class="achip" data-val="cowork">Cowork</button>
-      <button type="button" class="achip" data-val="rooftop">Rooftop</button>
-      <button type="button" class="achip" data-val="jacuzzi">Jacuzzi</button>
-      <button type="button" class="achip" data-val="lavanderia">Lavandería</button>
+    <div class="achips" id="filtersCaract">
+      <button type="button" class="achip" data-val="alberca"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 17c1.5 1.5 3 1.5 4.5 0s3-1.5 4.5 0 3 1.5 4.5 0 3-1.5 4.5 0"/><path d="M4 12V7a2 2 0 012-2h12a2 2 0 012 2v5"/></svg>Alberca</button>
+      <button type="button" class="achip" data-val="rooftop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="6 11 12 5 18 11"/></svg>Rooftop</button>
+      <button type="button" class="achip" data-val="jacuzzi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8" cy="8" r="2"/><circle cx="15" cy="6" r="1.4"/><circle cx="17" cy="12" r="1.4"/><path d="M4 20c0-5 3-9 8-9s8 4 8 9"/></svg>Jacuzzi</button>
+      <button type="button" class="achip" data-val="gym"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 7v10M18 7v10M2 12h4M18 12h4M8 9v6M16 9v6"/></svg>Gym</button>
+      <button type="button" class="achip" data-val="cowork"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3"/><path d="M5 20c0-4 3-6 7-6s7 2 7 6"/></svg>Cowork</button>
+      <button type="button" class="achip" data-val="pet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="7" cy="7" r="1.6"/><circle cx="11" cy="5" r="1.6"/><circle cx="15" cy="7" r="1.6"/><circle cx="17" cy="11" r="1.6"/><path d="M6 18c0-3 2.5-5 6-5s6 2 6 5c0 1.5-1.5 2-3 1.5-1-.3-2-1-3-1s-2 .7-3 1c-1.5.5-3 0-3-1.5z"/></svg>Pet Friendly</button>
+      <button type="button" class="achip hidden-amenity" data-val="lavanderia" style="display:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="13" r="6"/><circle cx="12" cy="13" r="2.4"/><path d="M8 5h8"/></svg>Lavandería</button>
     </div>
+    <div class="link-more" id="verMasAmenidades">Ver más amenidades <span class="chevron">⌄</span></div>
+  </div>
+
+  <div class="fp-col estado-col">
+    <label>Estado</label>
+    <button type="button" class="achip wide" id="chipPreventa" data-estado="Preventa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></svg>Preventa</button>
+    <button type="button" class="achip wide" id="chipEntrega" data-estado="Entrega inmediata"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8" cy="8" r="4"/><path d="M11 11l9 9M17 17l2-2M15 19l2-2"/></svg>Entrega inmediata</button>
+    <div class="clear-link" id="limpiarFiltros">Limpiar filtros</div>
   </div>
 </div>
 
@@ -1146,25 +1203,28 @@ function ordenarPropiedades(lista){
   return copia;
 }
 
-/* ================= FILTROS (ubicación + tipo multi-select + texto libre + precio + amenidades, todos combinados con AND) ================= */
+/* ================= FILTROS (ubicación + tipo + texto libre + precio + amenidades + estado, todos combinados con AND) ================= */
 // Quita acentos para que la búsqueda de texto encuentre "Aldea Zama" tanto si el visitante
 // escribe con o sin acento.
 function normalizar(s){
   return (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
 }
+function fmtMXN(n){ return n>=15000000 ? '$15,000,000+' : '$'+n.toLocaleString('es-MX'); }
 
 function aplicarFiltros(){
   const loc = document.querySelector('#filters .chip.active').dataset.loc;
   const texto = normalizar(document.getElementById('searchText').value.trim());
-  const pMinRaw = document.getElementById('priceMin').value;
-  const pMaxRaw = document.getElementById('priceMax').value;
-  const pMin = pMinRaw === '' ? 0 : +pMinRaw;
-  const pMax = pMaxRaw === '' ? Infinity : +pMaxRaw;
-  // Tipo: multi-selección — una card matchea si tiene ALGUNA de las tildadas (OR), no todas.
-  // "__preventa__" es un valor especial que no es una tipología: filtra por p.estado en vez de por tipo.
-  const tiposActivos = Array.from(document.querySelectorAll('#filters2 input:checked')).map(i=>i.value);
-  // Amenidades: siguen siendo AND — todas las chips activas deben cumplirse a la vez.
+  const pMin = +priceMin.value;
+  const pMax = +priceMax.value;
+  // Tipo: cada tile activo puede representar más de una tipología real (ej. "3+ Rec" = 3 o 4 recámaras,
+  // "Villa" también matchea propiedades cargadas como "Casa") — por eso el data-val viene separado por "|".
+  // Una card matchea si tiene ALGUNA de las tipologías de ALGÚN tile activo (OR entre tiles activos).
+  const tilesActivos = Array.from(document.querySelectorAll('#filters2 .type-tile.active'))
+    .flatMap(t => t.dataset.val.split('|'));
+  // Amenidades: AND — todas las chips activas deben cumplirse a la vez.
   const caractActivas = Array.from(document.querySelectorAll('#filtersCaract .achip.active')).map(b=>b.dataset.val);
+  // Estado: selección única (o ninguna) — no tiene sentido filtrar por dos estados a la vez.
+  const estadoActivo = document.querySelector('.estado-col .achip.active')?.dataset.estado || null;
 
   let visibles = 0;
   PROPIEDADES.forEach(p=>{
@@ -1172,16 +1232,15 @@ function aplicarFiltros(){
     if(!card) return;
     const locKey = locKeyFromZonaCiudad(p.zona, p.ciudad);
     const matchesLoc = loc==='all' || locKey===loc;
-    const matchesTipo = tiposActivos.length===0 || tiposActivos.some(t=>
-      t==='__preventa__' ? p.estado==='Preventa' : chipsTipologias(p).includes(t)
-    );
+    const matchesTipo = tilesActivos.length===0 || tilesActivos.some(t => chipsTipologias(p).includes(t));
+    const matchesEstado = !estadoActivo || p.estado===estadoActivo;
     const textoBusqueda = normalizar(`${p.nombre} ${p.zona} ${p.ciudad} ${p.desc||''}`);
     const matchesTexto = !texto || textoBusqueda.includes(texto);
     const desde = precioDesde(p);
     const matchesPrecio = desde===null || (desde>=pMin && desde<=pMax);
     const matchesCaract = caractActivas.every(c => p[c]==='Sí');
 
-    const visible = matchesLoc && matchesTipo && matchesTexto && matchesPrecio && matchesCaract;
+    const visible = matchesLoc && matchesTipo && matchesEstado && matchesTexto && matchesPrecio && matchesCaract;
     card.style.display = visible ? '' : 'none';
     if(visible) visibles++;
   });
@@ -1197,20 +1256,68 @@ document.getElementById('filters').addEventListener('click', e=>{
   btn.classList.add('active');
   aplicarFiltros();
 });
-document.getElementById('filters2').addEventListener('change', aplicarFiltros);
 document.getElementById('searchText').addEventListener('input', aplicarFiltros);
-document.getElementById('priceMin').addEventListener('input', aplicarFiltros);
-document.getElementById('priceMax').addEventListener('input', aplicarFiltros);
+
+// Tipo: cada tile alterna su propio estado, multi-selección libre.
+document.getElementById('filters2').addEventListener('click', e=>{
+  const tile = e.target.closest('.type-tile');
+  if(!tile) return;
+  tile.classList.toggle('active');
+  aplicarFiltros();
+});
+
+// Amenidades: alterna, AND entre todas las activas.
 document.getElementById('filtersCaract').addEventListener('click', e=>{
   const btn = e.target.closest('.achip');
   if(!btn) return;
   btn.classList.toggle('active');
   aplicarFiltros();
 });
+
+// Ver más amenidades: revela la fila oculta (hoy solo Lavandería) y cambia el texto del link.
+const verMasBtn = document.getElementById('verMasAmenidades');
+verMasBtn.addEventListener('click', ()=>{
+  const ocultas = document.querySelectorAll('#filtersCaract .hidden-amenity');
+  const abriendo = !verMasBtn.classList.contains('open');
+  ocultas.forEach(el => el.style.display = abriendo ? 'flex' : 'none');
+  verMasBtn.classList.toggle('open', abriendo);
+  verMasBtn.childNodes[0].textContent = abriendo ? 'Ver menos amenidades ' : 'Ver más amenidades ';
+});
+
+// Estado: selección única — clickear la ya activa la desactiva, clickear la otra cambia la selección.
+document.querySelectorAll('.estado-col .achip').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const yaActiva = btn.classList.contains('active');
+    document.querySelectorAll('.estado-col .achip').forEach(b=>b.classList.remove('active'));
+    if(!yaActiva) btn.classList.add('active');
+    aplicarFiltros();
+  });
+});
+
+// Limpiar filtros: resetea todo lo del panel (no toca ubicación ni el buscador de texto).
+document.getElementById('limpiarFiltros').addEventListener('click', ()=>{
+  priceMin.value = 0; priceMax.value = 15000000;
+  actualizarLabelsPrecio();
+  document.querySelectorAll('#filters2 .type-tile.active').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('#filtersCaract .achip.active').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.estado-col .achip.active').forEach(b=>b.classList.remove('active'));
+  aplicarFiltros();
+});
+
 document.getElementById('sortBy').addEventListener('change', ()=>{
   renderGrid(ordenarPropiedades(PROPIEDADES));
   aplicarFiltros();
 });
+
+const priceMin = document.getElementById('priceMin');
+const priceMax = document.getElementById('priceMax');
+function actualizarLabelsPrecio(){
+  if(+priceMin.value > +priceMax.value) priceMin.value = priceMax.value;
+  document.getElementById('priceMinLabel').textContent = fmtMXN(+priceMin.value);
+  document.getElementById('priceMaxLabel').textContent = fmtMXN(+priceMax.value);
+}
+priceMin.addEventListener('input', ()=>{ actualizarLabelsPrecio(); aplicarFiltros(); });
+priceMax.addEventListener('input', ()=>{ actualizarLabelsPrecio(); aplicarFiltros(); });
 
 const filtersPanel = document.getElementById('filtersPanel');
 const filtersToggle = document.getElementById('filtersToggle');
@@ -1221,9 +1328,10 @@ filtersToggle.addEventListener('click', ()=>{
 
 function actualizarContadorFiltros(){
   let n = 0;
-  if(document.querySelectorAll('#filters2 input:checked').length>0) n++;
-  if(document.getElementById('priceMin').value !== '' || document.getElementById('priceMax').value !== '') n++;
+  if(document.querySelectorAll('#filters2 .type-tile.active').length>0) n++;
+  if(+priceMin.value > 0 || +priceMax.value < 15000000) n++;
   if(document.querySelectorAll('#filtersCaract .achip.active').length>0) n++;
+  if(document.querySelector('.estado-col .achip.active')) n++;
   document.getElementById('filtersCount').textContent = n>0 ? `(${n})` : '';
   filtersToggle.classList.toggle('active', n>0);
 }
