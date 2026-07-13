@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contacto — ALMAHÁ</title>
+<title>Quiénes somos — ALMAHÁ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
@@ -773,6 +773,7 @@
   }
 
   .page-head{padding:70px var(--edge) 20px; max-width:1240px; margin:0 auto;}
+  .page-head .eyebrow{justify-content:flex-start;}
   .page-head h1{font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:clamp(32px,4vw,52px); line-height:1.1; max-width:700px; margin-top:16px;}
 
 </style>
@@ -794,67 +795,112 @@
 </nav>
 
 <section class="page-head">
-  <div class="eyebrow">Hablemos</div>
-  <h1>Cuéntanos qué <span class="ita" style="font-family:'Instrument Serif',serif;font-style:italic;color:var(--terracotta-accent,var(--terracotta));">estás buscando.</span></h1>
+  <div class="eyebrow">Quiénes somos</div>
+  <h1>Detrás de cada propiedad, <span class="ita" style="font-family:'Instrument Serif',serif;font-style:italic;color:var(--terracotta-accent,var(--terracotta));">hay personas.</span></h1>
 </section>
 
-<section class="section" style="padding-top:20px;">
+<!-- ============ EQUIPO + HISTORIA ============ -->
+<section class="section">
   <div class="container">
-    <div class="contact-wrap">
-      <div class="reveal">
-        <form onsubmit="submitContact(event)">
-          <div class="form-row">
-            <div class="field"><label>Nombre</label><input type="text" name="nombre" required></div>
-            <div class="field"><label>Correo</label><input type="email" name="correo" required></div>
-          </div>
-          <div class="form-row">
-            <div class="field"><label>Teléfono / WhatsApp</label><input type="tel" name="telefono"></div>
-            <div class="field">
-              <label>Rango de presupuesto</label>
-              <select name="presupuesto">
-                <option value="">Prefiero no decir</option>
-                <option value="menos-3m">Menos de $3,000,000 MXN</option>
-                <option value="3m-6m">$3,000,000 – $6,000,000 MXN</option>
-                <option value="6m-10m">$6,000,000 – $10,000,000 MXN</option>
-                <option value="mas-10m">Más de $10,000,000 MXN</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="field full">
-              <label>Estoy interesado en</label>
-              <select name="interes">
-                <option value="">Selecciona una opción</option>
-                <optgroup label="Tipo de propiedad">
-                  <option value="tipo-estudio">Estudio</option>
-                  <option value="tipo-villa">Villa</option>
-                  <option value="tipo-casa">Casa</option>
-                  <option value="tipo-terreno">Terreno</option>
-                </optgroup>
-                <optgroup label="Destino">
-                  <option value="destino-tulum">Tulum</option>
-                  <option value="destino-pdc">Playa del Carmen</option>
-                  <option value="destino-cancun">Cancún</option>
-                </optgroup>
-              </select>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="field full"><label>Mensaje</label><textarea name="mensaje" placeholder="Cuéntanos tu presupuesto, destino de interés y horizonte de tiempo..."></textarea></div>
-          </div>
-          <button type="submit" class="btn btn-primary">Enviar mensaje<span class="btn-arrow">→</span></button>
-          <div class="form-success" id="formSuccess">Mensaje recibido — un asesor de Almahá te escribirá en menos de 24 horas hábiles.</div>
-        </form>
+    <div class="why-grid reveal" style="align-items:start; gap:90px;">
+      <div>
+        <p class="lede" style="max-width:100%; margin-bottom:24px;">ALMAHÁ nació de una decisión que cambió nuestras vidas: elegir el Caribe mexicano como nuestro hogar. Somos dos socias argentinas que encontramos en Tulum un lugar para crecer, emprender y construir un proyecto propio.</p>
+        <p class="lede" style="max-width:100%; margin-bottom:24px;">Comprar una propiedad aquí es mucho más que una operación inmobiliaria. Creemos en el asesoramiento honesto, las relaciones de confianza y en seleccionar oportunidades que realmente generen valor.</p>
+        <p class="lede italic" style="max-width:100%; font-size:18px; color:var(--clove); margin-top:32px;">Más que vender propiedades, buscamos ayudar a las personas a encontrar el lugar adecuado para construir su próximo capítulo.</p>
       </div>
-      <div class="contact-info reveal">
-        <div class="contact-block">
-          <h4>WhatsApp directo</h4>
-          <div class="val">+52 1 984 185 5836</div>
+      <div>
+        <div class="team-grid" style="grid-template-columns:repeat(2,1fr); gap:28px;">
+          <div class="team-card">
+            <div class="team-photo" style="aspect-ratio:3/4;"><img src="assets/sofia-suarez.jpg" alt="Sofía Suárez"></div>
+            <h4>Sofía Suárez</h4>
+            <div class="team-role">Fundadora & CEO</div>
+          </div>
+          <div class="team-card">
+            <div class="team-photo" style="aspect-ratio:3/4;"><img src="assets/victoria-calero.jpg" alt="Victoria Calero"></div>
+            <h4>Victoria Calero</h4>
+            <div class="team-role">Cofundadora & Directora de Operaciones</div>
+          </div>
         </div>
-        <div class="contact-block">
-          <h4>Correo</h4>
-          <div class="val">sofiasuarezasesora@gmail.com</div>
-        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIOS — diseño actual, sin rediseñar ============ -->
+<section class="section dark-section" style="padding-left:0; padding-right:0;">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="htext">
+        <div class="eyebrow">Quienes ya compraron</div>
+        <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;">Testimonios<br><span class="ita" style="font-family:'Instrument Serif',serif;font-style:italic;">de nuestros clientes.</span></h2>
+      </div>
+    </div>
+  </div>
+  <div class="testi-track reveal">
+    <div class="testi-card">
+      <p class="testi-quote">"No he conocido ninguna otra bróker de la zona tan buena como tú. Jamás había visto que en dos días me trajeran tres visitas. Mis respetos totales, superbuena energía."</p>
+      <div class="testi-who">
+        <div class="testi-avatar">M</div>
+        <div><div class="testi-name">Mariana</div><div class="testi-loc">Mérida, México</div></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <p class="testi-quote">"La verdad, con ustedes me saco el sombrero — se ve la diferencia entre lo que hacen ustedes y los demás."</p>
+      <div class="testi-who">
+        <div class="testi-avatar">M</div>
+        <div><div class="testi-name">Marcos</div><div class="testi-loc">Guadalajara, México</div></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <p class="testi-quote">"Ustedes son supermovidas, han rentado muy rápido. Muy contento con su trabajo y profesionalismo, por eso las recomiendo siempre."</p>
+      <div class="testi-who">
+        <div class="testi-avatar">C</div>
+        <div><div class="testi-name">Cecilia</div><div class="testi-loc">Ciudad de México</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESO — diseño actual, sin rediseñar ============ -->
+<section class="section" style="background:var(--paper);">
+  <div class="container">
+    <div class="section-head reveal" style="align-items:flex-start;">
+      <div class="htext" style="flex:0 0 auto; max-width:460px;">
+        <div class="eyebrow">De la llamada a las llaves</div>
+        <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;">Un proceso claro, desde <span class="ita" style="font-family:'Instrument Serif',serif;font-style:italic;">el primer contacto</span> hasta la entrega</h2>
+      </div>
+      <p class="lede" style="flex:1 1 380px; max-width:460px; align-self:flex-end;">Comprar una propiedad es una decisión importante. Nuestro trabajo es acompañarte en cada etapa con información clara, asesoramiento personalizado y una gestión ordenada para que vivas el proceso con tranquilidad.</p>
+    </div>
+    <div class="reveal">
+      <div class="process-row">
+        <div class="step-n">01</div>
+        <div><h4>Conocemos tus objetivos</h4><p>Entendemos qué estás buscando, cuál es tu presupuesto y qué tipo de inversión querés realizar.</p></div>
+        <div><p class="lede" style="font-size:11.5px;">15–20 minutos, sin compromiso, en español o inglés.</p></div>
+      </div>
+      <div class="process-row">
+        <div class="step-n">02</div>
+        <div><h4>Seleccionamos las mejores opciones</h4><p>Preparamos una selección de propiedades alineadas con tus objetivos y te presentamos cada alternativa con total transparencia.</p></div>
+        <div><p class="lede" style="font-size:11.5px;">Entrega en 48 horas hábiles.</p></div>
+      </div>
+      <div class="process-row">
+        <div class="step-n">03</div>
+        <div><h4>Coordinamos las visitas</h4><p>Organizamos recorridos presenciales o virtuales para que conozcas cada propiedad y puedas resolver todas tus dudas.</p></div>
+        <div><p class="lede" style="font-size:11.5px;">Coordinamos agenda y traslados si visitas Tulum.</p></div>
+      </div>
+      <div class="process-row">
+        <div class="step-n">04</div>
+        <div><h4>Te acompañamos en la negociación</h4><p>Analizamos las condiciones de compra y te asesoramos durante todo el proceso para que tomes decisiones informadas.</p></div>
+        <div><p class="lede" style="font-size:11.5px;">Sin costo adicional para quien compra.</p></div>
+      </div>
+      <div class="process-row">
+        <div class="step-n">05</div>
+        <div><h4>Validamos la documentación</h4><p>Realizamos una revisión completa de la documentación de la propiedad y de sus aspectos clave para que puedas avanzar con mayor seguridad y confianza.</p></div>
+        <div><p class="lede" style="font-size:11.5px;">Tiempo estimado: 6 a 10 semanas.</p></div>
+      </div>
+      <div class="process-row">
+        <div class="step-n">06</div>
+        <div><h4>Seguimos después de la compra</h4><p>Nuestro acompañamiento no termina con la firma. Continuamos a tu lado para ayudarte en lo que necesites después de adquirir tu propiedad.</p></div>
+        <div><p class="lede" style="font-size:11.5px;">Reporte disponible durante todo el año.</p></div>
       </div>
     </div>
   </div>
@@ -882,54 +928,7 @@
 
 <a class="wa-fab" href="https://wa.me/5219841855836" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.87.5 3.62 1.38 5.13L2 22l4.99-1.35C8.44 21.5 10.17 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.3c-.22.62-1.28 1.18-1.77 1.24-.45.06-1.02.09-1.65-.1-.38-.12-.87-.28-1.5-.55-2.63-1.14-4.34-3.8-4.48-3.98-.13-.18-1.07-1.42-1.07-2.72 0-1.29.68-1.93.92-2.19.24-.26.53-.32.7-.32.18 0 .35 0 .5.01.16.01.38-.06.6.46.22.53.75 1.83.82 1.96.07.13.11.29.02.47-.09.18-.14.29-.27.45-.13.16-.28.35-.4.47-.13.13-.27.27-.12.53.16.26.7 1.15 1.5 1.86 1.03.92 1.9 1.2 2.16 1.34.26.13.41.11.56-.07.16-.18.66-.77.84-1.03.18-.26.35-.22.59-.13.24.09 1.53.72 1.79.85.26.13.44.2.5.31.07.11.07.64-.15 1.26z"/></svg></a>
 
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyD4_pL8l0wOR3elbI3_VZd89a-UffnV5oE",
-  authDomain: "almaha-ventas.firebaseapp.com",
-  projectId: "almaha-ventas",
-  storageBucket: "almaha-ventas.firebasestorage.app",
-  messagingSenderId: "495551253531",
-  appId: "1:495551253531:web:7f8034f9b6a98562763cbe"
-};
-const firebaseApp = initializeApp(firebaseConfig);
-const db = getFirestore(firebaseApp);
-
-// Adaptación necesaria por el split a multi-página: antes, "propiedadOrigenId" se guardaba en una
-// variable de JS que sobrevivía porque todo era una sola página. Ahora el modal vive en proyectos.html
-// y este formulario está en otra página aparte, así que ese dato viaja por la URL en vez de en memoria
-// (proyectos.html arma el link "Agendar visita"/"Solicitar dossier" como contacto.html?propiedad=ID).
-const leadOriginPropertyId = new URLSearchParams(window.location.search).get('propiedad');
-
-window.submitContact = async function(e){
-  e.preventDefault();
-  const form = e.target;
-  const btn = form.querySelector('button[type="submit"]');
-  const lead = {
-    nombre: form.nombre.value,
-    correo: form.correo.value,
-    telefono: form.telefono.value,
-    interes: form.interes.value,
-    presupuesto: form.presupuesto.value,
-    mensaje: form.mensaje.value,
-    propiedadOrigenId: leadOriginPropertyId || null,
-    createdAt: Date.now()
-  };
-  btn.disabled = true;
-  try{
-    await addDoc(collection(db,'leads'), lead);
-    document.getElementById('formSuccess').classList.add('show');
-    form.reset();
-  }catch(err){
-    console.error('Error al guardar el lead en Firestore:', err);
-    alert('Hubo un problema al enviar tu mensaje. Por favor intentá de nuevo o escribinos directo por WhatsApp.');
-  }finally{
-    btn.disabled = false;
-  }
-};
-
+<script>
 const io = new IntersectionObserver((entries)=>{
   entries.forEach(entry=>{
     if(entry.isIntersecting){ entry.target.classList.add('in'); io.unobserve(entry.target); }
