@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Proyectos — ALMAHÁ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Google+Sans+Flex:wght@300;400;500;600&family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@500;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
   :root{
     --clove:#53443D;
@@ -718,6 +718,7 @@
   :root{
     --serif: 'Instrument Serif', serif;
     --sans: 'Plus Jakarta Sans', sans-serif;
+    --mono: 'Plus Jakarta Sans', sans-serif;
     --radius-card: 24px;
     --radius-pill: 100px;
   }
@@ -773,7 +774,7 @@
   }
 
   /* ---------- PROYECTOS: header + buscador compacto + grilla nueva ---------- */
-  .search-bar{display:flex; gap:12px; padding:24px var(--edge) 20px; max-width:900px; margin:0 auto 0 0; margin-left:var(--edge);}
+  .search-bar{display:flex; gap:12px; max-width:1240px; margin:0 auto; padding:24px var(--edge) 20px;}
   .search-bar input{
     flex:1; padding:14px 20px; border-radius:var(--radius-pill); border:1px solid rgba(83,68,61,.18);
     font-size:14px; font-family:'Plus Jakarta Sans',sans-serif; background:var(--white);
@@ -1286,7 +1287,6 @@ function renderModalBody(activeIndex){
     <div class="modal-amenities">${amenidadesActivas(p).map(a=>`<span>${a}</span>`).join('')}</div>
     <div class="modal-actions">
       <a href="contacto.html?propiedad=${encodeURIComponent(p.id)}" class="btn btn-primary">Agendar visita<span class="btn-arrow">→</span></a>
-      <a href="contacto.html?propiedad=${encodeURIComponent(p.id)}" class="btn btn-ghost">Solicitar dossier</a>
     </div>
   `;
 }
