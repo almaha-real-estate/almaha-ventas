@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Almahá — Bienes Raíces del Caribe Mexicano</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
   :root{
     --clove:#53443D;
@@ -529,41 +529,12 @@
   .modal-amenities span{font-size:12px; padding:6px 12px; background:var(--sandstone-60); font-family:var(--mono);}
   .modal-actions{display:flex; gap:12px; flex-wrap:wrap;}
 
-  /* ---------- WHATSAPP FAB ---------- */
-  .wa-fab{
-    position:fixed; bottom:28px; right:28px; z-index:900;
-    width:58px; height:58px; border-radius:50%;
-    background:var(--clove); color:var(--muslin);
-    display:flex; align-items:center; justify-content:center;
-    box-shadow:0 14px 30px -8px rgba(83,68,61,.5);
-    transition:transform .3s;
-  }
-  .wa-fab:hover{transform:scale(1.08); background:var(--terracotta-dark);}
-  .wa-fab::before{
-    content:""; position:absolute; inset:-6px; border-radius:50%; border:1px solid var(--terracotta);
-    animation:pulse 2.6s ease-out infinite;
-  }
-  @keyframes pulse{
-    0%{transform:scale(.9); opacity:.7;}
-    100%{transform:scale(1.35); opacity:0;}
-  }
-
   /* ---------- FOOTER ---------- */
   footer{background:var(--clove); color:var(--muslin); padding:var(--section-y) 0 40px;}
-  .footer-top{display:grid; grid-template-columns:1.3fr repeat(4,1fr); gap:40px; padding-bottom:70px; border-bottom:1px solid rgba(241,239,230,.15);}
-  .footer-brand .logo{color:var(--white); margin-bottom:18px;}
-  .footer-brand p{color:rgba(241,239,230,.6); font-size:12px; max-width:280px; margin-bottom:26px;}
-  .foot-newsletter{display:flex; border-bottom:1px solid rgba(241,239,230,.4); max-width:300px; padding-bottom:10px;}
-  .foot-newsletter input{background:none; border:none; color:var(--muslin); font-size:13px; flex:1;}
-  .foot-newsletter input::placeholder{color:rgba(241,239,230,.4);}
-  .foot-newsletter button{color:var(--sandstone); font-family:var(--mono); font-size:12px; text-transform:uppercase;}
   .foot-col h4{font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--sandstone); margin-bottom:20px;}
   .foot-col a, .foot-col p{display:block; color:rgba(241,239,230,.7); font-size:11.5px; margin-bottom:12px;}
   .foot-col a:hover{color:var(--white);}
-  .footer-bottom{display:flex; justify-content:space-between; align-items:center; padding-top:30px; flex-wrap:wrap; gap:16px;}
   .footer-bottom p{color:rgba(241,239,230,.45); font-size:12px; font-family:var(--mono);}
-  .foot-social{display:flex; gap:18px;}
-  .foot-social a{color:rgba(241,239,230,.7); font-size:12px; font-family:var(--mono); text-transform:uppercase;}
 
   /* ---------- RESPONSIVE ---------- */
   @media (max-width:980px){
@@ -686,11 +657,28 @@
   .nosotras-teaser p{font-size:14.5px; line-height:1.75; color:rgba(61,49,41,.7); max-width:440px; font-family:'Plus Jakarta Sans',sans-serif;}
   .nosotras-teaser .conocer-mas{display:inline-flex; align-items:center; gap:8px; margin-top:26px; font-weight:700; font-size:13px; color:var(--terracotta-accent,var(--terracotta)); text-decoration:none;}
 
+  /* ---------- HOME: PROYECTOS DESTACADOS ---------- */
+  .destacados-home{padding:100px var(--edge) 40px; max-width:1240px; margin:0 auto;}
+  .destacados-home .dh-head{text-align:center; margin-bottom:48px;}
+  .destacados-home .dh-head h2{font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:clamp(26px,2.8vw,36px);}
+  .grid-new{display:grid; grid-template-columns:repeat(2,1fr); gap:28px;}
+  .card-new{cursor:pointer;}
+  .card-new .ph{aspect-ratio:5/4; border-radius:var(--radius-card); overflow:hidden; position:relative; background:var(--muslin);}
+  .card-new .ph img{width:100%; height:100%; object-fit:cover; display:block;}
+  .card-new .body-new{padding:22px 4px 0;}
+  .card-new h3{font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:22px;}
+  .card-new .loc-new{font-size:13px; color:rgba(83,68,61,.55); font-weight:500; margin-top:6px; font-family:'Plus Jakarta Sans',sans-serif;}
+  .card-new .price-row{display:flex; align-items:center; justify-content:space-between; margin-top:14px; padding-top:14px; border-top:1px solid var(--clove-08);}
+  .card-new .px-new{font-family:'Instrument Serif',serif; font-style:italic; font-size:22px; color:var(--terracotta-accent,var(--terracotta));}
+  .card-new .ver-proyecto{font-size:13px; font-weight:700; color:var(--clove); text-decoration:none; font-family:'Plus Jakarta Sans',sans-serif;}
+  @media(max-width:900px){ .grid-new{grid-template-columns:1fr;} }
+
   /* ---------- HOME: INSTAGRAM ---------- */
   .social-new{background:var(--sandstone-60); padding:110px var(--edge);}
   .social-new .social-head{text-align:center; margin-bottom:56px;}
   .social-new .handle{font-size:13px; color:rgba(61,49,41,.55); margin-top:10px; font-family:'Plus Jakarta Sans',sans-serif;}
-  .igrid{display:grid; grid-template-columns:repeat(6,1fr); gap:6px; max-width:1100px; margin:0 auto;}
+  .igrid{display:grid; grid-template-columns:repeat(6,1fr); gap:6px; max-width:1100px; margin:0 auto; min-height:180px;}
+  .elfsight-app-fbaa6541-146c-401e-aaf2-c6ecc41fad02{min-height:180px;}
   .igrid .cell{aspect-ratio:1/1; overflow:hidden; background:var(--sandstone);}
   .igrid .cell img{width:100%; height:100%; object-fit:cover; display:block;}
 
@@ -719,10 +707,10 @@
 
 <section class="home-hero">
   <div class="slide on"><img src="assets/hero-carrusel-1.jpg" alt="Terraza y alberca, arquitectura Almahá"></div>
-  <div class="slide"><img src="assets/hero-carrusel-2.jpg" alt="Living y cocina integrada"></div>
-  <div class="slide"><img src="assets/hero-carrusel-3.jpg" alt="Sala de estar con escalera"></div>
-  <div class="slide"><img src="assets/hero-carrusel-4.jpg" alt="Fachada al atardecer"></div>
-  <div class="slide"><img src="assets/hero-carrusel-5.jpg" alt="Alberca y palapa"></div>
+  <div class="slide"><img src="assets/hero-carrusel-2.jpg" alt="Living y cocina integrada" loading="lazy"></div>
+  <div class="slide"><img src="assets/hero-carrusel-3.jpg" alt="Sala de estar con escalera" loading="lazy"></div>
+  <div class="slide"><img src="assets/hero-carrusel-4.jpg" alt="Fachada al atardecer" loading="lazy"></div>
+  <div class="slide"><img src="assets/hero-carrusel-5.jpg" alt="Alberca y palapa" loading="lazy"></div>
   <div class="home-kicker"><span class="dot"></span>Bienes raíces boutique — Caribe mexicano</div>
   <div class="home-hero-content">
     <h1>Invertí donde otros <span class="ita" style="font-family:'Instrument Serif',serif;font-style:italic;color:var(--sandstone);">sueñan</span> vivir.</h1>
@@ -732,9 +720,18 @@
   <div class="home-dots"><span class="on"></span><span></span><span></span><span></span><span></span></div>
 </section>
 
+<!-- ============ PROYECTOS DESTACADOS ============ -->
+<section class="destacados-home">
+  <div class="dh-head">
+    <div class="eyebrow" style="justify-content:center;">Proyectos destacados</div>
+    <h2>Donde empieza tu próxima inversión.</h2>
+  </div>
+  <div class="grid-new" id="destacadosGrid"></div>
+</section>
+
 <!-- Foto placeholder: reemplazar por una foto real de equipo/oficina si la tenés — usé una que ya estaba en tu repo para no dejarlo roto. -->
 <section class="nosotras-teaser">
-  <div class="ph"><img src="assets/tulum-ruinas-costa.jpg" alt="Almahá en Tulum"></div>
+  <div class="ph"><img src="assets/tulum-ruinas-costa.jpg" alt="Almahá en Tulum" loading="lazy"></div>
   <div>
     <div class="eyebrow">Quiénes somos</div>
     <h2 style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:clamp(28px,3vw,40px);line-height:1.15;margin-bottom:22px;">Detrás de cada propiedad, hay personas.</h2>
@@ -777,6 +774,70 @@
 
 <a class="wa-fab" href="https://wa.me/5219841855836" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.87.5 3.62 1.38 5.13L2 22l4.99-1.35C8.44 21.5 10.17 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.3c-.22.62-1.28 1.18-1.77 1.24-.45.06-1.02.09-1.65-.1-.38-.12-.87-.28-1.5-.55-2.63-1.14-4.34-3.8-4.48-3.98-.13-.18-1.07-1.42-1.07-2.72 0-1.29.68-1.93.92-2.19.24-.26.53-.32.7-.32.18 0 .35 0 .5.01.16.01.38-.06.6.46.22.53.75 1.83.82 1.96.07.13.11.29.02.47-.09.18-.14.29-.27.45-.13.16-.28.35-.4.47-.13.13-.27.27-.12.53.16.26.7 1.15 1.5 1.86 1.03.92 1.9 1.2 2.16 1.34.26.13.41.11.56-.07.16-.18.66-.77.84-1.03.18-.26.35-.22.59-.13.24.09 1.53.72 1.79.85.26.13.44.2.5.31.07.11.07.64-.15 1.26z"/></svg></a>
 
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyD4_pL8l0wOR3elbI3_VZd89a-UffnV5oE",
+  authDomain: "almaha-ventas.firebaseapp.com",
+  projectId: "almaha-ventas",
+  storageBucket: "almaha-ventas.firebasestorage.app",
+  messagingSenderId: "495551253531",
+  appId: "1:495551253531:web:7f8034f9b6a98562763cbe"
+};
+const firebaseApp = initializeApp(firebaseConfig);
+const db = getFirestore(firebaseApp);
+
+const TIPOLOGIAS_OCULTAS = ['Oficinas'];
+
+function money(n){
+  if(typeof n !== 'number') return 'Consultar precio';
+  return `$${n.toLocaleString('es-MX')} MXN`;
+}
+function precioDesde(p){
+  let min = Infinity;
+  (p.tipologias||[]).forEach(t=>(t.unidades||[]).forEach(u=>{
+    if(typeof u.precio==='number' && u.precio<min) min=u.precio;
+  }));
+  return min===Infinity ? null : min;
+}
+function portadaCard(p){
+  return p.photoUrlAmenidades || p.tipologias?.[0]?.photoUrl || null;
+}
+
+async function cargarDestacados(){
+  const snap = await getDocs(collection(db,'propiedades'));
+  const propiedades = snap.docs.map(d=>{
+    const data = d.data();
+    return { id:d.id, ...data, tipologias:(data.tipologias||[]).filter(t=>!TIPOLOGIAS_OCULTAS.includes(t.tipo)) };
+  });
+  const destacadas = propiedades.filter(p=>p.destacado===true).slice(0,3);
+  const grid = document.getElementById('destacadosGrid');
+  grid.innerHTML = '';
+  destacadas.forEach(p=>{
+    const desde = precioDesde(p);
+    const foto = portadaCard(p);
+    const card = document.createElement('a');
+    card.className = 'card-new';
+    card.href = `proyectos.html?propiedad=${encodeURIComponent(p.id)}`;
+    card.innerHTML = `
+      <div class="ph">
+        ${foto ? `<img src="${foto}" alt="${p.nombre}" loading="lazy">` : ''}
+      </div>
+      <div class="body-new">
+        <h3>${p.nombre}</h3>
+        <div class="loc-new">${p.zona}${p.ciudad ? ' · '+p.ciudad : ''}</div>
+        <div class="price-row">
+          <div class="px-new">${desde!==null ? 'Desde '+money(desde) : 'Consultar precio'}</div>
+          <span class="ver-proyecto">Ver proyecto →</span>
+        </div>
+      </div>`;
+    grid.appendChild(card);
+  });
+}
+cargarDestacados();
+</script>
 <script>
 const slides = document.querySelectorAll('.home-hero .slide');
 const dots = document.querySelectorAll('.home-dots span');
