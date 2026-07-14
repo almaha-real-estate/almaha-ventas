@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Proyectos — Almahá</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
   :root{
     --clove:#53443D;
@@ -76,17 +76,6 @@
   .section{
     padding:var(--section-y) 0;
   }
-  .rail-controls{
-    display:flex; justify-content:flex-end; gap:10px; margin:-8px 0 20px;
-  }
-  .rail-arrow{
-    width:44px; height:44px; border-radius:50%;
-    border:1px solid var(--clove-15);
-    display:flex; align-items:center; justify-content:center;
-    color:var(--clove); transition:all .3s;
-  }
-  .rail-arrow svg{width:18px;height:18px;}
-  .rail-arrow:hover{background:var(--clove); color:var(--muslin); border-color:var(--clove);}
   h1,h2,h3,h4{
     font-weight:500;
     letter-spacing:-.01em;
@@ -141,153 +130,6 @@
   .btn-light:hover{background:rgba(255,255,255,.12); border-color:#fff;}
   .btn-arrow{transition:transform .35s cubic-bezier(.16,1,.3,1);}
   .btn:hover .btn-arrow{transform:translateX(4px);}
-
-  /* ---------- NAV ---------- */
-  header{
-    position:fixed; top:0; left:0; right:0; z-index:1000;
-    padding:22px var(--edge);
-    display:flex; align-items:center; justify-content:space-between;
-    transition:all .5s cubic-bezier(.16,1,.3,1);
-  }
-  header.scrolled{
-    padding:14px var(--edge);
-    background:rgba(250,248,242,.86);
-    backdrop-filter:blur(14px);
-    box-shadow:0 1px 0 var(--clove-08);
-  }
-  .logo{
-    font-family:var(--serif);
-    font-size:22px;
-    letter-spacing:.04em;
-    color:var(--white);
-    display:flex; align-items:center; gap:9px;
-    transition:color .5s;
-  }
-  header.scrolled .logo{color:var(--clove);}
-  .logo .dot{width:6px;height:6px;border-radius:50%;background:var(--terracotta);display:inline-block;}
-  nav.main-nav{display:flex; gap:36px; align-items:center;}
-  .main-nav a{
-    font-size:13px; letter-spacing:.03em;
-    color:rgba(255,255,255,.88);
-    position:relative;
-    padding:4px 0;
-    transition:color .5s;
-  }
-  header.scrolled .main-nav a{color:var(--clove-70);}
-  .main-nav a::after{
-    content:""; position:absolute; left:0; bottom:0; width:0; height:1px;
-    background:currentColor; transition:width .35s cubic-bezier(.16,1,.3,1);
-  }
-  .main-nav a:hover::after{width:100%;}
-  .nav-cta{display:flex; align-items:center; gap:22px;}
-  .nav-cta .btn-ghost{color:#fff; border-color:rgba(255,255,255,.5);}
-  header.scrolled .nav-cta .btn-ghost{color:var(--clove); border-color:var(--clove-40);}
-  .burger{display:none;}
-
-  /* ---------- HERO ---------- */
-  .hero{
-    position:relative;
-    min-height:92svh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    background:var(--clove);
-    overflow:hidden;
-    padding:200px 0 80px;
-  }
-  .hero-photo{
-    position:absolute; inset:0;
-    width:100%; height:100%;
-    object-fit:cover;
-    object-position:center 60%;
-  }
-  .hero-vignette{
-    position:absolute; inset:0;
-    background:
-      linear-gradient(180deg, rgba(83,68,61,.62) 0%, rgba(83,68,61,.22) 32%, rgba(83,68,61,.46) 55%, rgba(83,68,61,.92) 100%);
-  }
-  .hero-content{
-    position:relative; z-index:2;
-    padding:0 var(--edge);
-    display:grid;
-    grid-template-columns:1fr auto;
-    gap:56px;
-    align-items:end;
-  }
-  .hero-coords{
-    color:rgba(255,255,255,.85);
-    font-family:var(--mono); font-size:11.5px; letter-spacing:.18em; text-transform:uppercase;
-    margin-bottom:22px; display:flex; align-items:center; gap:10px;
-  }
-  .hero-coords::before{content:"";width:22px;height:1px;background:rgba(255,255,255,.6);}
-  .hero h1{
-    color:var(--white);
-    font-size:clamp(40px, 6.6vw, 96px);
-    line-height:1.02;
-    max-width:920px;
-    letter-spacing:-0.015em;
-    text-shadow:0 2px 24px rgba(0,0,0,.35), 0 1px 4px rgba(0,0,0,.3);
-  }
-  .hero-sub{
-    color:rgba(255,255,255,.85);
-    max-width:380px;
-    font-size:14px;
-    line-height:1.65;
-    padding-bottom:6px;
-    text-shadow:0 1px 14px rgba(0,0,0,.4);
-  }
-  .hero-actions{
-    display:flex; gap:16px; margin-top:38px; flex-wrap:wrap;
-  }
-  .hero-scroll{
-    position:absolute; right:var(--edge); top:130px; z-index:2;
-    display:flex; flex-direction:column; align-items:center; gap:10px;
-    color:rgba(255,255,255,.75);
-    font-family:var(--mono); font-size:10.5px; letter-spacing:.16em; text-transform:uppercase;
-  }
-  .hero-scroll .line{width:1px; height:54px; background:rgba(255,255,255,.4); position:relative; overflow:hidden;}
-  .hero-scroll .line::after{
-    content:""; position:absolute; top:-100%; left:0; width:100%; height:100%;
-    background:#fff; animation:scrollmove 2.2s ease-in-out infinite;
-  }
-  @keyframes scrollmove{ to{ top:100%; } }
-
-  /* compass */
-  .compass{width:34px;height:34px;opacity:.8;}
-
-  /* ---------- SEARCH BAR ---------- */
-  .searchwrap{
-    position:relative; z-index:5;
-    margin-top:-24px;
-  }
-  .searchcard{
-    background:var(--sandstone);
-    border:1px solid rgba(83,68,61,.12);
-    box-shadow:0 20px 44px -24px rgba(83,68,61,.3);
-    padding:26px clamp(20px,3vw,36px);
-    display:grid;
-    grid-template-columns:repeat(5,1fr) auto;
-    gap:0;
-    margin-bottom:32px;
-  }
-  .search-field{
-    padding:0 26px;
-    border-right:1px solid rgba(83,68,61,.15);
-    display:flex; flex-direction:column; gap:8px;
-  }
-  .search-field:first-child{padding-left:0;}
-  .search-field label{
-    font-family:var(--mono); font-size:10.5px; letter-spacing:.12em; text-transform:uppercase;
-    color:var(--clove-40);
-  }
-  .search-field select{
-    background:none; border:none; font-size:15.5px; color:var(--clove); font-family:var(--serif); font-style:italic;
-    appearance:none;
-  }
-  .search-submit{
-    display:flex; align-items:center; justify-content:center; padding-left:26px;
-  }
-  .search-submit .btn{width:100%; justify-content:center;}
 
   /* ---------- SVG LINE ART SYMBOLS ---------- */
   .art-defs{position:absolute;width:0;height:0;overflow:hidden;}
@@ -582,7 +424,7 @@
   .modal{
     max-width:1080px; width:100%; margin:0 auto; background:var(--white); border-radius:24px; overflow:hidden;
     display:grid; grid-template-columns:1.15fr 1fr; box-shadow:0 40px 90px -30px rgba(61,49,41,.35);
-    max-height:85vh;
+    height:640px; max-height:85vh;
     transform:translateY(30px); transition:transform .4s cubic-bezier(.16,1,.3,1);
     position:relative;
   }
@@ -600,7 +442,7 @@
   .main-photo .art-fallback{position:absolute; inset:0; display:flex; align-items:center; justify-content:center;}
   .nav-arrow{position:absolute; top:50%; transform:translateY(-50%); width:36px; height:36px; border-radius:50%; background:var(--white); display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,.2); cursor:pointer; z-index:3; border:none; font-size:16px; color:var(--clove);}
   .nav-arrow.prev{left:14px;} .nav-arrow.next{right:14px;}
-  .thumbs{display:flex; gap:6px; padding:8px; background:var(--white); overflow-x:auto;}
+  .thumbs{display:flex; gap:6px; padding:8px; min-height:68px; background:var(--white); overflow-x:auto;}
   .thumbs img{width:52px; height:52px; flex-shrink:0; object-fit:cover; border-radius:8px; cursor:pointer; opacity:.55; transition:opacity .2s;}
   .thumbs img.on{opacity:1; outline:2px solid var(--terracotta-accent,var(--terracotta));}
 
@@ -666,20 +508,10 @@
 
   /* ---------- FOOTER ---------- */
   footer{background:var(--clove); color:var(--muslin); padding:var(--section-y) 0 40px;}
-  .footer-top{display:grid; grid-template-columns:1.3fr repeat(4,1fr); gap:40px; padding-bottom:70px; border-bottom:1px solid rgba(241,239,230,.15);}
-  .footer-brand .logo{color:var(--white); margin-bottom:18px;}
-  .footer-brand p{color:rgba(241,239,230,.6); font-size:12px; max-width:280px; margin-bottom:26px;}
-  .foot-newsletter{display:flex; border-bottom:1px solid rgba(241,239,230,.4); max-width:300px; padding-bottom:10px;}
-  .foot-newsletter input{background:none; border:none; color:var(--muslin); font-size:13px; flex:1;}
-  .foot-newsletter input::placeholder{color:rgba(241,239,230,.4);}
-  .foot-newsletter button{color:var(--sandstone); font-family:var(--mono); font-size:12px; text-transform:uppercase;}
   .foot-col h4{font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--sandstone); margin-bottom:20px;}
   .foot-col a, .foot-col p{display:block; color:rgba(241,239,230,.7); font-size:11.5px; margin-bottom:12px;}
   .foot-col a:hover{color:var(--white);}
-  .footer-bottom{display:flex; justify-content:space-between; align-items:center; padding-top:30px; flex-wrap:wrap; gap:16px;}
   .footer-bottom p{color:rgba(241,239,230,.45); font-size:12px; font-family:var(--mono);}
-  .foot-social{display:flex; gap:18px;}
-  .foot-social a{color:rgba(241,239,230,.7); font-size:12px; font-family:var(--mono); text-transform:uppercase;}
 
   /* ---------- RESPONSIVE ---------- */
   @media (max-width:980px){
@@ -889,8 +721,12 @@
   .card-new h3{font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:22px;}
   .card-new .loc-new{font-size:13px; color:rgba(83,68,61,.55); font-weight:500; margin-top:6px; font-family:'Plus Jakarta Sans',sans-serif;}
   .card-new .px-new{font-family:'Instrument Serif',serif; font-style:italic; font-size:22px; color:var(--terracotta-accent,var(--terracotta)); margin-top:12px;}
-  .card-new .tipologias-count{font-size:12.5px; color:rgba(83,68,61,.55); margin-top:6px; font-family:'Plus Jakarta Sans',sans-serif;}
-  .card-new .ver-proyecto{display:inline-block; margin-top:16px; font-size:13px; font-weight:700; color:var(--clove); text-decoration:none; font-family:'Plus Jakarta Sans',sans-serif;}
+  .card-new .ver-proyecto{display:inline-block; margin-top:0; font-size:13px; font-weight:700; color:var(--clove); text-decoration:none; font-family:'Plus Jakarta Sans',sans-serif;}
+  .card-new .price-row{
+    display:flex; align-items:center; justify-content:space-between;
+    margin-top:14px; padding-top:14px; border-top:1px solid var(--clove-08);
+  }
+  .card-new .px-new{ margin-top:0; }
 
   @media(max-width:900px){ .grid-new{grid-template-columns:1fr;} }
 
@@ -1179,7 +1015,6 @@ function renderGrid(lista){
     const locKey = locKeyFromZonaCiudad(p.zona, p.ciudad);
     const desde = precioDesde(p);
     const foto = portadaCard(p);
-    const nTipologias = (p.tipologias||[]).length;
     const card = document.createElement('div');
     card.className = 'card-new';
     card.dataset.id = p.id;
@@ -1189,14 +1024,15 @@ function renderGrid(lista){
     card.onclick = () => window.openModal(p.id);
     card.innerHTML = `
       <div class="ph">
-        ${foto ? `<img src="${foto}" alt="${p.nombre}">` : `<div class="art-fallback"><svg class="lineart" style="width:60%;color:var(--clove);"><use href="#art-villa-pool"/></svg></div>`}
+        ${foto ? `<img src="${foto}" alt="${p.nombre}" loading="lazy">` : `<div class="art-fallback"><svg class="lineart" style="width:60%;color:var(--clove);"><use href="#art-villa-pool"/></svg></div>`}
       </div>
       <div class="body-new">
         <h3>${p.nombre}</h3>
         <div class="loc-new">${p.zona}${p.ciudad ? ' · '+p.ciudad : ''}</div>
-        <div class="px-new">${desde!==null ? 'Desde '+money(desde) : 'Consultar precio'}</div>
-        <div class="tipologias-count">${nTipologias} tipolog${nTipologias===1?'ía':'ías'} disponible${nTipologias===1?'':'s'}</div>
-        <a class="ver-proyecto">Ver proyecto →</a>
+        <div class="price-row">
+          <div class="px-new">${desde!==null ? 'Desde '+money(desde) : 'Consultar precio'}</div>
+          <a class="ver-proyecto">Ver proyecto →</a>
+        </div>
       </div>`;
     grid.appendChild(card);
   });
@@ -1352,6 +1188,12 @@ async function cargarPropiedades(){
   });
   renderGrid(ordenarPropiedades(PROPIEDADES));
   aplicarFiltros();
+
+  // Si se llegó con ?propiedad=ID (ej. desde una card de destacados en Home), abrir el modal directo.
+  const propiedadUrl = new URLSearchParams(window.location.search).get('propiedad');
+  if(propiedadUrl){
+    window.openModal(propiedadUrl);
+  }
 }
 cargarPropiedades();
 
